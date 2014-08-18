@@ -1,0 +1,3 @@
+#!/bin/sh
+rmmod ehci_hcd
+exit 0

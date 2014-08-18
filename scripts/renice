@@ -1,0 +1,2 @@
+for i in `pidof X` ; do renice -10 $i ; done &
+renice -5 -u ilusi0n

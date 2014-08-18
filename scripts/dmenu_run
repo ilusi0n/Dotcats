@@ -1,0 +1,4 @@
+#!/bin/bash
+dmenu_run -f -nb '#000000' -sb '#000000' -sf '#00BFFF' -p '>' -fn 'Source Code
+Pro Medium:size=8'
+exit 0

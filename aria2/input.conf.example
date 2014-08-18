@@ -1,0 +1,5 @@
+#for aria2
+#use with input-file=$HOME/.aria2/input.conf
+website
+  dir=location of file
+  out=name of the output file

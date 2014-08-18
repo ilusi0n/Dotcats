@@ -1,0 +1,43 @@
+--- dwmc.orig	2014-01-31 16:15:03.200834980 +0000
++++ dwm.c	2014-01-31 16:19:22.052237975 +0000
+@@ -200,6 +200,7 @@
+ static void focusin(XEvent *e);
+ static void focusmon(const Arg *arg);
+ static void focusstack(const Arg *arg);
++static void focusurgent(const Arg *arg);
+ static XftColor getcolor(const char *colstr);
+ static Bool getrootptr(int *x, int *y);
+ static long getstate(Window w);
+@@ -997,6 +998,32 @@
+ 	}
+ }
+ 
++void
++focusurgent(const Arg *arg) {
++	Client *c;
++	Monitor *m;
++	unsigned int i;
++
++	for(m = mons; m; m = m->next) {
++		for(c = m->clients; c; c = c->next) {
++			if(c->isurgent) {
++				selmon = m;
++				if(!ISVISIBLE(c)) {
++					selmon->seltags ^= 1;
++					selmon->tagset[selmon->seltags] = c->tags;
++					selmon->prevtag = selmon->curtag;
++					for(i=0; !(c->tags & 1 << i); i++);
++					selmon->curtag = i + 1;
++					selmon->lt[selmon->sellt] = selmon->lts[selmon->curtag];
++				}
++				focus(c);
++				arrange(selmon);
++				return;
++			}
++		}
++	}
++}
++
+ Atom
+ getatomprop(Client *c, Atom prop) {
+ 	int di;

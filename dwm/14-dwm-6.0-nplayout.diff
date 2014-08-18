@@ -1,0 +1,22 @@
+--- /dev/null	2013-07-23 11:12:59.986668085 +0100
++++ nplayout.c	2013-07-23 15:57:21.482564748 +0100
+@@ -0,0 +1,19 @@
++void
++nextlayout(const Arg *arg) {
++    Layout *l;
++    for (l=(Layout *)layouts;l != selmon->lt[selmon->sellt];l++);
++    if (l->symbol && (l + 1)->symbol)
++        setlayout(&((Arg) { .v = (l + 1) }));
++    else
++        setlayout(&((Arg) { .v = layouts }));
++}
++
++void
++prevlayout(const Arg *arg) {
++    Layout *l;
++    for (l=(Layout *)layouts;l != selmon->lt[selmon->sellt];l++);
++    if (l != layouts && (l - 1)->symbol)
++        setlayout(&((Arg) { .v = (l - 1) }));
++    else
++        setlayout(&((Arg) { .v = &layouts[LENGTH(layouts) - 2] }));
++}

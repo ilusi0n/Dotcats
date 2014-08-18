@@ -1,0 +1,51 @@
+--- dwmc.orig	2014-01-31 18:17:11.059893854 +0000
++++ dwm.c	2014-01-31 18:18:46.056846777 +0000
+@@ -228,6 +228,7 @@
+ static void focusmon(const Arg *arg);
+ static void focusstack(const Arg *arg);
+ static Atom getatomprop(Client *c, Atom prop);
++static void gaplessgrid(Monitor *m);
+ static void focusurgent(const Arg *arg);
+ static XftColor getcolor(const char *colstr);
+ static Bool getrootptr(int *x, int *y);
+@@ -1124,6 +1125,40 @@
+ 		}
+ 	}
+ }
++
++void
++gaplessgrid(Monitor *m) {
++	unsigned int n, cols, rows, cn, rn, i, cx, cy, cw, ch;
++	Client *c;
++
++	for(n = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), n++);
++	if(n == 0)
++		return;
++
++	/* grid dimensions */
++	for(rows = 0; rows <= n/2; rows++)
++		if(rows*rows >= n)
++			break;
++	if(n == 5) /* set layout against the general calculation: not 1:2:2, but 2:3 */
++		rows = 2;
++	cols = n/rows;
++
++	/* window geometries */
++	ch = rows ? m->wh / rows : m->wh;
++	for(i = cn = rn = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++) {
++		if(i/cols + 1 > rows - n%rows)
++			cols = n/rows + 1;
++		cw = cols ? m->ww / cols : m->ww;
++		cx = m->wx + cn*cw;
++		cy = m->wy + rn*ch;
++		resize(c, cx, cy, cw - (2*c->bw), ch - (2*c->bw), False);
++		cn++;
++		if(cn >= cols) {
++			cn = 0;
++			rn++;
++		}
++	}
++}
+ 
+ Atom
+ getatomprop(Client *c, Atom prop) {

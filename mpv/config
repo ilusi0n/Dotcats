@@ -1,0 +1,20 @@
+# Write your default config options here!
+#
+hwdec=vdpau
+#vo=opengl
+vo=vdpau
+ao=pulse
+msg-color=yes
+volume=100
+softvol-max=600
+
+
+# execute a command every 30 seconds
+# useful to disable a non-standard-compliant screensavers and to work around buggy behaviours
+# BE WARNED: to avoid dangerous commands is your responsibility
+#heartbeat-cmd="xscreensaver-command -deactivate >&- 2>&- &" # stop xscreensaver
+
+# custom heartbeat frequency in seconds
+#heartbeat-interval=300
+
+
