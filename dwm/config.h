@@ -2,7 +2,7 @@
 
 
 /* appearance */
-static const char font[]  = "termsyn:size=10";
+static const char font[]  = "termsyn:size=10:antialias=true:hinting=true";
 
 #define BLUE   "#00BFFF"
 #define WHITE  "#cdcdcd"
@@ -120,9 +120,9 @@ static const char *upvol[] = { "amixer", "set", "Master", "5%+", NULL};
 static const char *downvol[] = { "amixer", "set", "Master", "5%-", NULL};
 static const char *togglevol[] = { "amixer", "set", "Master", "toggle", "-q", NULL};
 */
-static const char *upvol[] = { "pulseaudio-ctl", "up", NULL};
-static const char *downvol[] = { "pulseaudio-ctl", "down", NULL};
-static const char *togglevol[] = { "pulseaudio-ctl", "mute", NULL};
+static const char *upvol[] = { "ponymix", "-d", "0", "increase", "5", NULL };
+static const char *downvol[] = { "ponymix", "-d", "0", "decrease", "5", NULL };
+static const char *togglevol[] = { "ponymix", "-d", "0", "toggle", NULL};
 static const char *print[] = { "/bin/sh", "/home/ilusi0n/.scripts/print",NULL};
 
 #include "nplayout.c"

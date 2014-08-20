@@ -1,8 +1,5 @@
 #!/bin/sh
 
-C01="\x01" # white
-C02="\x02" # blue
-
 batt=/sys/class/power_supply/BAT1/
 
 current=$(<"${batt}"/charge_now)

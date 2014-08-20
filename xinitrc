@@ -52,4 +52,10 @@ case "$WM" in
         $HOME/.config/wmfs/autostart &
         exec wmfs
         ;;
+    xmonad)
+        xsetroot -cursor_name left_ptr
+        setxkbmap -layout pt-latin1
+        $HOME/.xmonad/autostart &
+        exec xmonad
+        ;;
 esac

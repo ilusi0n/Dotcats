@@ -83,8 +83,9 @@ cpu(){
 }
 
 vol(){
-    level="$(awk -F"[][]" '{print $2}' <(amixer get Master) | tail -1)"
-    echo -e "${colors[7]}Vol: ${level}"
+    #level="$(awk -F"[][]" '{print $2}' <(amixer get Master) | tail -1)"
+    level="$(ponymix -d 0 get-volume)"
+    echo -e "${colors[7]}Vol: ${level}%"
 }
 mpd(){
     track="$(mpc current)"
