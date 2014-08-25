@@ -115,5 +115,9 @@ hddwarn(){
     [[ $warn -gt 95 ]] && echo -e "${colors[2]}BAZINGA${sep1}"
 }
 
+#meh(){
+#    echo -e "<span foreground='blue'> lol </span>"
+#}
 # pipe it
 xsetroot -name " $(hddwarn)$(mpd)$(weather)$(mail)$(cputmp)$(cpu)$(bat)$(vol)$(dte) "
+#xsetroot -name " $(meh) "

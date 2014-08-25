@@ -32,6 +32,9 @@ mkdir -p /tmp/chrome_cache
 
 eval $(dircolors ~/.dircolors)
 
+PATH=$PATH:~/bin
+export PATH
+
 #fonts
 #xset +fp /usr/share/fonts/TTF
 #xset +fp /usr/share/fonts/misc
@@ -41,7 +44,7 @@ eval $(dircolors ~/.dircolors)
 #java
 wmname LG3D &
 
-WM="dwm"
+WM="awesome"
 
 case "$WM" in
     dwm)
@@ -52,10 +55,7 @@ case "$WM" in
         $HOME/.config/wmfs/autostart &
         exec wmfs
         ;;
-    xmonad)
-        xsetroot -cursor_name left_ptr
-        setxkbmap -layout pt-latin1
-        $HOME/.xmonad/autostart &
-        exec xmonad
+    awesome)
+        exec awesome
         ;;
 esac

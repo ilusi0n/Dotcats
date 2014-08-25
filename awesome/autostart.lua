@@ -11,12 +11,13 @@ function run_once(cmd)
   awful.util.spawn_with_shell("pgrep -u $USER -x " .. findme .. " > /dev/null || (" .. cmd .. ")")
 end
 
-run_once("xscreensaver -no-splash")
-run_once("wicd-client --tray")
+run_once("xautolock -time 5 -locker 'i3lock -c 111111' -corners 0-+0  -cornerdelay 4 -cornerredelay 4")
+run_once("connman-ui-gtk")
 run_once("thunar --daemon")
 run_once("ibus-daemon -s -x -d")
+run_once("/usr/bin/start-pulseaudio-x11")
 
-awful.util.spawn_with_shell("feh --bg-scale /mnt/Data/Wallpapers/v3/wallpaper-114539.jpg")
-awful.util.spawn_with_shell("sudo /home/ilusi0n/.scripts/powersaving AC")
+awful.util.spawn_with_shell("feh --bg-scale /mnt/Data/Wallpapers/v2/wallpaper-82310.jpg")
+--awful.util.spawn_with_shell("sudo /home/ilusi0n/.scripts/powersaving AC")
 run_once("/home/ilusi0n/.scripts/touchpad_toggle")
 run_once("/home/ilusi0n/.scripts/drop_start")

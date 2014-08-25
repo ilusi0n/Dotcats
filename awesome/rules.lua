@@ -10,6 +10,7 @@ local beautiful = require("beautiful")
 			properties = {
                 border_width = beautiful.border_width,
 				border_color = beautiful.border_normal,
+                --focus = awful.client.focus.filter,
 				keys = clientkeys,
 				size_hints_honor = false,
 				buttons = clientbuttons 
@@ -42,7 +43,7 @@ local beautiful = require("beautiful")
 			properties = { tag = tags[1][5] } },
 		{ rule = { class = "Gummi" },
 			properties = { tag = tags[1][6] } },
-		{ rule = { class = "llpp" },
+		{ rule = { class = "Evince" },
 			properties = { tag = tags[1][8] } },
 		{ rule = { class = "Steam" },
 			properties = { tag = tags[1][7] } },

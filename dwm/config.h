@@ -39,7 +39,7 @@ static const unsigned int gappx     = 0;        // Gap pixel between windows
 static const unsigned int snap      = 32;       /* snap pixel */
 static const Bool showbar           = True;     /* False means no bar */
 static const Bool topbar            = True;     /* False means bottom bar */
-static const unsigned int systrayspacing = 2;   /* systray spacing */
+static const unsigned int systrayspacing = 4;   /* systray spacing */
 static const Bool showsystray       = True;     /* False means no systray */
 
 static const Rule rules[] = {
@@ -115,14 +115,11 @@ static const char *thunderbird[]  = { "thunderbird", NULL };
 static const char *gmpc[]  = { "nice", "gmpc", NULL };
 static const char *lock[]  = { "i3lock", "-c", "111111", NULL };
 static const char *playonlinux[]  = { "nice", "-n", "15","playonlinux", NULL };
-/*
-static const char *upvol[] = { "amixer", "set", "Master", "5%+", NULL};
-static const char *downvol[] = { "amixer", "set", "Master", "5%-", NULL};
-static const char *togglevol[] = { "amixer", "set", "Master", "toggle", "-q", NULL};
-*/
 static const char *upvol[] = { "ponymix", "-d", "0", "increase", "5", NULL };
 static const char *downvol[] = { "ponymix", "-d", "0", "decrease", "5", NULL };
 static const char *togglevol[] = { "ponymix", "-d", "0", "toggle", NULL};
+static const char *upbri[] = { "light", "-A", "10", NULL };
+static const char *downbri[] = { "light", "-U", "10", NULL };
 static const char *print[] = { "/bin/sh", "/home/ilusi0n/.scripts/print",NULL};
 
 #include "nplayout.c"
@@ -149,6 +146,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_r,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ 0,                            XK_Print,  spawn,          {.v = print } },
+    { ControlMask,           		XK_Left,   spawn,          {.v = downbri } },
+    { ControlMask,           		XK_Right,  spawn,          {.v = upbri } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ ALTKEY,                       XK_Tab,    focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
