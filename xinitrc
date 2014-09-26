@@ -22,8 +22,8 @@ xrandr --setprovideroutputsource modesetting NVIDIA-0
 xrandr --auto
 
 # temporary folders
-mkdir -p /tmp/skype_files
-mkdir -p /tmp/cower
+#mkdir -p /tmp/skype_files
+#mkdir -p /tmp/cower
 mkdir -p /tmp/chrome_cache
 
 # source Xresources

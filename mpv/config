@@ -5,8 +5,9 @@ hwdec=vdpau
 vo=vdpau
 ao=pulse
 msg-color=yes
-volume=100
-softvol-max=600
+volume=75
+#softvol-max=600
+af=drc
 
 
 # execute a command every 30 seconds

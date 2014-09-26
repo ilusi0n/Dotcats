@@ -191,7 +191,7 @@ for s = 1, screen.count() do
     right_layout:add(yawn.widget)
     right_layout:add(tempicon)
     right_layout:add(tempwidget)
-    right_layout:add(baticon)
+    --right_layout:add(baticon)
     right_layout:add(batwidget)
     right_layout:add(clockicon)
     right_layout:add(mytextclock)
@@ -207,7 +207,7 @@ for s = 1, screen.count() do
 
     -- Create the bottom wibox
     mybottomwibox[s] = awful.wibox({ position = "bottom", screen = s, border_width = 0, height = 20 })
-    mybottomwibox[s].visible = false
+    --mybottomwibox[s].visible = false
             
     -- Widgets that are aligned to the bottom left
     bottom_left_layout = wibox.layout.fixed.horizontal()
@@ -257,8 +257,8 @@ globalkeys = awful.util.table.join(
     -- my custom keys
 
     awful.key({ altkey, }, "c", function() awful.util.spawn("google-chrome-stable") end),
-    awful.key({ altkey, }, "f", function() awful.util.spawn("firefox") end),
-    awful.key({ altkey, }, "2", function() awful.util.spawn("thunar") end),
+    awful.key({ altkey, }, "f", function() awful.util.spawn("aurora") end),
+    awful.key({ altkey, }, "2", function() awful.util.spawn("pcmanfm") end),
     awful.key({ altkey, }, "p", function() awful.util.spawn("nice /usr/bin/pidgin") end),
     awful.key({ altkey, }, "g", function() awful.util.spawn("gvim") end),
     awful.key({ altkey, }, "s", function() awful.util.spawn("nice /usr/bin/skype") end),

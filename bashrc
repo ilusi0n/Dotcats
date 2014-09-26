@@ -24,7 +24,7 @@ if [[ -f ~/.zsh_stuff/dir_colors ]]; then
 fi
 
 # bash completion
-set show-all-if-ambiguous on
+#set show-all-if-ambiguous on
 
 # --- history
 # don't put duplicate lines in the history. See bash(1) for more options

@@ -28,6 +28,20 @@ yawn = lain.widgets.yawn(742676, {
     end
 })
 
+
+-- Battery
+baticon = wibox.widget.imagebox(beautiful.widget_batt)
+batwidget = lain.widgets.bat({
+    settings = function()
+        if bat_now.perc == "N/A" then
+            bat_now.perc = "AC "
+        else
+            bat_now.perc = bat_now.perc .. "% "
+        end
+        widget:set_text(bat_now.perc)
+    end
+})
+
 -- CPU
 cpuicon = wibox.widget.imagebox()
 cpuicon:set_image(beautiful.widget_cpu)
@@ -42,19 +56,6 @@ tempicon = wibox.widget.imagebox(beautiful.widget_temp)
 tempwidget = lain.widgets.temp({
     settings = function()
         widget:set_markup(markup("#f1af5f", coretemp_now .. "°C "))
-    end
-})
-
--- Battery
-baticon = wibox.widget.imagebox(beautiful.widget_batt)
-batwidget = lain.widgets.bat({
-    settings = function()
-        if bat_now.perc == "N/A" then
-            bat_now.perc = "AC "
-        else
-            bat_now.perc = bat_now.perc .. "% "
-        end
-        widget:set_text(bat_now.perc)
     end
 })
 
@@ -99,4 +100,3 @@ vicious.register(mpdwidget, vicious.widgets.mpd,
             return markup("#e54c62", args["{Artist}"] .. ' - ') .. markup("#e33a6e", args["{Title}"])
         end
     end, 3)
-

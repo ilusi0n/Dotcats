@@ -4,11 +4,14 @@
 
 SCRIPTS_DIR="$HOME/.scripts"
 
+alias rollback="git --hard HEAD"
 alias logX='journalctl -k -b -1'
 alias getsub='subberthehut -s -a -o -l por,pob'
 alias verynice="ionice -c3 nice -n 15"
+alias buildme="ionice -c3 nice -n 15 makepkg -s"
 alias good='schedtool -D -n 19 -e'
 alias rm='trash-put'
+alias flux='xflux -l 38.44 -g 9.9'
 alias grep='grep --color=auto'
 alias ls="ls --color -F"
 alias ll="ls --color -lh"
@@ -36,9 +39,9 @@ alias top='htop'
 alias lazyScript='/home/ilusi0n/.dotfiles/lazyScript.sh'
 alias wasteSpace='ncdu'
 alias myAge=" echo $(($(($(date +%s) - $(date -d "$(head -1 /var/log/pacman.log | cut -d ' ' -f 1,2 | tr -d '[]')" +%s))) / 86400)) days"
-alias suzie='sudo pacman -Sy; sudo pacman -S linux-headers linux-ck-ivybridge-headers linux-lts-headers --needed; sudo pacman -Su'
+alias suzie='sudo pacman -Sy; sudo pacman -S linux-headers linux-zen-headers linux-lts-headers --needed; sudo pacman -Su'
 alias myip="curl curlmyip.com"
-alias cower="cower -t /tmp/cower -c"
+alias cower="cower -t ~/build -c"
 alias pk='killall -9 $1'
 start() { sudo systemctl start $1.service ; sudo systemctl status $1.service; }
 restart() { sudo systemctl restart $1.service ; sudo systemctl status $1.service; }
@@ -47,6 +50,12 @@ status() { sudo systemctl status $1.service; }
 enable() { sudo systemctl enable $1.service ; }
 disable() { sudo systemctl disable $1.service ; }
 listd() { ls -l /etc/systemd/system/multi-user.target.wants; }
+start_user() { systemctl --user start $1.service; }
+restart_user() { systemctl --user restart $1.service; }
+stop_user() { systemctl --user stop $1.service; }
+status_user() { systemctl --user status $1.service; }
+enable_user() { systemctl --user enable $1.service; }
+disable_user() { systemctl --user disable $1.service; }
 alias cpuspeed='watch grep \"cpu MHz\" /proc/cpuinfo'
 alias scheduler="sudo tee /sys/block/sda/queue/scheduler <<< $1"
 alias no_turbo="sudo tee /sys/devices/system/cpu/intel_pstate/no_turbo <<< $1"
