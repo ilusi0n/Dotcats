@@ -74,7 +74,7 @@ require("widgets")
 -- {{{ Tags
 tags = {
    names = { "cmd", "www", "im", "mail", "dev", "media", "vm", "doc" },
-   layout = { layouts[1], layouts[1], layouts[2], layouts[1], layouts[1], layouts[1], layouts[3], layouts[1] }
+   layout = { layouts[1], layouts[1], layouts[3], layouts[1], layouts[1], layouts[1], layouts[3], layouts[3] }
 }
 for s = 1, screen.count() do
 -- Each screen has its own tag table.
@@ -191,7 +191,7 @@ for s = 1, screen.count() do
     right_layout:add(yawn.widget)
     right_layout:add(tempicon)
     right_layout:add(tempwidget)
-    --right_layout:add(baticon)
+    right_layout:add(baticon)
     right_layout:add(batwidget)
     right_layout:add(clockicon)
     right_layout:add(mytextclock)
@@ -257,7 +257,7 @@ globalkeys = awful.util.table.join(
     -- my custom keys
 
     awful.key({ altkey, }, "c", function() awful.util.spawn("google-chrome-stable") end),
-    awful.key({ altkey, }, "f", function() awful.util.spawn("aurora") end),
+    awful.key({ altkey, }, "f", function() awful.util.spawn("firefox") end),
     awful.key({ altkey, }, "2", function() awful.util.spawn("pcmanfm") end),
     awful.key({ altkey, }, "p", function() awful.util.spawn("nice /usr/bin/pidgin") end),
     awful.key({ altkey, }, "g", function() awful.util.spawn("gvim") end),
@@ -284,10 +284,20 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
     awful.key({ modkey,           }, "space", function () awful.layout.inc(layouts,  1) end),
     awful.key({ altkey },"z",function ()awful.util.spawn("/home/ilusi0n/.scripts/touchpad_toggle") end),
-	awful.key({ modkey },"r",function ()awful.util.spawn("/home/ilusi0n/.scripts/dmenu_run") end),
+	  awful.key({ modkey },"r",function ()awful.util.spawn("/home/ilusi0n/.scripts/dmenu_run") end),
+    awful.key({ modkey,           }, "j",
+        function ()
+          awful.client.focus.byidx( 1)
+          if client.focus then client.focus:raise() end
+        end),
+    awful.key({ modkey,           }, "k",
+        function ()
+          awful.client.focus.byidx(-1)
+          if client.focus then client.focus:raise() end
+        end),
+
 
     -- Widgets popups
-    awful.key({ altkey,           }, "h",      function () fswidget.show(7) end),
     awful.key({ altkey,           }, "w",      function () yawn.show(7) end),
 
     -- ALSA volume control

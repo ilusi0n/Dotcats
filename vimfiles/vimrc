@@ -24,7 +24,7 @@ set noswapfile
 set colorcolumn=80
 set textwidth=78
 set shortmess=aoOstTwWAI
-set foldmethod=syntax
+"set foldmethod=syntax
 set laststatus=2
 set encoding=utf-8
 set spellsuggest=fast,10

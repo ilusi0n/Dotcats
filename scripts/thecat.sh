@@ -84,7 +84,7 @@ $f1                     KMMMl
 $f1                    .MMMMo                        
 $f1                    ,MMMMx                        
 $f1                    oMMMMx                        
-$f1                    OMMMMO                        $f2"Yes,$f7 you can!"
+$f1                    OMMMMO                        $f2 Be optimistic$f7, you idiot!
 $f1                    .OMMMd                                                
 $f1                      :Nl       
 

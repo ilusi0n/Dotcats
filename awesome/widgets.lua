@@ -28,10 +28,11 @@ yawn = lain.widgets.yawn(742676, {
     end
 })
 
-
 -- Battery
 baticon = wibox.widget.imagebox(beautiful.widget_batt)
 batwidget = lain.widgets.bat({
+    battery="BAT1",
+   -- notify="off",
     settings = function()
         if bat_now.perc == "N/A" then
             bat_now.perc = "AC "
@@ -42,6 +43,8 @@ batwidget = lain.widgets.bat({
     end
 })
 
+
+
 -- CPU
 cpuicon = wibox.widget.imagebox()
 cpuicon:set_image(beautiful.widget_cpu)
@@ -50,6 +53,7 @@ cpuwidget = lain.widgets.cpu({
         widget:set_markup(markup("#e33a6e", cpu_now.usage .. "% "))
     end
 })
+cpuwidget.battery = "BAT1"
 
 -- Coretemp
 tempicon = wibox.widget.imagebox(beautiful.widget_temp)
