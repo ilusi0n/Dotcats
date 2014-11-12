@@ -17,6 +17,7 @@ run_once("ibus-daemon -s -x -d")
 run_once("/usr/bin/start-pulseaudio-x11")
 run_once("pcmanfm -d")
 run_once("/usr/lib/lxpolkit/lxpolkit")
+run_once("/etc/profile.d/infinality-settings.sh")
 
 awful.util.spawn_with_shell("feh --bg-scale /mnt/Data/Wallpapers/v3/a1d4edfa309b3e04b5dd81065c24c874.jpg")
 --awful.util.spawn_with_shell("sudo /home/ilusi0n/.scripts/powersaving AC")

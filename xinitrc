@@ -44,6 +44,10 @@ export PATH
 #java
 wmname LG3D &
 
+ln -s /home/ilusi0n/.cacheme/spotify /home/ilusi0n/.cache/spotify
+ln -s /home/ilusi0n/.cacheme/gmpc /home/ilusi0n/.cache/gmpc
+ln -s /home/ilusi0n/.cacheme/wine /home/ilusi0n/.cache/wine
+
 WM="awesome"
 
 case "$WM" in

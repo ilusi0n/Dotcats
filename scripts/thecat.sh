@@ -34,7 +34,7 @@ function wm {
 KERNEL=$(uname -r)
 PACKAGES=$(pacman -Q | wc -l)
 FPACKAGES=$(pacman -Qqm | wc -l)
-RAM=$(free -h |awk '/cache:/ { print $3 }')
+RAM=$(free -h |awk '/Mem:/ { print $3 }')
 
 # Other
 
