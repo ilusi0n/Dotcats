@@ -1,4 +1,4 @@
-#define NUMCOLORS       10
+#define NUMCOLORS       11
 #define MODKEY Mod4Mask
 #define ALTKEY Mod1Mask
 #define TAGKEYS(KEY,TAG) \
@@ -28,7 +28,7 @@ static const char font[] = "-*-terminus-medium-r-normal-*-12-*-*-*-*-*-*-*";
 #define BLACK  "#000000"
 #define ORANGE "#ff8c00"
 #define RED    "#ff0000"
-#define GRAY   "#999999"
+#define GRAY   "#666666"
 #define PURPLE "#BF5FFF"
 #define LIGHT_GREEN "#76EE00"
 #define LIGHT_BLUE "#7DC1CF"
@@ -38,32 +38,33 @@ static const char font[] = "-*-terminus-medium-r-normal-*-12-*-*-*-*-*-*-*";
 
 static const char colors[NUMCOLORS][ColLast][13] = {
 /* border  foreground  background */
-  {  BLACK, GRAY,    BLACK },  // 1 = normal
-  {  BLUE,  BLUE,    BLACK },  // 2 = selected
+  {  BLACK, WHITE,    BLACK },  // 1 = normal
+  {  BLUE,  WHITE,    BLACK },  // 2 = selected
   {  BLACK, RED,     BLACK },  // 3 = urgent
-  {  BLACK, LIGHT_GREEN2,    BLACK },  // 4 = occupied
+  {  BLACK, GRAY,    BLACK },  // 4 = occupied
   {  BLACK, ORANGE,  BLACK },
   {  BLACK, LIGHT_GREEN,   BLACK },
   {  BLACK, PURPLE,  BLACK },
   {  BLACK, LIGHT_BLUE,  BLACK },
   {  BLACK, AZURE,  BLACK },
   {  BLACK, LIGHT_ORANGE,  BLACK },
+  {  BLACK, BLUE,  BLACK },
 };
 
 static const Layout layouts[] = {
     /* symbol   gaps    arrange */
-    { "[T]",    False, tile },	
-    { "[Bs]",   False, bstack },
+    { "[T]",    True, tile },	
+    { "[Bs]",   True, bstack },
     { "[M]",    False, monocle },
-    { "[G]",    False, gaplessgrid },
+    { "[G]",    True, gaplessgrid },
     { "[F]",    False,  NULL },
 };
 
 static const Tag tags[] = {
   /* name      layout         mfact    nmaster */
   { "cmd",     &layouts[0],   -1,      -1 },
-  { "www",     &layouts[0],   -1,      -1 },
-  { "im",      &layouts[3],   -1,      -1 },
+  { "www",     &layouts[2],   -1,      -1 },
+  { "im",      &layouts[2],   -1,      -1 },
   { "mail",    &layouts[0],   -1,      -1 },
   { "dev",     &layouts[0],   -1,      -1 },
   { "media",   &layouts[0],   -1,      -1 },
@@ -104,11 +105,11 @@ static const char *firefox[]  = { "firefox", NULL, "Firefox" };
 static const char *pcmanfm[]  = { "pcmanfm", NULL };
 static const char *pidgin[]   = { "nice", "pidgin", NULL };
 static const char *gvim[]     = { "gvim", NULL };
-static const char *skype[]    = { "nice", "skype", NULL, "Skype" };
+static const char *skype[]    = { "skype", NULL, "Skype" };
 static const char *thunderbird[]  = { "thunderbird", NULL, "Thunderbird" };
-static const char *gmpc[]  = { "nice", "gmpc", NULL, "Gmpc" };
+static const char *gmpc[]  = { "gmpc", NULL, "Gmpc" };
 static const char *lock[]  = { "i3lock", "-c", "111111", NULL };
-static const char *playonlinux[]  = { "nice", "-n", "15","playonlinux", NULL, "Playonlinux" };
+static const char *playonlinux[]  = { "playonlinux", NULL, "Playonlinux" };
 static const char *upvol[] = { "ponymix", "-d", "0", "increase", "5", NULL };
 static const char *downvol[] = { "ponymix", "-d", "0", "decrease", "5", NULL };
 static const char *togglevol[] = { "ponymix", "-d", "0", "toggle", NULL};
@@ -191,6 +192,5 @@ static Button buttons[] = {
 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
-/*	{ ClkClientWin,         MODKEY,         Button1,        movemouse,  {0}
- *	},*/
+	{ ClkClientWin,         MODKEY,         Button1,        tilemovemouse,  {0}	},
 };

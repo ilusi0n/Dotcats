@@ -29,7 +29,8 @@
 #C09="\x09" # azure
 #C10="\x0A" # light orange
 
-colors=('\x01' '\x02' '\x03' '\x04' '\x05' '\x06' '\x07' '\x08' '\x09' '\x0A')
+colors=('\x01' '\x02' '\x03' '\x04' '\x05' '\x06' '\x07' '\x08' '\x09' '\x0A'
+'\x0B')
 
 : '
 C06="\x06" # black0
@@ -100,7 +101,7 @@ dte(){
 
 weather(){
     weather="$(cat /tmp/weather)"
-    [[ -n $weather ]] && echo -e "${colors[1]}${weather} >"
+    [[ -n $weather ]] && echo -e "${colors[10]}${weather} >"
 }
 
 hddwarn(){
