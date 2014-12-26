@@ -1,4 +1,4 @@
 #!/bin/bash
-dmenu_run -f -nb '#000000' -sb '#000000' -sf '#00BFFF' -p '>' -fn 'Source Code
-Pro Medium:size=11'
+dmenu_run -f -nb '#000000' -sb '#000000' -sf '#00BFFF' -p '>' -fn 'Envy Code R
+Regular 11'
 exit 0

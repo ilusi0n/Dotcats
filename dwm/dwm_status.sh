@@ -59,7 +59,7 @@ sep1="${colors[3]} > "
 
 cputmp(){
     hddt="$(sensors | awk '/Physical/ {print substr($4,2,2);}')"
-    echo -e "${colors[4]}T: ${hddt}${sep1}"
+    echo -e "${colors[4]}T: ${hddt}"
 }
 
 bat(){
@@ -67,7 +67,7 @@ bat(){
     batt='/sys/class/power_supply/BAT1/'
     state=$(<"${batt}"/status)
     if [[ $state == 'Discharging' ]] || [[ $state == 'Charging' ]]; then
-        echo -e "${colors[4]}Bat ${batst}${sep1}"
+        echo -e "${sep1}${colors[4]}Bat ${batst}"
     fi
 }
 
@@ -79,19 +79,18 @@ cpu(){
     read cpu a b c idle rest < /proc/stat
     total=$((a+b+c+idle))
     cpu="$((100*( (total-prevtotal) - (idle-previdle) ) / (total-prevtotal) ))"
-    echo -e "${colors[6]}CPU $cpu%${sep1}"
+    echo -e "${sep1}${colors[6]}CPU ${cpu}%"
 }
 
 vol(){
-    #level="$(awk -F"[][]" '{print $2}' <(amixer get Master) | tail -1)"
     level="$(ponymix -d 0 get-volume)"
-    echo -e "${colors[7]}Vol: ${level}%"
+    echo -e "${sep1}${colors[7]}Vol: ${level}%"
 }
 mpd(){
     track="$(mpc current)"
     artist="${track%%- *}"
     title="${track#*- }"
-    [[ -n $artist ]] && echo -e "${colors[6]} $artist- $title$sep1"
+    [[ -n $artist ]] && echo -e "${colors[6]} ${artist}- ${title}${colors[3]}>"
 }
 
 dte(){
@@ -101,23 +100,13 @@ dte(){
 
 weather(){
     weather="$(cat /tmp/weather)"
-    [[ -n $weather ]] && echo -e "${colors[1]}${weather}${sep1}"
-}
-
-mail(){
-    gmp="$(cat /tmp/gmp)"
-    gmf="$(cat /tmp/gmf)"
-    [[ ${#gmp} -eq 1  ]] && [[ ${#gmf} -eq 1  ]] && echo -e "${colors[5]}P: ${gmp}${sep1}${colors[8]}F: ${gmf}${sep1}"
+    [[ -n $weather ]] && echo -e "${colors[1]}${weather} >"
 }
 
 hddwarn(){
     warn="$(df -h | awk '/sda6/ { gsub("%","",$5) ; print $5 }')"
-    [[ $warn -gt 95 ]] && echo -e "${colors[2]}BAZINGA${sep1}"
+    [[ $warn -gt 95 ]] && echo -e "${sep1}${colors[2]}BAZINGA"
 }
 
-#meh(){
-#    echo -e "<span foreground='blue'> lol </span>"
-#}
 # pipe it
-xsetroot -name " $(hddwarn)$(mpd)$(weather)$(mail)$(cputmp)$(cpu)$(bat)$(vol)$(dte) "
-#xsetroot -name " $(meh) "
+xsetroot -name "$(hddwarn)$(mpd)$(weather)$(cputmp)$(cpu)$(bat)$(vol)$(dte)"

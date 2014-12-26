@@ -256,7 +256,7 @@ globalkeys = awful.util.table.join(
 
     -- my custom keys
 
-    awful.key({ altkey, }, "c", function() awful.util.spawn("google-chrome-stable") end),
+    awful.key({ altkey, }, "c", function() awful.util.spawn("chromium") end),
     awful.key({ altkey, }, "f", function() awful.util.spawn("firefox") end),
     awful.key({ altkey, }, "2", function() awful.util.spawn("pcmanfm") end),
     awful.key({ altkey, }, "p", function() awful.util.spawn("nice /usr/bin/pidgin") end),

@@ -3,7 +3,9 @@ theme                               = {}
 theme.confdir                       = os.getenv("HOME") .. "/.config/awesome/themes/multicolor"
 --theme.wallpaper                     = theme.confdir .. "/wall.png"
 
-theme.font                          = "Terminus 8"
+--theme.font                          = "Terminus 8"
+--theme.font                          = "Ubuntu Mono Regular 10"
+theme.font                          = "Envy Code R Medium 10"
 --theme.taglist_font                =
 theme.bg_normal                     = "#000000"
 theme.bg_focus                      = "#000000"

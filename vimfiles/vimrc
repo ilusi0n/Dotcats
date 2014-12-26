@@ -49,9 +49,9 @@ colorscheme jellybeans
 
 " Specificities
 if has('win32') 
-  set guifont=Consolas\ for\ Powerline\ FixedD:h11
+  set guifont=Consolas\ for\ Powerline\ FixedD:h10
 else
-  set guifont=Monaco\ for\ Powerline\ 11
+  set guifont=Monaco\ for\ Powerline\ 10
 end
 
 set re=1 " Fixes slow rendering when editing ruby files

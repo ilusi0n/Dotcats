@@ -16,33 +16,21 @@ install=dwm.install
 _source=(http://dl.suckless.org/dwm/dwm-$pkgver.tar.gz
 	dwm.desktop
 	config.h
+    dwm.c
 )
 _patches=(
-	00-dwm-6.0-buildflags.diff
-    01-dwm-6.0-xft.diff
-    02-dwm-6.0-pertag2.diff
-    03-dwm-6.0-cycle.diff
-    04-dwm-6.0-statuscolor_xft.diff
-    05-dwm-6.0-focusurgent.diff
-    06-dwm-6.0-netwmdemandsattention.diff
-    07-dwm-6.0-xkeycodetokeysymfix.diff
-    08-dwm-6.0-push.diff
-    09-dwm-6.0-systray.diff
-    10-dwm-6.0-togglemax.diff
-    11-dwm-6.0-gaplessgrid.diff
-    12-dwm-6.0-tilemovemouse.diff
     13-dwm-6.0-cflags.diff
-    14-dwm-6.0-nplayout.diff
 )
 source=(${_source[@]} ${_patches[@]})
 
 build() {
   cd $srcdir/$pkgname-$pkgver
-  for PATCH in "${_patches[@]}"; do
-  	echo "=> $PATCH"
-    patch < ../$PATCH || return 1
-  done
   cp $srcdir/config.h config.h
+  cp $srcdir/dwm.c dwm.c
+  for PATCH in "${_patches[@]}"; do
+ 	echo "=> $PATCH"
+ 	patch < ../$PATCH || return 1
+	done
   sed -i 's/CPPFLAGS =/CPPFLAGS +=/g' config.mk
   sed -i 's/^CFLAGS = -g/#CFLAGS += -g/g' config.mk
   sed -i 's/^#CFLAGS = -std/CFLAGS += -std/g' config.mk

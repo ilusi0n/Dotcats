@@ -7,18 +7,18 @@
 # @include "~/.config/wmfs/menu-wmfsrc"
 
 [misc]
-font                  = "Terminus-8.5"
-#font                = "envy code r:medium:size=8.5" 
+#font                  = "terminus-9"
+font                = "envy code r:medium:size=12" 
 raisefocus            = true
-focus_follow_mouse    = true
-focus_follow_movement = false
+focus_follow_mouse    = false
+focus_follow_movement = true
 opacity               = 255
 
 # focus_pointer_click: click on unfocused client area:
 # true  -- default, set focus
 # false -- click go to client; including dockapps
 focus_pointer_click = true
-status_timing      = 3     #seconds
+status_timing      = 2     #seconds
 status_path       = "~/.config/wmfs/wmfs_status"
 [/misc]
 
@@ -28,11 +28,11 @@ status_path       = "~/.config/wmfs/wmfs_status"
         border = false
         #height = "-1"
 
-        light_shade =  0.10
-        dark_shade  = -0.10
+      #  light_shade =  0.10
+       # dark_shade  = -0.10
 
-        [mouse] button = "4" func = "spawn" cmd = "amixer set Master 5%+"    [/mouse]
-        [mouse] button = "5" func = "spawn" cmd = "amixer set Master 5%-"    [/mouse]
+        [mouse] button = "4" func = "spawn" cmd = "ponymix -d 0 increase 5"    [/mouse]
+        [mouse] button = "5" func = "spawn" cmd = "ponymix -d 0 decrease 5"    [/mouse]
 
         [systray]
             # Enable/disable systray
@@ -42,7 +42,7 @@ status_path       = "~/.config/wmfs/wmfs_status"
             screen = 0
 
             # Spacing between tray icons
-            spacing = 1
+            spacing = 2
         [/systray]
 
         # Remove this section to disable the selbar.
@@ -101,7 +101,7 @@ status_path       = "~/.config/wmfs/wmfs_status"
 [tags]
 [default_tag]
 name             = "new tag"
-mwfact           = 0.55
+mwfact           = 0.5
 nmaster          = 1
 layout           = "tile_right"
 resizehint       = false
@@ -148,11 +148,11 @@ mouse_button_tag_prev      = "5"
     name = "www"
     layout="tile_right"
 [/tag]
-[tag] name = "im" layout="tile_grid"  [/tag]
+[tag] name = "im" layout="max"  [/tag]
 [tag] name = "mail" layout="tile_right"   [/tag]
 [tag] name = "dev" layout="tile_right"   [/tag]
 [tag] name = "media" layout="tile_right" [/tag]
-[tag] name = "vm" layout="tile_right" [/tag]
+[tag] name = "vm" layout="max" [/tag]
 [tag] name = "doc" layout="tile_right" [/tag]
 [/tags]
 

@@ -82,18 +82,12 @@ weather(){
     [[ -n $weather ]] && echo -e "\\$AZURE\ ${weather}${sep1}"
 }
 
-mail(){
-        gmp="$(cat /tmp/gmp)"
-        gmf="$(cat /tmp/gmf)"
-        [[ ${#gmp} -eq 1  ]] && [[ ${#gmf} -eq 1  ]] && echo -e "\\$LIGHT_GREEN\ P: ${gmp}${sep1} \\$AZURE\F: ${gmf}${sep1}"
-}
-
 hddwarn(){
     warn="$(df -h | awk '/sda6/ { gsub("%","",$5) ; print $5 }')"
     [[ $warn -gt 95 ]] && echo -e "\\$RED\ BAZINGA${sep1}"
 }
 
 # pipe it
-wmfs -s "$(hddwarn)$(mpd)$(weather)$(mail)$(cputmp)$(cpu)$(bat)$(vol)$(dte)"
+wmfs -s "$(hddwarn)$(mpd)$(weather)$(cputmp)$(cpu)$(bat)$(vol)$(dte)"
 
 

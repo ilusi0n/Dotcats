@@ -1,12 +1,12 @@
 ! Xft settings ---------------------------------------------------------------
 
-Xft.dpi:                72
-Xft.antialias:          true
-Xft.rgba:               rgb
-Xft.hinting:            true
-Xft.hintstyle:          hintfull
-Xft.lcdfilter:  	lcddefault
-Xft.autohint: 		0
+Xft.autohint:1
+Xft.lcdfilter:lcddefault
+Xft.hintstyle:hintslight
+Xft.hinting:1
+Xft.antialias:1
+Xft.dpi:96
+Xft.rgba:rgb
 
 ! Colour Scheme
-!#include "/home/ilusi0n/.colors_schemes/euphrasia"
+#include "/home/ilusi0n/.color_schemes/euphrasia"

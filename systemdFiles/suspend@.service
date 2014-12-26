@@ -6,7 +6,7 @@ Before=sleep.target
 User=ilusi0n
 Type=forking
 Environment=DISPLAY=:0
-ExecStart=/usr/bin/xscreensaver-command -lock
+ExecStart=/usr/bin/i3lock -c 111111
 
 [Install]
 WantedBy=sleep.target
