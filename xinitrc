@@ -60,10 +60,4 @@ case "$WM" in
     awesome)
         exec awesome
         ;;
-    monsterwm)
-        sh ~/bin/wmrun.sh
-        ;;
-    frankenwm)
-        sh ~/bin/frankenwm.sh
-        ;;
 esac

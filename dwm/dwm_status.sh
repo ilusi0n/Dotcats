@@ -101,7 +101,7 @@ dte(){
 
 weather(){
     weather="$(cat /tmp/weather)"
-    [[ -n $weather ]] && echo -e "${colors[10]}${weather} >"
+    [[ -n $weather ]] && echo -e "${colors[10]}${weather}${colors[3]}>"
 }
 
 hddwarn(){
