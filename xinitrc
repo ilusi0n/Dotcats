@@ -19,9 +19,6 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
     unset f
 fi
 
-xrandr --setprovideroutputsource modesetting NVIDIA-0
-xrandr --auto
-
 # source Xresources
 xrdb -merge $HOME/.Xresources &> /dev/null
 
@@ -46,7 +43,7 @@ ln -s $HOME/.cacheme/wine $HOME/.cache/wine
 #composition fix
 compton --backend glx --paint-on-overlay --vsync opengl-swc &
 
-WM="dwm"
+WM="awesome"
 
 case "$WM" in
     dwm)
@@ -59,11 +56,5 @@ case "$WM" in
         ;;
     awesome)
         exec awesome
-        ;;
-    monsterwm)
-        sh ~/bin/wmrun.sh
-        ;;
-    frankenwm)
-        sh ~/bin/frankenwm.sh
         ;;
 esac

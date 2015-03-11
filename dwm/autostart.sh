@@ -7,5 +7,6 @@ $HOME/.scripts/touchpad_toggle &
 /usr/bin/start-pulseaudio-x11 &
 thunderbird &
 /usr/lib/lxpolkit/lxpolkit &
-pcmanfm -d &
-$HOME/.scripts/drop_start
+$HOME/.scripts/drop_start &
+xpad &
+pcmanfm -d

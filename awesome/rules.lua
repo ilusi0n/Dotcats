@@ -47,5 +47,7 @@ local beautiful = require("beautiful")
 			properties = { tag = tags[1][7] } },
 		{ rule = { instance = "plugin-container" },
         		properties = { floating = true } },
+		{ rule = { class = "xpad" },
+        		properties = { floating = true } },
 	}
 

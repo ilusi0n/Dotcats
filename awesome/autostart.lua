@@ -19,7 +19,7 @@ run_once("pcmanfm -d")
 run_once("/usr/lib/lxpolkit/lxpolkit")
 run_once("/etc/profile.d/infinality-settings.sh")
 run_once("thunderbird")
---run_once("compton -b")
+run_once("xpad")
 
 awful.util.spawn_with_shell("feh --bg-scale /mnt/Data/Wallpapers/v3/221406.jpg")
 --awful.util.spawn_with_shell("sudo /home/ilusi0n/.scripts/powersaving AC")
