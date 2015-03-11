@@ -8,8 +8,5 @@ $HOME/.scripts/touchpad_toggle &
 thunderbird &
 /usr/lib/lxpolkit/lxpolkit &
 $HOME/.scripts/drop_start &
-<<<<<<< HEAD
 xpad &
-=======
->>>>>>> 6c6ca5f430d1bf8d5e7d07533ee20b29d28ceba7
 pcmanfm -d
