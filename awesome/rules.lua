@@ -1,5 +1,4 @@
 local awful = require("awful")
-awful.rules = require("awful.rules")
 local beautiful = require("beautiful")
 
 
@@ -10,7 +9,6 @@ local beautiful = require("beautiful")
 			properties = {
                 border_width = beautiful.border_width,
 				border_color = beautiful.border_normal,
-                --focus = awful.client.focus.filter,
 				keys = clientkeys,
 				size_hints_honor = false,
 				buttons = clientbuttons 

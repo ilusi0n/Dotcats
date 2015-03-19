@@ -1,76 +1,77 @@
 -- {{{ Required libraries
-local gears     = require("gears")
 local awful     = require("awful")
 awful.rules     = require("awful.rules")
---require("awful.autofocus")
 local wibox     = require("wibox")
 local beautiful = require("beautiful")
-local naughty   = require("naughty")
---local drop      = require("scratchdrop")
 local lain      = require("lain")
 local vicious   = require("vicious")
 -- }}}
 
 
+gray = "#858585"
+white = "#DDDCFF"
+ORANGE = "#ff8c00"
+LIGHT_GREEN = "#76EE00"
+PURPLE = "#BF5FFF"
+LIGHT_BLUE = "#7DC1CF"
+BLUE   = "#00BFFF"
+
 -- {{{ Wibox
-markup      = lain.util.markup
+markup = lain.util.markup
+
+
+separator = wibox.widget.textbox()
+separator:set_markup (markup(gray, "aasasafs "))
+
 
 -- Textclock
-clockicon = wibox.widget.imagebox(beautiful.widget_clock)
-mytextclock = wibox.widget.textbox()
-vicious.register(mytextclock, vicious.widgets.date, markup("#7788af", "%a %b %d, %R "), 60)
+mytextclock = awful.widget.textclock(markup(LIGHT_GREEN, "%a %b %d, %R "))
+
 
 -- Weather
-weathericon = wibox.widget.imagebox(beautiful.widget_weather)
 yawn = lain.widgets.yawn(742676, {
     settings = function()
-        widget:set_markup(markup("#eca4c4", forecast:lower() .. ": " .. units .. "°C "))
+        widget:set_markup(markup(BLUE, forecast:lower() .. ": " .. units .. "°C "))
     end
 })
 
 -- Battery
-baticon = wibox.widget.imagebox(beautiful.widget_batt)
 batwidget = lain.widgets.bat({
     battery="BAT1",
    -- notify="off",
     settings = function()
-        if bat_now.perc == "N/A" then
-            bat_now.perc = "AC "
+        if bat_now.perc == "100" then
+            bat_now.perc = ""
         else
-            bat_now.perc = bat_now.perc .. "% "
+            bat_now.perc = "Bat: " .. bat_now.perc .. "% "
         end
-        widget:set_text(bat_now.perc)
+        widget:set_markup(markup(ORANGE,bat_now.perc))
     end
 })
 
 
 
 -- CPU
-cpuicon = wibox.widget.imagebox()
-cpuicon:set_image(beautiful.widget_cpu)
 cpuwidget = lain.widgets.cpu({
     settings = function()
-        widget:set_markup(markup("#e33a6e", cpu_now.usage .. "% "))
+        widget:set_markup(markup(PURPLE, "CPU " .. cpu_now.usage .. "% "))
     end
 })
-cpuwidget.battery = "BAT1"
 
 -- Coretemp
-tempicon = wibox.widget.imagebox(beautiful.widget_temp)
 tempwidget = lain.widgets.temp({
     settings = function()
-        widget:set_markup(markup("#f1af5f", coretemp_now .. "°C "))
+        widget:set_markup(markup(ORANGE, "T: " .. coretemp_now .. "°C "))
     end
 })
 
 -- ALSA volume
-volicon = wibox.widget.imagebox(beautiful.widget_vol)
 volumewidget = lain.widgets.alsa({
     settings = function()
         if volume_now.status == "off" then
-            widget:set_markup(markup("#FF0000", "Off "))
+            widget:set_markup(markup("#FF0000", "Vol: Off "))
         else
-            widget:set_markup(markup("#7493d2", volume_now.level .. "% "))
+            widget:set_markup(markup("#7493d2", "Vol: " .. volume_now.level .. "% "))
         end
     end
 })
@@ -92,15 +93,12 @@ volumewidget:buttons(awful.util.table.join(
 
 
 -- MPD
-mpdicon = wibox.widget.imagebox()
 mpdwidget = wibox.widget.textbox()
 vicious.register(mpdwidget, vicious.widgets.mpd,
     function (mpdwidget, args)
         if args["{state}"] == "Stop" then
-            mpdicon:set_image(nil)
             return ""
         else
-            mpdicon:set_image(beautiful.widget_note_on)
             return markup("#e54c62", args["{Artist}"] .. ' - ') .. markup("#e33a6e", args["{Title}"])
         end
     end, 3)

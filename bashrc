@@ -40,10 +40,10 @@ HISTSIZE=3000
 # Startup stuff #
 #---------------#
 
-if [ "$(pgrep X)" ]
-then
-    $HOME/.scripts/thecat.sh
-fi
+#if [ "$(pgrep X)" ]
+#then
+  #  $HOME/.scripts/thecat.sh
+#fi
 
 export GITAWAREPROMPT=~/.scripts/git-aware-prompt
 source $GITAWAREPROMPT/main.sh

@@ -3,9 +3,7 @@ theme                               = {}
 theme.confdir                       = os.getenv("HOME") .. "/.config/awesome/themes/multicolor"
 --theme.wallpaper                     = theme.confdir .. "/wall.png"
 
---theme.font                          = "Terminus 8"
---theme.font                          = "Ubuntu Mono Regular 10"
-theme.font                          = "Envy Code R Medium 10"
+theme.font = "Source Code Pro 9"
 --theme.taglist_font                =
 theme.bg_normal                     = "#000000"
 theme.bg_focus                      = "#000000"
@@ -55,6 +53,8 @@ theme.layout_max                    = theme.confdir .. "/icons/max.png"
 theme.layout_fullscreen             = theme.confdir .. "/icons/fullscreen.png"
 theme.layout_magnifier              = theme.confdir .. "/icons/magnifier.png"
 theme.layout_floating               = theme.confdir .. "/icons/floating.png"
+theme.layout_uselesstile            = theme.confdir .. "/icons/tile.png"
 
+theme.useless_gap_width = 10
 
 return theme

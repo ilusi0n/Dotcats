@@ -43,6 +43,12 @@ ln -s $HOME/.cacheme/wine $HOME/.cache/wine
 #composition fix
 compton --backend glx --paint-on-overlay --vsync opengl-swc &
 
+xrandr --setprovideroutputsource modesetting NVIDIA-0
+xrandr --auto
+
+#nvidia-settings -a CurrentMetaMode="DFP-0: 1920x1200+0+0, DFP-1: 1920x1080+1920+0 { ForceFullCompositionPipeline = Off }" &
+nvidia-settings -a CurrentMetaMode="DFP-1: 1366x768 +0+0 { PanningTrackingArea = 1366x768 +0+0 }"
+
 WM="awesome"
 
 case "$WM" in

@@ -4,6 +4,7 @@
 
 SCRIPTS_DIR="$HOME/.scripts"
 
+alias updateFontconfig='fc-cache -vf'
 alias rollback="git reset --hard HEAD"
 alias logX='journalctl -k -b -1'
 alias getsub='subberthehut -s -a -o -l por,pob'
@@ -39,7 +40,7 @@ alias top='htop'
 alias lazyScript='/home/ilusi0n/.dotfiles/lazyScript.sh'
 alias wasteSpace='ncdu'
 alias myAge=" echo $(($(($(date +%s) - $(date -d "$(head -1 /var/log/pacman.log | cut -d ' ' -f 1,2 | tr -d '[]')" +%s))) / 86400)) days"
-alias suzie='sudo pacman -Sy; sudo pacman -S linux-zen-headers linux-headers linux-lts-ck-headers --needed; sudo pacman -Su'
+alias suzie='sudo pacman -Sy; sudo pacman -S linux-ck-ivybridge-headers linux-headers linux-lts-ck-headers --needed; sudo pacman -Su'
 alias myip="curl curlmyip.com"
 alias cower="cower -t ~/build -c"
 alias pk='killall -9 $1'

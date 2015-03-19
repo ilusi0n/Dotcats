@@ -1,19 +1,9 @@
---[[
-                                      
-     Multicolor Awesome WM config 2.0 
-     github.com/copycat-killer        
-                                      
---]]
-
 -- {{{ Required libraries
 local gears     = require("gears")
 local awful     = require("awful")
-awful.rules     = require("awful.rules")
-require("awful.autofocus")
 local wibox     = require("wibox")
 local beautiful = require("beautiful")
 local naughty   = require("naughty")
---local drop      = require("scratchdrop")
 local lain      = require("lain")
 -- }}}
 
@@ -55,16 +45,10 @@ editor     = os.getenv("EDITOR") or "nano" or "vi"
 editor_cmd = terminal .. " -e " .. editor
 
 local layouts = {
-    --awful.layout.suit.floating,
-    awful.layout.suit.tile,
-    --awful.layout.suit.tile.left,
-    --awful.layout.suit.tile.bottom,
-    --awful.layout.suit.tile.top,
-    --awful.layout.suit.fair,
-    awful.layout.suit.fair.horizontal,
-    --awful.layout.suit.spiral,
-    --awful.layout.suit.spiral.dwindle,
+    lain.layout.uselesstile,
+    lain.layout.uselessfair, 
     awful.layout.suit.max,
+
 }
 -- }}}
 
@@ -74,7 +58,7 @@ require("widgets")
 -- {{{ Tags
 tags = {
    names = { "cmd", "www", "im", "mail", "dev", "media", "vm", "doc" },
-   layout = { layouts[1], layouts[1], layouts[3], layouts[1], layouts[1], layouts[1], layouts[3], layouts[3] }
+   layout = { layouts[1], layouts[3], layouts[3], layouts[1], layouts[1], layouts[1], layouts[3], layouts[3] }
 }
 for s = 1, screen.count() do
 -- Each screen has its own tag table.
@@ -174,26 +158,15 @@ for s = 1, screen.count() do
     local left_layout = wibox.layout.fixed.horizontal()
     left_layout:add(mytaglist[s])
     left_layout:add(mypromptbox[s])
-    left_layout:add(mpdicon)
     left_layout:add(mpdwidget)
 
     -- Widgets that are aligned to the upper right
     local right_layout = wibox.layout.fixed.horizontal()
-    --right_layout:add(mailicon)
-    --right_layout:add(mailwidget)
-    right_layout:add(volicon)
-    right_layout:add(volumewidget)
-    right_layout:add(cpuicon)
-    right_layout:add(cpuwidget)
-   -- right_layout:add(fsicon)
-   -- right_layout:add(fswidget)
-    right_layout:add(weathericon)
     right_layout:add(yawn.widget)
-    right_layout:add(tempicon)
     right_layout:add(tempwidget)
-    right_layout:add(baticon)
+    right_layout:add(cpuwidget)
     right_layout:add(batwidget)
-    right_layout:add(clockicon)
+    right_layout:add(volumewidget)
     right_layout:add(mytextclock)
     if s == 1 then right_layout:add(wibox.widget.systray()) end
 
@@ -232,6 +205,63 @@ root.buttons(awful.util.table.join(
 ))
 -- }}}
 
+
+--- Spawns cmd if no client can be found matching properties
+-- If such a client can be found, pop to first tag where it is visible, and give it focus
+-- @param cmd the command to execute
+-- @param properties a table of properties to match against clients.  Possible entries: any properties of the client object
+function run_or_raise(cmd, properties)
+   local clients = client.get()
+   local focused = awful.client.next(0)
+   local findex = 0
+   local matched_clients = {}
+   local n = 0
+   for i, c in pairs(clients) do
+      --make an array of matched clients
+      if match(properties, c) then
+         n = n + 1
+         matched_clients[n] = c
+         if c == focused then
+            findex = n
+         end
+      end
+   end
+   if n > 0 then
+      local c = matched_clients[1]
+      -- if the focused window matched switch focus to next in list
+      if 0 < findex and findex < n then
+         c = matched_clients[findex+1]
+      end
+      local ctags = c:tags()
+      if #ctags == 0 then
+         -- ctags is empty, show client on current tag
+         local curtag = awful.tag.selected()
+         awful.client.movetotag(curtag, c)
+      else
+         -- Otherwise, pop to first tag client is visible on
+         awful.tag.viewonly(ctags[1])
+      end
+      -- And then focus the client
+      client.focus = c
+      c:raise()
+      return
+   end
+   awful.util.spawn(cmd)
+end
+
+-- Returns true if all pairs in table1 are present in table2
+function match (table1, table2)
+   for k, v in pairs(table1) do
+      if table2[k] ~= v and not table2[k]:find(v) then
+         return false
+      end
+   end
+   return true
+end
+
+
+
+
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
     
@@ -256,13 +286,12 @@ globalkeys = awful.util.table.join(
 
     -- my custom keys
 
-    awful.key({ altkey, }, "c", function() awful.util.spawn("chromium") end),
-    awful.key({ altkey, }, "f", function() awful.util.spawn("firefox") end),
+    awful.key({ altkey, }, "c", function() run_or_raise("Chromium", { name = "Chromium" }) end),
+    awful.key({ altkey, }, "f", function() run_or_raise("firefox", { name = "Firefox" }) end),
     awful.key({ altkey, }, "2", function() awful.util.spawn("pcmanfm") end),
-    awful.key({ altkey, }, "p", function() awful.util.spawn("nice /usr/bin/pidgin") end),
     awful.key({ altkey, }, "g", function() awful.util.spawn("gvim") end),
-    awful.key({ altkey, }, "s", function() awful.util.spawn("nice /usr/bin/skype") end),
-    awful.key({ altkey, }, "t", function() awful.util.spawn("thunderbird") end),
+    awful.key({ altkey, }, "s", function() awful.util.spawn("skype") end),
+    awful.key({ altkey, }, "t", function() run_or_raise("thunderbird", { name = "thunderbird" }) end),
     awful.key({ altkey, }, "m", function() awful.util.spawn("nice /usr/bin/gmpc") end),
     awful.key({ altkey, "Control" }, "l", function() awful.util.spawn("i3lock -c 111111") end),
     awful.key({ }, "Print", function () awful.util.spawn("/home/ilusi0n/.scripts/print") end),
