@@ -158,6 +158,7 @@ for s = 1, screen.count() do
     local left_layout = wibox.layout.fixed.horizontal()
     left_layout:add(mytaglist[s])
     left_layout:add(mypromptbox[s])
+    left_layout:add(mpdicon)
     left_layout:add(mpdwidget)
 
     -- Widgets that are aligned to the upper right
@@ -345,7 +346,7 @@ globalkeys = awful.util.table.join(
 clientkeys = awful.util.table.join(
     awful.key({ modkey,           }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
     awful.key({ "Control",        }, "x",      function (c) c:kill()                         end),
-    awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     )
+    awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle)
 )
 
 -- Bind all key numbers to tags.

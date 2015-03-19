@@ -19,11 +19,6 @@ BLUE   = "#00BFFF"
 -- {{{ Wibox
 markup = lain.util.markup
 
-
-separator = wibox.widget.textbox()
-separator:set_markup (markup(gray, "aasasafs "))
-
-
 -- Textclock
 mytextclock = awful.widget.textclock(markup(LIGHT_GREEN, "%a %b %d, %R "))
 
@@ -61,7 +56,7 @@ cpuwidget = lain.widgets.cpu({
 -- Coretemp
 tempwidget = lain.widgets.temp({
     settings = function()
-        widget:set_markup(markup(ORANGE, "T: " .. coretemp_now .. "°C "))
+        widget:set_markup(markup(ORANGE, "T " .. coretemp_now .. "°C "))
     end
 })
 
@@ -69,9 +64,9 @@ tempwidget = lain.widgets.temp({
 volumewidget = lain.widgets.alsa({
     settings = function()
         if volume_now.status == "off" then
-            widget:set_markup(markup("#FF0000", "Vol: Off "))
+            widget:set_markup(markup("#7493d2", "Vol ") .. markup("#FF0000", "Off "))
         else
-            widget:set_markup(markup("#7493d2", "Vol: " .. volume_now.level .. "% "))
+            widget:set_markup(markup("#7493d2", "Vol " .. volume_now.level .. "% "))
         end
     end
 })
@@ -93,12 +88,15 @@ volumewidget:buttons(awful.util.table.join(
 
 
 -- MPD
+mpdicon = wibox.widget.imagebox()
 mpdwidget = wibox.widget.textbox()
 vicious.register(mpdwidget, vicious.widgets.mpd,
     function (mpdwidget, args)
         if args["{state}"] == "Stop" then
+        	mpdicon:set_image(nil)
             return ""
         else
+        	mpdicon:set_image(beautiful.widget_note_on)
             return markup("#e54c62", args["{Artist}"] .. ' - ') .. markup("#e33a6e", args["{Title}"])
         end
     end, 3)
