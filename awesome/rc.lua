@@ -164,11 +164,17 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the upper right
     local right_layout = wibox.layout.fixed.horizontal()
     right_layout:add(yawn.widget)
+    right_layout:add(sep)
     right_layout:add(tempwidget)
+    right_layout:add(sep)
     right_layout:add(cpuwidget)
+    right_layout:add(sep)
     right_layout:add(batwidget)
+    right_layout:add(sep)
     right_layout:add(volumewidget)
+    right_layout:add(sep)
     right_layout:add(mytextclock)
+    right_layout:add(sep)
     if s == 1 then right_layout:add(wibox.widget.systray()) end
 
     -- Now bring it all together (with the tasklist in the middle)
@@ -287,13 +293,13 @@ globalkeys = awful.util.table.join(
 
     -- my custom keys
 
-    awful.key({ altkey, }, "c", function() run_or_raise("Chromium", { name = "Chromium" }) end),
+    awful.key({ altkey, }, "c", function() run_or_raise("google-chrome-stable", { name = "Google Chrome" }) end),
     awful.key({ altkey, }, "f", function() run_or_raise("firefox", { name = "Firefox" }) end),
     awful.key({ altkey, }, "2", function() awful.util.spawn("pcmanfm") end),
     awful.key({ altkey, }, "g", function() awful.util.spawn("gvim") end),
     awful.key({ altkey, }, "s", function() awful.util.spawn("skype") end),
     awful.key({ altkey, }, "t", function() run_or_raise("thunderbird", { name = "thunderbird" }) end),
-    awful.key({ altkey, }, "m", function() awful.util.spawn("nice /usr/bin/gmpc") end),
+    awful.key({ altkey, }, "m", function() awful.util.spawn("gmpc") end),
     awful.key({ altkey, "Control" }, "l", function() awful.util.spawn("i3lock -c 111111") end),
     awful.key({ }, "Print", function () awful.util.spawn("/home/ilusi0n/.scripts/print") end),
     awful.key({ "Control" }, "Right", function() awful.util.spawn("light -A 10") end),

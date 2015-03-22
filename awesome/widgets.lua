@@ -19,6 +19,8 @@ BLUE   = "#00BFFF"
 -- {{{ Wibox
 markup = lain.util.markup
 
+sep = wibox.widget.textbox(" ")
+
 -- Textclock
 mytextclock = awful.widget.textclock(markup(LIGHT_GREEN, "%a %b %d, %R "))
 
@@ -26,7 +28,7 @@ mytextclock = awful.widget.textclock(markup(LIGHT_GREEN, "%a %b %d, %R "))
 -- Weather
 yawn = lain.widgets.yawn(742676, {
     settings = function()
-        widget:set_markup(markup(BLUE, forecast:lower() .. ": " .. units .. "°C "))
+        widget:set_markup(markup(BLUE, forecast:lower() .. ": " .. units .. "°C"))
     end
 })
 
@@ -38,9 +40,9 @@ batwidget = lain.widgets.bat({
         if bat_now.perc == "100" then
             bat_now.perc = ""
         else
-            bat_now.perc = "Bat: " .. bat_now.perc .. "% "
+            bat_now.perc = "Bat " .. bat_now.perc .. "%"
         end
-        widget:set_markup(markup(ORANGE,bat_now.perc))
+        widget:set_markup(markup("#e54c62",bat_now.perc))
     end
 })
 
@@ -49,14 +51,14 @@ batwidget = lain.widgets.bat({
 -- CPU
 cpuwidget = lain.widgets.cpu({
     settings = function()
-        widget:set_markup(markup(PURPLE, "CPU " .. cpu_now.usage .. "% "))
+        widget:set_markup(markup(PURPLE, "CPU " .. cpu_now.usage .. "%"))
     end
 })
 
 -- Coretemp
 tempwidget = lain.widgets.temp({
     settings = function()
-        widget:set_markup(markup(ORANGE, "T " .. coretemp_now .. "°C "))
+        widget:set_markup(markup(ORANGE, "T " .. coretemp_now .. "°C"))
     end
 })
 
@@ -64,9 +66,9 @@ tempwidget = lain.widgets.temp({
 volumewidget = lain.widgets.alsa({
     settings = function()
         if volume_now.status == "off" then
-            widget:set_markup(markup("#7493d2", "Vol ") .. markup("#FF0000", "Off "))
+            widget:set_markup(markup("#7493d2", "Vol ") .. markup("#FF0000", "Off"))
         else
-            widget:set_markup(markup("#7493d2", "Vol " .. volume_now.level .. "% "))
+            widget:set_markup(markup("#7493d2", "Vol " .. volume_now.level .. "%"))
         end
     end
 })

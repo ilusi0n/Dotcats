@@ -13,7 +13,7 @@ local beautiful = require("beautiful")
 				size_hints_honor = false,
 				buttons = clientbuttons 
         } },
-		{ rule = { instance = "Chromium" },
+		{ rule = { instance = "Google-chrome-stable" },
 			properties = { tag = tags[1][2], border=0} },
         { rule = { instance = "crx_nckgahadagoaajjgafhacjanaoiihapd" },
 			properties = { tag = tags[1][3], border=0 } },
