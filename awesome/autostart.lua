@@ -17,7 +17,6 @@ run_once("ibus-daemon -s -x -d")
 run_once("/usr/bin/start-pulseaudio-x11")
 run_once("pcmanfm -d")
 run_once("/usr/lib/lxpolkit/lxpolkit")
-run_once("/etc/profile.d/infinality-settings.sh")
 run_once("thunderbird")
 --run_once("xpad")
 

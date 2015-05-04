@@ -26,7 +26,7 @@ xrdb -merge $HOME/.Xresources &> /dev/null
 eval $(dircolors ~/.dircolors)
 
 # local bin
-PATH=$PATH:~/bin
+PATH=~/bin:$PATH
 export PATH
 
 #java
@@ -41,13 +41,12 @@ ln -s $HOME/.cacheme/wine $HOME/.cache/wine
 ~/bin/gtk3settings &
 
 #composition fix
-compton --backend glx --paint-on-overlay --vsync opengl-swc &
+compton --backend glx --paint-on-overlay --vsync opengl-swc --shadow-exclude 'argb && _NET_WM_OPAQUE_REGION@:c' &
 
-xrandr --setprovideroutputsource modesetting NVIDIA-0
-xrandr --auto
+urxvtd -q -f -o &
 
-#nvidia-settings -a CurrentMetaMode="DFP-0: 1920x1200+0+0, DFP-1: 1920x1080+1920+0 { ForceFullCompositionPipeline = Off }" &
-nvidia-settings -a CurrentMetaMode="DFP-1: 1366x768 +0+0 { PanningTrackingArea = 1366x768 +0+0 }"
+#xrandr --setprovideroutputsource modesetting NVIDIA-0
+#xrandr --auto
 
 WM="awesome"
 

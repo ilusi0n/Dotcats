@@ -40,7 +40,7 @@ beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/multicolor/theme.lu
 -- common
 modkey     = "Mod4"
 altkey     = "Mod1"
-terminal   = "termite"
+terminal   = "urxvtc"
 editor     = os.getenv("EDITOR") or "nano" or "vi"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -293,7 +293,7 @@ globalkeys = awful.util.table.join(
 
     -- my custom keys
 
-    awful.key({ altkey, }, "c", function() run_or_raise("google-chrome-stable", { name = "Google Chrome" }) end),
+    awful.key({ altkey, }, "c", function() run_or_raise("google-chrome-stable --cipher-suite-blacklist=0x0001,0x0002,0x0004,0x0005,0x0017,0x0018,0xc002,0xc007,0xc00c,0xc011,0xc016,0xff80,0xff81,0xff82,0xff83", { name = "Google Chrome" }) end),
     awful.key({ altkey, }, "f", function() run_or_raise("firefox", { name = "Firefox" }) end),
     awful.key({ altkey, }, "2", function() awful.util.spawn("pcmanfm") end),
     awful.key({ altkey, }, "g", function() awful.util.spawn("gvim") end),
