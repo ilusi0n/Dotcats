@@ -43,12 +43,15 @@ ln -s $HOME/.cacheme/wine $HOME/.cache/wine
 #composition fix
 compton --backend glx --paint-on-overlay --vsync opengl-swc --shadow-exclude 'argb && _NET_WM_OPAQUE_REGION@:c' &
 
-urxvtd -q -f -o &
+#urxvtd -q -f -o &
 
-#xrandr --setprovideroutputsource modesetting NVIDIA-0
-#xrandr --auto
+xrandr --setprovideroutputsource modesetting NVIDIA-0
+xrandr --auto
 
-WM="awesome"
+#chrome fix for now
+xrandr --dpi 96
+
+WM="dwm"
 
 case "$WM" in
     dwm)

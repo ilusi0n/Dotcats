@@ -39,7 +39,7 @@ static const char font[] = "-*-terminus-medium-r-normal-*-12-*-*-*-*-*-*-*";
 static const char colors[NUMCOLORS][ColLast][13] = {
 /* border  foreground  background */
   {  BLACK, WHITE,    BLACK },  // 1 = normal
-  {  BLUE,  WHITE,    BLACK },  // 2 = selected
+  {  ORANGE,  WHITE,    BLACK },  // 2 = selected
   {  BLACK, RED,     BLACK },  // 3 = urgent
   {  BLACK, GRAY,    BLACK },  // 4 = occupied
   {  BLACK, ORANGE,  BLACK },
@@ -75,8 +75,10 @@ static const Tag tags[] = {
 
 static const Rule rules[] = {
 	/* class               instance    title       tags mask     isfloating isCenter  	monitor */
+	{ NULL,                "Google-chrome", NULL,  1 << 1,       False,     False,     -1 },
 	{ NULL,                "Chromium", NULL,       1 << 1,       False,     False,     -1 },
 	{ "Firefox",           NULL,       NULL,       1 << 1,       False,     False,     -1 },
+	{ "Opera",             NULL,       NULL,       1 << 1,       False,     False,     -1 },
 	{ "Skype",             NULL,       NULL,       1 << 2,       False,     False,     -1 },
 	{ "Viber",             NULL,       NULL,       1 << 2,       False,     False,     -1 },
 	{ "Pidgin",            NULL,       NULL,       1 << 2,       False,     False,     -1 },
@@ -86,9 +88,14 @@ static const Rule rules[] = {
 	{ "Pcmanfm",           NULL,       NULL,       1 << 5,       False,     False,     -1 },
 	{ "File-roller",       NULL,       NULL,       1 << 5,       False,     False,     -1 },
 	{ "Qbittorrent",       NULL,       NULL,       1 << 5,       False,     False,     -1 },
+	{ "Tixati",            NULL,       NULL,       1 << 5,       False,     False,     -1 },
 	{ "Evince",            NULL,       NULL,       1 << 7,       False,     False,     -1 },
+	{ "Qpdfview",          NULL,       NULL,       1 << 7,       False,     False,     -1 },
 	{ "plugin-container",  NULL,       NULL,       1 << 1,       True,      False,     -1 },
 	{ "Eclipse",           NULL,       NULL,       1 << 4,       False,     False,     -1 },
+	{ "Eclipse",           NULL,       NULL,       1 << 4,       False,     False,     -1 },
+    { "Spotify", 		   NULL     ,  NULL,       1 << 5,         True,      False,     -1 },
+    { "Google-chrome-stable", "crx_nckgahadagoaajjgafhacjanaoiihapd",  NULL,       1 << 2,       False,False,   -1 },
     { "Chromium", "crx_nckgahadagoaajjgafhacjanaoiihapd",  NULL,       1 << 2,       False,False,   -1 },
 
 };
@@ -100,7 +107,9 @@ static const Rule rules[] = {
 static const char *dmenucmd[] = { "/bin/sh", "/home/ilusi0n/.scripts/dmenu_run", NULL };
 static const char *touchpadcmd[] = { "/bin/sh", "/home/ilusi0n/.scripts/touchpad_toggle", NULL };
 static const char *termcmd[]  = { "termite", NULL };
-static const char *chrome[]   = { "chromium", NULL, "Chromium" };
+static const char *chrome[]   = { "google-chrome-stable", NULL, "Google-chrome-stable" };
+static const char *chromium[]   = { "chromium", NULL, "Chromium" };
+static const char *opera[]   = { "opera", NULL, "Opera" };
 static const char *firefox[]  = { "firefox", NULL, "Firefox" };
 static const char *pcmanfm[]  = { "pcmanfm", NULL };
 static const char *pidgin[]   = { "nice", "pidgin", NULL };
@@ -108,7 +117,7 @@ static const char *gvim[]     = { "gvim", NULL };
 static const char *skype[]    = { "skype", NULL, "Skype" };
 static const char *thunderbird[]  = { "thunderbird", NULL, "Thunderbird" };
 static const char *gmpc[]  = { "gmpc", NULL, "Gmpc" };
-static const char *lock[]  = { "i3lock", "-c", "111111", NULL };
+static const char *lock[]  = { "/bin/sh", "/home/ilusi0n/.scripts/lock", NULL };
 static const char *playonlinux[]  = { "playonlinux", NULL, "Playonlinux" };
 static const char *upvol[] = { "ponymix", "-d", "0", "increase", "5", NULL };
 static const char *downvol[] = { "ponymix", "-d", "0", "decrease", "5", NULL };
@@ -121,8 +130,9 @@ static const char *print[] = { "/bin/sh", "/home/ilusi0n/.scripts/print",NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ ALTKEY,                       XK_c,      runorraise,     {.v = chrome } },
-    	{ ALTKEY,                       XK_p,      runorraise,     {.v = playonlinux } },
+	{ ALTKEY,                       XK_c,      runorraise,     {.v = chromium } },
+	{ ALTKEY,                       XK_o,      runorraise,     {.v = opera } },
+    { ALTKEY,                       XK_p,      runorraise,     {.v = playonlinux } },
 	{ ALTKEY,                       XK_f,      runorraise,     {.v = firefox } },
 	{ ALTKEY,                       XK_m,      runorraise,     {.v = gmpc } },
 	{ ALTKEY,                       XK_2,      spawn,          {.v = pcmanfm } },

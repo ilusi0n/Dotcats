@@ -4,7 +4,6 @@ local awful     = require("awful")
 local wibox     = require("wibox")
 local beautiful = require("beautiful")
 local naughty   = require("naughty")
-local lain      = require("lain")
 -- }}}
 
 -- {{{ Error handling
@@ -40,14 +39,14 @@ beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/multicolor/theme.lu
 -- common
 modkey     = "Mod4"
 altkey     = "Mod1"
-terminal   = "urxvtc"
+terminal   = "termite"
 editor     = os.getenv("EDITOR") or "nano" or "vi"
 editor_cmd = terminal .. " -e " .. editor
 
 local layouts = {
-    lain.layout.uselesstile,
-    lain.layout.uselessfair, 
-    awful.layout.suit.max,
+   awful.layout.suit.tile,
+   awful.layout.suit.fair,
+   awful.layout.suit.max,
 
 }
 -- }}}
@@ -158,22 +157,20 @@ for s = 1, screen.count() do
     local left_layout = wibox.layout.fixed.horizontal()
     left_layout:add(mytaglist[s])
     left_layout:add(mypromptbox[s])
-    left_layout:add(mpdicon)
-    left_layout:add(mpdwidget)
 
     -- Widgets that are aligned to the upper right
     local right_layout = wibox.layout.fixed.horizontal()
-    right_layout:add(yawn.widget)
+    right_layout:add(batwidget)
     right_layout:add(sep)
-    right_layout:add(tempwidget)
+    right_layout:add(mpdwidget)
     right_layout:add(sep)
-    right_layout:add(cpuwidget)
+    right_layout:add(weatherwidget)
+    right_layout:add(sep)
+    right_layout:add(hddtemp)
     right_layout:add(sep)
     right_layout:add(batwidget)
     right_layout:add(sep)
-    right_layout:add(volumewidget)
-    right_layout:add(sep)
-    right_layout:add(mytextclock)
+    right_layout:add(datewidget)
     right_layout:add(sep)
     if s == 1 then right_layout:add(wibox.widget.systray()) end
 
@@ -281,6 +278,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end),
     awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto),
+     awful.key({ modkey, "Shift" }, "f",  awful.client.floating.toggle ),
     awful.key({ altkey,           }, "Tab",
         function ()
            -- awful.client.focus.history.previous()
@@ -293,8 +291,10 @@ globalkeys = awful.util.table.join(
 
     -- my custom keys
 
-    awful.key({ altkey, }, "c", function() run_or_raise("google-chrome-stable --cipher-suite-blacklist=0x0001,0x0002,0x0004,0x0005,0x0017,0x0018,0xc002,0xc007,0xc00c,0xc011,0xc016,0xff80,0xff81,0xff82,0xff83", { name = "Google Chrome" }) end),
+   -- awful.key({ altkey, }, "c", function() run_or_raise("google-chrome-stable --cipher-suite-blacklist=0x0001,0x0002,0x0004,0x0005,0x0017,0x0018,0xc002,0xc007,0xc00c,0xc011,0xc016,0xff80,0xff81,0xff82,0xff83", { name = "Google Chrome" }) end),
+    awful.key({ altkey, }, "c", function() run_or_raise("chromium", { name = "Chromium" }) end),
     awful.key({ altkey, }, "f", function() run_or_raise("firefox", { name = "Firefox" }) end),
+    awful.key({ altkey, }, "o", function() run_or_raise("opera", { name = "Opera" }) end),
     awful.key({ altkey, }, "2", function() awful.util.spawn("pcmanfm") end),
     awful.key({ altkey, }, "g", function() awful.util.spawn("gvim") end),
     awful.key({ altkey, }, "s", function() awful.util.spawn("skype") end),
@@ -340,12 +340,10 @@ globalkeys = awful.util.table.join(
     awful.key({ }, "XF86AudioRaiseVolume",
         function ()
             awful.util.spawn("ponymix -d 0 increase 5")
-            volumewidget.update()
         end),
     awful.key({ }, "XF86AudioLowerVolume",
         function ()
             awful.util.spawn("ponymix -d 0 decrease 5")
-            volumewidget.update()
         end)
 )
 

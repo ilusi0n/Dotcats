@@ -42,7 +42,7 @@ HISTSIZE=3000
 
 #if [ "$(pgrep X)" ]
 #then
-  #  $HOME/.scripts/thecat.sh
+#  $HOME/.scripts/thecat.sh
 #fi
 
 export GITAWAREPROMPT=~/.scripts/git-aware-prompt

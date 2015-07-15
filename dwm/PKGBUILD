@@ -19,7 +19,8 @@ _source=(http://dl.suckless.org/dwm/dwm-$pkgver.tar.gz
     dwm.c
 )
 _patches=(
-    13-dwm-6.0-cflags.diff
+	00-dwm-6.0-buildflags.diff
+  13-dwm-6.0-cflags.diff
 )
 source=(${_source[@]} ${_patches[@]})
 
