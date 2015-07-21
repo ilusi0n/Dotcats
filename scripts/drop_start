@@ -5,7 +5,7 @@ while true; do
         if [ $? -ne 0 ]; then
             if [ "`ping -c 1 google.com`" ]; then #if ping exits nonzero...
                     sleep 5     #give it a few seconds to complete
-                    dropboxd &
+                    dropbox &
             fi
         fi
         sleep 120 #check again in two minutes

@@ -36,8 +36,8 @@ GREY="#999999"
 sep1="\\$GREY\ >"
 
 cputmp(){
-    hddt="$(sensors | awk '/Physical/ {print substr($4,2,6);}')"
-    echo -e "\\$ORANGE\ ${hddt}${sep1}"
+    hddt="$(sensors | awk '/Core 0/ {print substr($3,2,2);}')"
+    echo -e "\\$ORANGE\ T: ${hddt}${sep1}"
 }
 
 cpu(){
@@ -61,8 +61,9 @@ bat(){
 }
 
 vol(){
-    level="$(awk -F"[][]" '{print $2}' <(amixer get Master) | tail -1)"
-    echo -e "\\$LIGHT_BLUE\ Vol: ${level}"
+    #level="$(awk -F"[][]" '{print $2}' <(amixer get Master) | tail -1)"
+    level="$(ponymix -d 0 get-volume)"
+    echo -e "\\$LIGHT_BLUE\ Vol: ${level}%"
 }
 
 mpd(){
@@ -83,7 +84,7 @@ weather(){
 }
 
 hddwarn(){
-    warn="$(df -h | awk '/sda6/ { gsub("%","",$5) ; print $5 }')"
+    warn="$(df -h | awk '/sda7/ { gsub("%","",$5) ; print $5 }')"
     [[ $warn -gt 95 ]] && echo -e "\\$RED\ BAZINGA${sep1}"
 }
 

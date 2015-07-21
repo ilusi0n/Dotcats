@@ -7,10 +7,8 @@
 # @include "~/.config/wmfs/menu-wmfsrc"
 
 [misc]
-#font                  = "terminus-9"
-#font                = "envy code r:medium:size=10"
-font                = "DejaVu Sans-8" 
-raisefocus            = true
+font                  = "CamingoCode-8"
+raisefocus            = false
 focus_follow_mouse    = true
 focus_follow_movement = true
 opacity               = 255
@@ -32,6 +30,8 @@ status_path       = "~/.config/wmfs/wmfs_status"
       #  light_shade =  0.10
        # dark_shade  = -0.10
 
+        [mouse] button = "1" func = "client_next" [/mouse]
+        [mouse] button = "3" func = "layout_next" [/mouse]
         [mouse] button = "4" func = "spawn" cmd = "ponymix -d 0 increase 5"    [/mouse]
         [mouse] button = "5" func = "spawn" cmd = "ponymix -d 0 decrease 5"    [/mouse]
 
@@ -47,22 +47,22 @@ status_path       = "~/.config/wmfs/wmfs_status"
         [/systray]
 
         # Remove this section to disable the selbar.
-        [selbar]
-            bg = "#000000"
-            fg = "#00BFFF"
+       # [selbar]
+        #    bg = "#000000"
+        #    fg = "#00BFFF"
 
             # Cut title length
-            max_length = 40
+        #    max_length = 40
 
-            [mouse] button = "3" func = "clientlist"  [/mouse]
-            [mouse] button = "4" func = "client_next" [/mouse]
-            [mouse] button = "5" func = "client_prev" [/mouse]
-        [/selbar]
+        #    [mouse] button = "3" func = "clientlist"  [/mouse]
+        #    [mouse] button = "4" func = "client_next" [/mouse]
+        #    [mouse] button = "5" func = "client_prev" [/mouse]
+        #[/selbar]
 
 [/bar]
 
 [layouts]
-    fg = "#00BFFF"
+    fg = "#ff8c00"
     bg = "#000000"
 
      # Border around the layout button.
@@ -114,19 +114,15 @@ infobar_position = "top"
 tag_round      = false
 
 # Going twice on the same tag will bring you back on the previous one
-tag_auto_prev  = true
+tag_auto_prev  = false
 
 occupied_bg    = "#000000"
 occupied_fg    = "#78AB46"
-sel_fg         = "#00BFFF"
+sel_fg         = "#ff8c00"
 sel_bg         = "#000000"
 urgent_bg      = "#000000"
 urgent_fg      = "#FF0000"
 
-# If true, number of the tag will be used for name
-name_count     = false
-#default_name   = "new tag" # deprecated, use [default_tag] instead
-#default_layout = "tile_right" # deprecated, use [default_tag] instead
 
 expose_name    = "EXPOSE"
 expose_layout  = "tile_left"
@@ -144,27 +140,23 @@ mouse_button_tag_add       = "3"
 mouse_button_tag_next      = "4"
 mouse_button_tag_prev      = "5"
 
-[tag] name = "cmd" layout="tile_right"  [/tag]
-[tag]
-    name = "www"
-    layout="tile_right"
-[/tag]
-[tag] name = "im" layout="max"  [/tag]
-[tag] name = "mail" layout="tile_right"   [/tag]
+[tag] name = "cmd" layout="tile_right"   [/tag]
+[tag] name = "www" layout="max"          [/tag]
+[tag] name = "im" layout="max"           [/tag]
+[tag] name = "mail" layout="tile_right"  [/tag]
 [tag] name = "dev" layout="tile_right"   [/tag]
 [tag] name = "media" layout="tile_right" [/tag]
-[tag] name = "vm" layout="max" [/tag]
-[tag] name = "doc" layout="tile_right" [/tag]
+[tag] name = "vm" layout="max"           [/tag]
+[tag] name = "doc" layout="tile_right"   [/tag]
 [/tags]
 
 [root]
 # Command you can execute to set the background.
-background_command = "feh --bg-scale /mnt/Data/Wallpapers/v2/wallpaper-82310.jpg"
+background_command = "feh --bg-scale /mnt/Data/Wallpapers/v3/wallpaper-114539.jpg"
 
 
 [mouse] button = "4" func = "spawn"  cmd = "ponymix -d 0 increase 5" [/mouse]
 [mouse] button = "5" func = "spawn"  cmd = " ponymix -d 0 decrease 5" [/mouse]
-#[mouse] button = "1" func = "client_next" [/mouse]
 [/root]
 
 [client]
@@ -173,7 +165,7 @@ background_command = "feh --bg-scale /mnt/Data/Wallpapers/v2/wallpaper-82310.jpg
     border_height        = 1
     border_shadow        = true
     border_normal        = "#000000"
-    border_focus         = "#00BFFF"
+    border_focus         = "#ff8c00"
     place_at_mouse       = false
     resize_corner_normal = "#191919"
     resize_corner_focus  = "#003366"

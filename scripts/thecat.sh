@@ -40,22 +40,22 @@ RAM=$(free -h |awk '/Mem:/ { print $3 }')
 
 function root
 {
-	echo -e "$(df -h | awk '/sda4/ {print $3}') / $(df -h | awk '/sda4/{print $2}')"
+	echo -e "$(df -h | awk '/sda5/ {print $3}') / $(df -h | awk '/sda5/{print $2}')"
 }
 
 function data
 {
-	echo -e "$(df -h | awk '/sda7/ {print $3}') / $(df -h | awk '/sda7/{print $2}')"
+	echo -e "$(df -h | awk '/sda8/ {print $3}') / $(df -h | awk '/sda8/{print $2}')"
 }
 
 function home
 {
-	echo -e "$(df -h | awk '/sda6/ {print $3}') / $(df -h | awk '/sda6/{print $2}')"
+	echo -e "$(df -h | awk '/sda7/ {print $3}') / $(df -h | awk '/sda7/{print $2}')"
 }
 
 function var
 {
-	echo -e "$(df -h | awk '/sda5/ {print $3}') / $(df -h | awk '/sda5/{print $2}')"
+	echo -e "$(df -h | awk '/sda6/ {print $3}') / $(df -h | awk '/sda6/{print $2}')"
 }
 
 

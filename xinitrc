@@ -10,6 +10,9 @@ export QT_STYLE_OVERRIDE=gtk
 export EDITOR=vim
 export PULSE_LATENCY_MSEC=60
 export DE="gnome"
+export XDG_CONFIG_HOME="$HOME/.config"
+export QT_PLUGIN_PATH=$HOME/.kde4/lib/kde4/plugins/:/usr/lib/kde4/plugins/
+export MOZ_USE_OMTC=1
 
 
 if [ -d /etc/X11/xinit/xinitrc.d ]; then
@@ -51,7 +54,7 @@ xrandr --auto
 #chrome fix for now
 xrandr --dpi 96
 
-WM="dwm"
+WM="wmfs"
 
 case "$WM" in
     dwm)
@@ -61,8 +64,5 @@ case "$WM" in
     wmfs)
         $HOME/.config/wmfs/autostart &
         exec wmfs
-        ;;
-    awesome)
-        exec awesome
         ;;
 esac

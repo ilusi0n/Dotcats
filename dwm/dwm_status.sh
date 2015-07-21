@@ -59,7 +59,7 @@ C25="\x19" # dwm selbg
 sep1="${colors[3]} > "
 
 cputmp(){
-    hddt="$(sensors | awk '/Physical/ {print substr($4,2,2);}')"
+    hddt="$(sensors | awk '/Core 0/ {print substr($3,2,2);}')"
     echo -e "${colors[4]}T: ${hddt}"
 }
 
@@ -105,7 +105,7 @@ weather(){
 }
 
 hddwarn(){
-    warn="$(df -h | awk '/sda6/ { gsub("%","",$5) ; print $5 }')"
+    warn="$(df -h | awk '/sda7/ { gsub("%","",$5) ; print $5 }')"
     [[ $warn -gt 95 ]] && echo -e "${sep1}${colors[2]}BAZINGA"
 }
 

@@ -1,12 +1,11 @@
 #!/bin/bash
 ibus-daemon -x -d -s &
 #uppr right corner, desactivate, left, activate
-xautolock -time 5 -locker 'i3lock -c 111111' -corners +-00  -cornerdelay 4 -cornerredelay 4 &
-#sleep 3 && sudo $HOME/.scripts/powersaving AC &
+xautolock -time 5 -locker 'i3lock -c 111111' -corners 0-+0  -cornerdelay 4 -cornerredelay 4 &
 $HOME/.scripts/touchpad_toggle &
 /usr/bin/start-pulseaudio-x11 &
-/usr/lib/lxpolkit/lxpolkit &
-pcmanfm -d &
 thunderbird &
-
-$HOME/.scripts/drop_start
+/usr/lib/lxpolkit/lxpolkit &
+(sleep 5 && $HOME/.scripts/drop_start) &
+sudo $HOME/.scripts/usb_logitech.sh &
+pcmanfm -d

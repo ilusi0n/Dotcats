@@ -8,4 +8,5 @@ $HOME/.scripts/touchpad_toggle &
 thunderbird &
 /usr/lib/lxpolkit/lxpolkit &
 $HOME/.scripts/drop_start &
+sudo $HOME/.scripts/usb_logitech.sh &
 pcmanfm -d
