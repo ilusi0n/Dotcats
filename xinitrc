@@ -54,7 +54,7 @@ xrandr --auto
 #chrome fix for now
 xrandr --dpi 96
 
-WM="wmfs"
+WM="spectrwm"
 
 case "$WM" in
     dwm)
@@ -65,4 +65,7 @@ case "$WM" in
         $HOME/.config/wmfs/autostart &
         exec wmfs
         ;;
+    spectrwm)
+       $HOME/.dotcats/spectrwm/autostart.sh &
+       exec spectrwm
 esac

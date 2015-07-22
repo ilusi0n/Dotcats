@@ -1,0 +1,97 @@
+ #!/bin/sh
+ 
+FG='#aaaaaa'
+BG='#000000'
+FONT='CamingoCode-8'
+ALIGN="right"
+WIDTH="800"
+HEIGHT="14"
+XPOS="560" 
+YPOS="0"
+
+
+#colors
+BLUE='#00BFFF'
+WHITE='#CDCDCD'
+BLACK='#000000'
+ORANGE='#ff8c00'
+RED='#ff0000'
+GREEN='#62b786'
+LIGHT_BLUE='#7DC1CF'
+AZURE='#80d9d8'
+LIGHT_GREEN='#76EE00'
+PURPLE='#BF5FFF'
+GREY='#999999'
+
+
+sep1='^fg($Gr) >'
+
+cputmp(){
+    hddt="$(sensors | awk '/Core 0/ {print substr($3,2,2);}')"
+    echo -e "^fg($ORANGE) T: ${hddt}${sep1}"
+}
+
+cpu(){
+  read cpu a b c previdle rest < /proc/stat
+  prevtotal=$((a+b+c+previdle))
+  sleep 0.5
+  read cpu a b c idle rest < /proc/stat
+  total=$((a+b+c+idle))
+  cpu="$((100*( (total-prevtotal) - (idle-previdle) ) / (total-prevtotal) ))"
+  echo -e "^fg($PURPLE) CPU $cpu%${sep1}"
+}
+
+
+bat(){
+    batst="$($HOME/.scripts/bat.sh)"
+    batt='/sys/class/power_supply/BAT1/'
+    state=$(<"${batt}"/status)
+    if [[ $state == 'Discharging' ]] || [[ $state == 'Charging' ]]; then
+        echo -e "^fg($PURPLE) Bat ${batst}${sep1}"
+    fi
+}
+
+vol(){
+    #level="$(awk -F"[][]" '{print $2}' <(amixer get Master) | tail -1)"
+    level="$(ponymix -d 0 get-volume)"
+    echo -e "^fg($LIGHT_BLUE) Vol: ${level}%"
+}
+
+mpd(){
+  track="$(mpc current)"
+  artist="${track%%- *}"
+  title="${track#*- }"
+  [[ -n $artist ]] && echo -e "^fg($PURPLE) $artist- $title$sep1"
+}
+
+dte(){
+    dat="$(date "+%a %b %d, %R")"
+    echo -e "${sep1}^fg($LIGHT_GREEN) ${dat}"
+}
+
+weather(){
+    weather="$(cat /tmp/weather)"
+    [[ -n $weather ]] && echo "^fg($AZURE) ${weather}${sep1}"
+}
+
+hddwarn(){
+    warn="$(df -h | awk '/sda7/ { gsub("%","",$5) ; print $5 }')"
+    [[ $warn -gt 95 ]] && echo -e "^fg($RED) BAZINGA${sep1}"
+}
+
+#echo "date" | dzen2 -fg $FG -bg $BG -ta right -w 700 -h 14 -x 600 -y 0 -fn $FONT &
+dateTime(){
+	
+	DATE=`date +"%b %d %A,"`
+	TIME=`date +"%I:%M:%S"`
+	echo "^fg($GREEN) $DATE $TIME"
+}
+
+
+while true; do 
+
+echo $(hddwarn)$(mpd)$(weather)$(cputmp)$(cpu)$(bat)$(vol)$(dte)  
+sleep 2; 
+done | dzen2 -fg $FG -bg $BG -ta $ALIGN -w $WIDTH -h $HEIGHT -x $XPOS -y $YPOS -fn $FONT  -e 'button2=;'
+
+#done | dzen2 -fg $FG -bg $BG -ta right -w 700 -h 14 -x 600 -y 0 -fn $FONT
