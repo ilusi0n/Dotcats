@@ -93,5 +93,3 @@ while true; do
 echo $(hddwarn)$(mpd)$(weather)$(cputmp)$(cpu)$(bat)$(vol)$(dte)  
 sleep 2; 
 done | dzen2 -fg $FG -bg $BG -ta $ALIGN -w $WIDTH -h $HEIGHT -x $XPOS -y $YPOS -fn $FONT  -e 'button2=;'
-
-#done | dzen2 -fg $FG -bg $BG -ta right -w 700 -h 14 -x 600 -y 0 -fn $FONT

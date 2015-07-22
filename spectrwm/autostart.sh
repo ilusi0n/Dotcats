@@ -5,7 +5,7 @@ ibus-daemon -x -d -s &
 xautolock -time 5 -locker 'i3lock -c 111111' -corners 0-+0  -cornerdelay 4 -cornerredelay 4 &
 $HOME/.scripts/touchpad_toggle &
 /usr/bin/start-pulseaudio-x11 &
-#thunderbird &
+thunderbird &
 /usr/lib/lxpolkit/lxpolkit &
 $HOME/.scripts/drop_start &
 sudo $HOME/.scripts/usb_logitech.sh &
