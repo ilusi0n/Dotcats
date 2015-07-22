@@ -9,4 +9,5 @@ $HOME/.scripts/touchpad_toggle &
 /usr/lib/lxpolkit/lxpolkit &
 $HOME/.scripts/drop_start &
 sudo $HOME/.scripts/usb_logitech.sh &
+(sleep 4 && tint2 -c $HOME/.dotcats/spectrwm/tint2config) &
 pcmanfm -d
