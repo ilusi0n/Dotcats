@@ -1,0 +1,15 @@
+[misc]
+	#font                  = "CamingoCode-8"
+	font                  = "Terminus-9"
+	raisefocus            = false
+	focus_follow_mouse    = true
+	focus_follow_movement = true
+	opacity               = 255
+
+	# focus_pointer_click: click on unfocused client area:
+	# true  -- default, set focus
+	# false -- click go to client; including dockapps
+	focus_pointer_click = false
+	status_timing      = 2     #seconds
+	status_path       = "~/.config/wmfs/wmfs_status"
+[/misc]
