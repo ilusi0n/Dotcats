@@ -14,10 +14,10 @@ alias good='schedtool -D -n 19 -e'
 alias rm='trash-put'
 alias flux='xflux -l 38.44 -g 9.9'
 alias grep='grep --color=auto'
-alias ls="ls --color -F"
-alias ll="ls --color -lh"
+#alias ls='ls --color=auto'
+#alias ll="ls --color -lh"
+alias ls="ls++"
 alias sudo='sudo '
-alias ls='ls --color=auto'
 alias cacheclean='paccache -rk2'
 alias halt='systemctl poweroff'
 alias sup='systemctl suspend'
