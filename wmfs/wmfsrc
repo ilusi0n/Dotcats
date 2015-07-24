@@ -7,7 +7,8 @@
 # @include "~/.config/wmfs/menu-wmfsrc"
 
 [misc]
-font                  = "CamingoCode-8"
+#font                  = "CamingoCode-8"
+font                  = "Terminus-9"
 raisefocus            = false
 focus_follow_mouse    = true
 focus_follow_movement = true
@@ -16,7 +17,7 @@ opacity               = 255
 # focus_pointer_click: click on unfocused client area:
 # true  -- default, set focus
 # false -- click go to client; including dockapps
-focus_pointer_click = true
+focus_pointer_click = false
 status_timing      = 2     #seconds
 status_path       = "~/.config/wmfs/wmfs_status"
 [/misc]
@@ -147,7 +148,7 @@ mouse_button_tag_prev      = "5"
 [tag] name = "dev" layout="tile_right"   [/tag]
 [tag] name = "media" layout="tile_right" [/tag]
 [tag] name = "vm" layout="max"           [/tag]
-[tag] name = "doc" layout="tile_right"   [/tag]
+[tag] name = "doc" layout="max"   [/tag]
 [/tags]
 
 [root]
@@ -156,7 +157,7 @@ background_command = "feh --bg-scale /mnt/Data/Wallpapers/v3/wallpaper-114539.jp
 
 
 [mouse] button = "4" func = "spawn"  cmd = "ponymix -d 0 increase 5" [/mouse]
-[mouse] button = "5" func = "spawn"  cmd = " ponymix -d 0 decrease 5" [/mouse]
+[mouse] button = "5" func = "spawn"  cmd = "ponymix -d 0 decrease 5" [/mouse]
 [/root]
 
 [client]

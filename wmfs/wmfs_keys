@@ -18,8 +18,8 @@
     [key] mod = {"Super"} key = "f" func = "toggle_max" [/key]
 
 # Toggle the position of the infobar.
-    [key] mod = {"Alt"} key = "b" func = "toggle_infobar_position" [/key]
-    [key] mod = {"Alt", "Shift"} key = "b" func = "toggle_infobar_display" [/key]
+   # [key] mod = {"Alt"} key = "b" func = "toggle_infobar_position" [/key]
+    [key] mod = {"Super"} key = "b" func = "toggle_infobar_display" [/key]
 
 # Select the next client.
     [key] mod = {"Alt"} key = "Tab" func = "client_next" [/key]
@@ -95,6 +95,8 @@
     [key] mod = {""} key = "XF86AudioLowerVolume" func = "spawn" cmd = "ponymix -d 0 decrease 5" [/key]
     [key] mod = {""} key = "XF86AudioMute" func = "spawn" cmd = "amixer set Master toggle -q" [/key]
     [key] mod = {""} key = "Print" func = "spawn" cmd = "/home/ilusi0n/.scripts/print" [/key]
+    [key] mod = {"Control"} key = "Right" func="spawn" cmd = "light -A 10" [/key]
+    [key] mod = {"Control"} key = "Left" func="spawn" cmd = "light -U 10" [/key]
 
 # unlisted fonctions that can be used in [key] func = ""
 # client_focus_{right, left, top, bottom}

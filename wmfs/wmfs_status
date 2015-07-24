@@ -36,8 +36,8 @@ GREY="#999999"
 sep1="\\$GREY\ >"
 
 cputmp(){
-    hddt="$(sensors | awk '/Core 0/ {print substr($3,2,2);}')"
-    echo -e "\\$ORANGE\ T: ${hddt}${sep1}"
+    cpu="$(sensors | awk '/Physical/ {print substr($4,2,2);}')"
+    echo -e "\\$ORANGE\ ${cpu}°C${sep1}"
 }
 
 cpu(){
@@ -56,7 +56,7 @@ bat(){
     batt='/sys/class/power_supply/BAT1/'
     state=$(<"${batt}"/status)
     if [[ $state == 'Discharging' ]] || [[ $state == 'Charging' ]]; then
-        echo -e "\\$PURPLE\ Bat ${batst}${sep1}"
+        echo -e "\\$ORANGE\ Bat ${batst}${sep1}"
     fi
 }
 

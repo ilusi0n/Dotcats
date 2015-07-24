@@ -8,4 +8,5 @@ thunderbird &
 /usr/lib/lxpolkit/lxpolkit &
 (sleep 5 && $HOME/.scripts/drop_start) &
 sudo $HOME/.scripts/usb_logitech.sh &
+compton &
 pcmanfm -d
