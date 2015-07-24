@@ -1,5 +1,5 @@
 [layouts]
-    fg = "#AD7FA8"
+    fg = "#66A9BA"
     bg = "#000000"
 
     #Border around the layout button.

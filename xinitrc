@@ -61,8 +61,4 @@ case "$WM" in
     wmfs)
         $HOME/.config/wmfs/autostart &
         exec wmfs
-        ;;
-    spectrwm)
-       $HOME/.dotcats/spectrwm/autostart.sh &
-       exec spectrwm
 esac

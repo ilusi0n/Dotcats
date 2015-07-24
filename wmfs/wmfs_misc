@@ -1,6 +1,8 @@
 [misc]
-	#font                  = "CamingoCode-8"
-	font                  = "Terminus-9"
+	#font                  = "DejaVu Sans-8"
+	#font                  = "Envy code R-8"
+	#font                  = "Ubuntu Mono-9"
+	font                  = "Monaco For Powerline-8"
 	raisefocus            = false
 	focus_follow_mouse    = true
 	focus_follow_movement = true
