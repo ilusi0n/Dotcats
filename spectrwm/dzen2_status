@@ -2,7 +2,7 @@
  
 FG='#aaaaaa'
 BG='#000000'
-FONT='CamingoCode-8'
+FONT='-*-terminus-medium-r-normal-*-12-*-*-*-*-*-*-*'
 ALIGN="right"
 WIDTH="800"
 HEIGHT="14"
@@ -47,7 +47,7 @@ bat(){
     batt='/sys/class/power_supply/BAT1/'
     state=$(<"${batt}"/status)
     if [[ $state == 'Discharging' ]] || [[ $state == 'Charging' ]]; then
-        echo -e "^fg($PURPLE) Bat ${batst}${sep1}"
+        echo -e "^fg($ORANGE) Bat ${batst}${sep1}"
     fi
 }
 
