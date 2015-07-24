@@ -7,6 +7,10 @@ ao=pulse
 msg-color=yes
 af=drc
 
+#fonts
+sub-text-font= Open Sans
+osd-font = Open Sans
+
 # DTS-MA decoding
 ad=lavc:libdcadec
 
