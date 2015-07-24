@@ -43,9 +43,6 @@ ln -s $HOME/.cacheme/wine $HOME/.cache/wine
 #settings for gtk3
 ~/bin/gtk3settings &
 
-#composition fix
-compton --backend glx --paint-on-overlay --vsync opengl-swc --shadow-exclude 'argb && _NET_WM_OPAQUE_REGION@:c' &
-
 #urxvtd -q -f -o &
 
 xrandr --setprovideroutputsource modesetting NVIDIA-0
@@ -54,7 +51,7 @@ xrandr --auto
 #chrome fix for now
 xrandr --dpi 96
 
-WM="spectrwm"
+WM="wmfs"
 
 case "$WM" in
     dwm)
