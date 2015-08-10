@@ -19,7 +19,7 @@
 #
 
 #colors
-BLUE= "#00BFFF"
+BLUE="#00BFFF"
 WHITE="#CDCDCD"
 BLACK="#000000"
 ORANGE="#ff8c00"

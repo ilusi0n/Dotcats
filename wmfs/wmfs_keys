@@ -3,7 +3,7 @@
     [key] mod = {"Alt", "Control"} key = "r" func = "reload" [/key]
 
 # Open a terminal.
-    [key] mod = {"Super"} key = "Return" func = "spawn" cmd = "termite" [/key]
+    [key] mod = {"Super"} key = "Return" func = "spawn" cmd = "urxvtc" [/key]
 
 # Kill the selected client.
     [key] mod = {"Control"} key = "x" func = "client_kill" [/key]
@@ -86,10 +86,11 @@
     [key] mod = {"Alt"} key = "m" func = "spawn" cmd = "gmpc" [/key]
     [key] mod = {"Alt"} key = "s" func = "spawn" cmd = "skype" [/key]
     [key] mod = {"Alt"} key = "f" func = "spawn" cmd = "firefox" [/key]
+    [key] mod = {"Alt"} key = "o" func = "spawn" cmd = "opera" [/key]
     [key] mod = {"Alt"} key = "c" func = "spawn" cmd = "chromium" [/key]
     [key] mod = {"Alt"} key = "t" func = "spawn" cmd = "thunderbird" [/key]
     [key] mod = {"Super"} key = "u" func = "tag_urgent"  [/key]
-    [key] mod = {"Super"} key = "r" func = "spawn" cmd = "$HOME/.scripts/dmenu_run" [/key]
+    [key] mod = {"Super"} key = "r" func = "spawn" cmd = "interrobang" [/key]
     [key] mod = {"Alt"} key = "z" func = "spawn" cmd = "$HOME/.scripts/touchpad_toggle" [/key]
     [key] mod = {""} key = "XF86AudioRaiseVolume" func = "spawn" cmd = "ponymix -d 0 increase 5" [/key]
     [key] mod = {""} key = "XF86AudioLowerVolume" func = "spawn" cmd = "ponymix -d 0 decrease 5" [/key]
@@ -97,6 +98,7 @@
     [key] mod = {""} key = "Print" func = "spawn" cmd = "/home/ilusi0n/.scripts/print" [/key]
     [key] mod = {"Control"} key = "Right" func="spawn" cmd = "light -A 10" [/key]
     [key] mod = {"Control"} key = "Left" func="spawn" cmd = "light -U 10" [/key]
+    [key] mod = {"Control", "Alt" } key = "l" func = "spawn" cmd = "$HOME/.scripts/lock" [/key]
 
 # unlisted fonctions that can be used in [key] func = ""
 # client_focus_{right, left, top, bottom}
@@ -114,7 +116,7 @@
     [/keys]
 
 # Toggle free the selected client.
- #   [key] mod = {"Alt"} key = "f" func = "toggle_free" [/key]
+#[key] mod = {"Control"} key = "f" func = "toggle_free" [/key]
  # Set the selected client as Master
     #[key] mod = {"Control"} key = "m" func = "client_set_master" [/key]
 # Toggle the resizehint of the current tag/screen

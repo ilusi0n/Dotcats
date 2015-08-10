@@ -1,6 +1,7 @@
 [rules]
 
 	[rule] class = "Firefox" screen = 0  tag = "2" [/rule]
+	[rule] class = "Opera" screen = 0  tag = "2" [/rule]
 	[rule] class = "Gmpc" screen = 0  tag = "6" [/rule]
 	[rule] class = "Chromium" screen = 0  tag = "2"  [/rule]
 	[rule] class = "Pcmanfm" screen = 0  tag = "6"  [/rule]

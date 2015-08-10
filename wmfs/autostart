@@ -7,6 +7,7 @@ $HOME/.scripts/touchpad_toggle &
 thunderbird &
 /usr/lib/lxpolkit/lxpolkit &
 (sleep 5 && $HOME/.scripts/drop_start) &
-sudo $HOME/.scripts/usb_logitech.sh &
+#sudo $HOME/.scripts/usb_logitech.sh &
 compton &
+urxvtd &
 pcmanfm -d
