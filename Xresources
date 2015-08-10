@@ -14,7 +14,7 @@ Xft.rgba:rgb
 !------------------------------------------------------------------------------
 ! u r x v t
 
-URxvt*font:               xft: Source Code Pro Medium:size=10
+URxvt*font:               xft: Source Code Pro Medium:size=9
 URxvt*scrollBar:          false
 URxvt*scrollBar_right:    true
 URxvt*scrollColor:        #000000
@@ -31,7 +31,11 @@ Xft*hinting:            full
 
 URxvt.transparent:   true
 URxvt.tintColor:     black
-URxvt.shading:       18 
+URxvt.shading:       18
+
+URxvt.perl-ext:
+URxvt.perl-ext-common:
+
 
 !black
 URxvt.color0: #222222

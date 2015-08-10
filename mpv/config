@@ -10,18 +10,3 @@ af=drc
 #fonts
 sub-text-font= Open Sans
 osd-font = Open Sans
-
-# DTS-MA decoding
-ad=lavc:libdcadec
-
-# I got this much memory for a reason
-cache=auto
-cache-default=8000000
-cache-initial=1000
-cache-seek-min=2000
-
-ytdl=yes
-ytdl-format=bestvideo[height<=?720]+bestaudio/best
-
-ass-shaper=complex
-demuxer-mkv-subtitle-preroll=yes
