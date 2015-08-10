@@ -25,6 +25,9 @@ function wm {
 	elif [ "$(pidof dwm)" ]
 		then
 			echo "Suzie's dwm"
+    elif [ "$(pidof wmfs)" ]
+        then
+            echo "Window Manager From Suzie"
 	else
 		echo "ask Suzie"
 	fi
