@@ -1,4 +1,0 @@
-#!/bin/bash
-dmenu_run -f -nb '#000000' -sb '#000000' -sf '#ff8c00' -p '>' -fn 'Source Code
-Pro-10'
-exit 0
