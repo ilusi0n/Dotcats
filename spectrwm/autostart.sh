@@ -5,10 +5,10 @@ ibus-daemon -x -d -s &
 xautolock -time 5 -locker 'i3lock -c 111111' -corners 0-+0  -cornerdelay 4 -cornerredelay 4 &
 $HOME/.scripts/touchpad_toggle &
 /usr/bin/start-pulseaudio-x11 &
-#thunderbird &
+thunderbird &
 /usr/lib/lxpolkit/lxpolkit &
-#$HOME/.scripts/drop_start &
+$HOME/.scripts/drop_start &
 compton &
 urxvtd &
-#tint2 -c $HOME/.dotcats/spectrwm/tint2config &
+tint2 -c $HOME/.dotcats/spectrwm/tint2config &
 pcmanfm -d

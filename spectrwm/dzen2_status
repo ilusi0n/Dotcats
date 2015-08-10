@@ -6,8 +6,8 @@ FONT='CamingoCode-8'
 ALIGN="right"
 WIDTH="800"
 HEIGHT="14"
-XPOS="560"
-#XPOS="500"
+#XPOS="560"
+XPOS="420"
 YPOS="0"
 
 
@@ -28,8 +28,8 @@ GREY='#999999'
 sep1='^fg($Gr) >'
 
 cputmp(){
-    hddt="$(sensors | awk '/Core 0/ {print substr($3,2,2);}')"
-    echo -e "^fg($ORANGE) T: ${hddt}${sep1}"
+    cpu="$(sensors | awk '/Physical/ {print substr($4,2,2);}')"
+    echo -e "^fg($ORANGE) T: ${cpu}${sep1}"
 }
 
 cpu(){

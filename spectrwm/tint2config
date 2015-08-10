@@ -1,7 +1,7 @@
 # Background definitions
 # ID 1
 rounded = 0
-border_width = 2
+border_width = 0
 background_color = #000000 100
 border_color = #424242 00
 
@@ -19,9 +19,10 @@ border_color = #424242 60
 
 # Panel
 panel_monitor = all
-panel_position = top left
-panel_size = 155 18
-panel_margin = 227 -2
+panel_position = top right
+panel_size = 150 18
+#panel_margin = 227 -2
+panel_margin = 0 -2
 panel_padding = 1 0 1
 panel_dock = 0
 wm_menu = 1
