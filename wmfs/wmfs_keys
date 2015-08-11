@@ -85,6 +85,7 @@
     [key] mod = {"Alt"} key = "2" func = "spawn" cmd = "pcmanfm" [/key]
     [key] mod = {"Alt"} key = "m" func = "spawn" cmd = "gmpc" [/key]
     [key] mod = {"Alt"} key = "s" func = "spawn" cmd = "skype" [/key]
+    [key] mod = {"Alt"} key = "q" func = "spawn" cmd = "qbittorrent" [/key]
     [key] mod = {"Alt"} key = "f" func = "spawn" cmd = "firefox" [/key]
     [key] mod = {"Alt"} key = "o" func = "spawn" cmd = "opera" [/key]
     [key] mod = {"Alt"} key = "c" func = "spawn" cmd = "chromium" [/key]

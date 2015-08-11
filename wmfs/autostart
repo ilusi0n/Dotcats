@@ -10,4 +10,5 @@ thunderbird &
 #sudo $HOME/.scripts/usb_logitech.sh &
 compton &
 urxvtd &
+redshift-gtk &
 pcmanfm -d

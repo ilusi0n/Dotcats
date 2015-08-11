@@ -51,7 +51,7 @@ xrandr --auto
 #chrome fix for now
 xrandr --dpi 96
 
-WM="wmfs"
+WM="spectrwm"
 
 case "$WM" in
     dwm)
