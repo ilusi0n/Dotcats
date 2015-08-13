@@ -3,10 +3,10 @@
     [key] mod = {"Alt", "Control"} key = "r" func = "reload" [/key]
 
 # Open a terminal.
-    [key] mod = {"Super"} key = "Return" func = "spawn" cmd = "urxvtc" [/key]
+    [key] mod = {"Super"} key = "Return" func = "spawn" cmd = "termite" [/key]
 
 # Kill the selected client.
-    [key] mod = {"Control"} key = "x" func = "client_kill" [/key]
+    [key] mod = {"Control"} key = "space" func = "client_kill" [/key]
 
 # Quit wmfs.
     [key] mod = {"Super", "Shift"} key = "q" func = "quit" [/key]

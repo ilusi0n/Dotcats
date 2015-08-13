@@ -14,7 +14,7 @@ alias getsub='subberthehut -s -a -o -l por,pob'
 alias verynice="ionice -c3 nice -n 15"
 alias buildme="ionice -c3 nice -n 15 makepkg -s"
 alias good='schedtool -D -n 19 -e'
-alias rm='trash-put'
+alias rm='trash put'
 alias flux='xflux -l 38.44 -g 9.9'
 alias grep='grep --color=auto'
 #alias ls='ls --color=auto'

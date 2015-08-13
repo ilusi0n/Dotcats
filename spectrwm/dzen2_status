@@ -2,7 +2,8 @@
  
 FG='#aaaaaa'
 BG='#000000'
-FONT='CamingoCode-8'
+#FONT='CamingoCode-10'
+FONT='Terminus-9'
 ALIGN="right"
 WIDTH="800"
 HEIGHT="14"
@@ -90,7 +91,6 @@ dateTime(){
 
 
 while true; do 
-
 echo $(hddwarn)$(mpd)$(weather)$(cputmp)$(cpu)$(bat)$(vol)$(dte)  
 sleep 2; 
-done | dzen2 -fg $FG -bg $BG -ta $ALIGN -w $WIDTH -h $HEIGHT -x $XPOS -y $YPOS -fn $FONT  -e 'button2=;'
+done | dzen2 -fg $FG -bg $BG -ta $ALIGN -w $WIDTH -h $HEIGHT -x $XPOS -y $YPOS -fn $FONT  -e 'button2=;button4=exec:ponymix -d 0 increase 5  > /dev/null 2>&1;button5=exec:ponymix -d 0 decrease 5  > /dev/null 2>&1;'

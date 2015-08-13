@@ -1,8 +1,8 @@
 # Write your default config options here!
 #
-hwdec=vdpau
-#vo=opengl
-vo=vdpau
+#hwdec=vdpau
+vo=opengl-hq
+#vo=vdpau
 ao=pulse
 msg-color=yes
 af=drc
