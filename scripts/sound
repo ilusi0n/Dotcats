@@ -1,0 +1,13 @@
+#!/bin/bash
+
+case "$1" in
+	up)
+		ponymix -d 0 increase 5  > /dev/null 2>&1
+		;;
+	down)
+		ponymix -d 0 decrease 5  > /dev/null 2>&1
+		;;
+	*)
+		echo $"Usage: $0 {up|down}"
+            exit 1
+esac
