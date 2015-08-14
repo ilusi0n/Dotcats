@@ -59,8 +59,8 @@ C25="\x19" # dwm selbg
 sep1="${colors[3]} > "
 
 cputmp(){
-    hddt="$(sensors | awk '/Core 0/ {print substr($3,2,2);}')"
-    echo -e "${colors[4]}T: ${hddt}"
+    cpu="$(sensors | awk '/Physical/ {print substr($4,2,2);}')"
+    echo -e "${colors[4]}T: ${cpu}"
 }
 
 bat(){

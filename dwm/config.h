@@ -104,7 +104,7 @@ static const Rule rules[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *dmenucmd[] = { "/bin/sh", "/home/ilusi0n/.scripts/dmenu_run", NULL };
+static const char *interrobang[] = { "interrobang", NULL };
 static const char *touchpadcmd[] = { "/bin/sh", "/home/ilusi0n/.scripts/touchpad_toggle", NULL };
 static const char *termcmd[]  = { "termite", NULL };
 static const char *chrome[]   = { "google-chrome-stable", NULL, "Google-chrome-stable" };
@@ -112,16 +112,15 @@ static const char *chromium[]   = { "chromium", NULL, "Chromium" };
 static const char *opera[]   = { "opera", NULL, "Opera" };
 static const char *firefox[]  = { "firefox", NULL, "Firefox" };
 static const char *pcmanfm[]  = { "pcmanfm", NULL };
-static const char *pidgin[]   = { "nice", "pidgin", NULL };
+static const char *qbittorrent[]  = { "qbittorrent", NULL };
 static const char *gvim[]     = { "gvim", NULL };
 static const char *skype[]    = { "skype", NULL, "Skype" };
 static const char *thunderbird[]  = { "thunderbird", NULL, "Thunderbird" };
 static const char *gmpc[]  = { "gmpc", NULL, "Gmpc" };
 static const char *lock[]  = { "/bin/sh", "/home/ilusi0n/.scripts/lock", NULL };
 static const char *playonlinux[]  = { "playonlinux", NULL, "Playonlinux" };
-static const char *upvol[] = { "ponymix", "-d", "0", "increase", "5", NULL };
-static const char *downvol[] = { "ponymix", "-d", "0", "decrease", "5", NULL };
-static const char *togglevol[] = { "ponymix", "-d", "0", "toggle", NULL};
+static const char *upvol[] = { "/bin/sh", "/home/ilusi0n/.scripts/sound", "up", NULL };
+static const char *downvol[] = { "/bin/sh", "/home/ilusi0n/.scripts/sound", "down", NULL };
 static const char *upbri[] = { "light", "-A", "10", NULL };
 static const char *downbri[] = { "light", "-U", "10", NULL };
 static const char *print[] = { "/bin/sh", "/home/ilusi0n/.scripts/print",NULL};
@@ -136,29 +135,28 @@ static Key keys[] = {
 	{ ALTKEY,                       XK_f,      runorraise,     {.v = firefox } },
 	{ ALTKEY,                       XK_m,      runorraise,     {.v = gmpc } },
 	{ ALTKEY,                       XK_2,      spawn,          {.v = pcmanfm } },
-	{ ALTKEY,                       XK_p,      spawn,          {.v = pidgin } },
+	{ ALTKEY,                       XK_q,      spawn,          {.v = qbittorrent } },
 	{ ALTKEY,                       XK_g,      spawn,          {.v = gvim } },
 	{ ALTKEY,                       XK_s,      runorraise,          {.v = skype } },
-    	{ ALTKEY,                       XK_z,      spawn,          {.v = touchpadcmd } },
+    { ALTKEY,                       XK_z,      spawn,          {.v = touchpadcmd } },
 	{ ALTKEY,                       XK_t,      runorraise,          {.v = thunderbird } },
 	{ ControlMask|ALTKEY,           XK_l,      spawn,          {.v = lock } },
 	{ 0,              XF86XK_AudioRaiseVolume, spawn,          {.v = upvol} },
 	{ ControlMask,                  XK_Up,     spawn,          {.v = upvol} },
-    	{ 0,              XF86XK_AudioLowerVolume, spawn,          {.v = downvol} },
+    { 0,              XF86XK_AudioLowerVolume, spawn,          {.v = downvol} },
 	{ ControlMask,                  XK_Down,   spawn,          {.v = downvol} },
-    	{ 0,              XF86XK_AudioMute,        spawn,          {.v = togglevol} },
-	{ MODKEY,                       XK_r,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_r,      spawn,          {.v = interrobang } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ 0,                            XK_Print,  spawn,          {.v = print } },
-    	{ ControlMask,           	XK_Left,   spawn,          {.v = downbri } },
-    	{ ControlMask,           	XK_Right,  spawn,          {.v = upbri } },
+    { ControlMask,           		XK_Left,   spawn,          {.v = downbri } },
+    { ControlMask,           		XK_Right,  spawn,          {.v = upbri } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ ALTKEY,                       XK_Tab,    focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },	
-	{ ControlMask,                  XK_x,      killclient,     {0} },
+	{ ControlMask,                  XK_space,  killclient,     {0} },
 	{ MODKEY,                       XK_u,      focusurgent,    {0} },
 	{ MODKEY,                       XK_space,  nextlayout,     {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
@@ -166,12 +164,12 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY,           		XK_Left,   cycle,          {.i = -1} },
-    	{ MODKEY,           		XK_Right,  cycle,          {.i = +1} },
+	{ MODKEY,           			XK_Left,   cycle,          {.i = -1} },
+    { MODKEY,           			XK_Right,  cycle,          {.i = +1} },
 	{ MODKEY|ShiftMask,             XK_Left,   tagcycle,       {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_Right,  tagcycle,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_Up,     pushup,         {0} },
-    	{ MODKEY|ShiftMask,             XK_Down,   pushdown,       {0} },
+    { MODKEY|ShiftMask,             XK_Down,   pushdown,       {0} },
 /*	{ MODKEY,                       XK_f,      togglemax,      {0} },*/
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)

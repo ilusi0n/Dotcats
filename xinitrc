@@ -43,15 +43,13 @@ ln -s $HOME/.cacheme/wine $HOME/.cache/wine
 #settings for gtk3
 ~/bin/gtk3settings &
 
-#urxvtd -q -f -o &
-
-xrandr --setprovideroutputsource modesetting NVIDIA-0
-xrandr --auto
+#xrandr --setprovideroutputsource modesetting NVIDIA-0
+#xrandr --auto
 
 #chrome fix for now
-xrandr --dpi 96
+#xrandr --dpi 96
 
-WM="spectrwm"
+WM="dwm"
 
 case "$WM" in
     dwm)
@@ -68,4 +66,5 @@ case "$WM" in
     spectrwm)
        $HOME/.dotcats/spectrwm/autostart.sh &
        exec spectrwm
+       ;;
 esac
