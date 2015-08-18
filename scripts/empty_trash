@@ -1,10 +1,10 @@
 #!/bin/bash
 
 ITEMS_NUMBER=$(trash list | wc -l)
-ITEMS_NUMBER=$(($ITEMS_NUMBER-2))
+ITEMS_NUMBER=$((ITEMS_NUMBER-2))
 trash gc
 
-for (( c=1; c<=$ITEMS_NUMBER; c++ ))
+for (( c=1; c<=ITEMS_NUMBER; c++ ))
 do
    trash drop $c
 done

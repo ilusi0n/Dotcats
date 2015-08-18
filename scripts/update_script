@@ -15,7 +15,7 @@
 # this function looped by the while loop later
 function orphanage {
 echo ":: checking if orphan packages exist on the system..."
-ORPHANS=`pacman -Qqdt`
+ORPHANS=$(pacman -Qqdt)
 if [ -z "$ORPHANS" ]
 then
     echo ":: system is clean, will exit..."
@@ -31,7 +31,7 @@ fi
 #
 # infinite loop to find and remove orphan packages
 # script exits when none found
-while [ 1 ]
+while :
 do
     orphanage
 done

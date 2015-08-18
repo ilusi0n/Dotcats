@@ -4,6 +4,7 @@
 
 SCRIPTS_DIR="$HOME/.scripts"
 
+alias pcinfo='inxi -Fxz'
 alias emptytrash='$HOME/.scripts/empty_trash'
 alias brokenLinks='find . -type l -! -exec test -e {} \; -print'
 alias assoc="subl ~/.local/share/applications/mimeapps.list"
@@ -13,10 +14,9 @@ alias rollback="git reset --hard HEAD"
 alias logX='journalctl -k -b -1'
 alias getsub='subberthehut -s -a -o -l por,pob'
 alias verynice="ionice -c3 nice -n 15"
-alias buildme="ionice -c3 nice -n 15 makepkg -s"
+alias buildme="ionice -c3 nice -n 15 makepkg -si"
 alias good='schedtool -D -n 19 -e'
 alias rm='trash put'
-alias flux='xflux -l 38.44 -g 9.9'
 alias grep='grep --color=auto'
 #alias ls='ls --color=auto'
 #alias ll="ls --color -lh"
@@ -30,7 +30,6 @@ alias burniso='cdrecord -v dev=/dev/scd0'
 alias music='ncmpcpp'
 alias check='chkrootkit'
 alias checkme='rkhunter --update -c'
-alias cleanChromium='profile-cleaner c'
 alias fail='systemctl --failed'
 alias services='systemctl list-unit-files | grep enabled'
 alias size='du -sh $1'
@@ -43,7 +42,7 @@ alias zombies='ps -el | grep 'Z''
 alias top='htop'
 alias wasteSpace='ncdu'
 alias myAge=" echo $(($(($(date +%s) - $(date -d "$(head -1 /var/log/pacman.log | cut -d ' ' -f 1,2 | tr -d '[]')" +%s))) / 86400)) days"
-alias suzie='sudo pacman -Sy; sudo pacman -S linux-zen-headers linux-headers linux-lts-headers --needed; sudo pacman -Su'
+alias suzie='sudo pacman -Sy; sudo pacman -S linux-ck-ivybridge-headers linux-zen-headers linux-headers linux-lts-headers --needed; sudo pacman -Su'
 alias myip="curl curlmyip.com"
 alias cower="cower -t ~/build -c"
 alias pk='killall -9 $1'

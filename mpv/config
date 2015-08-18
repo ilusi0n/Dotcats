@@ -1,8 +1,8 @@
 # Write your default config options here!
 #
-#hwdec=vdpau
+hwdec=vaapi-copy
+#framedrop=no
 vo=opengl-hq
-#vo=vdpau
 ao=pulse
 msg-color=yes
 af=drc

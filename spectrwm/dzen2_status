@@ -34,10 +34,10 @@ cputmp(){
 }
 
 cpu(){
-  read cpu a b c previdle rest < /proc/stat
+  read -r cpu a b c previdle rest < /proc/stat
   prevtotal=$((a+b+c+previdle))
   sleep 0.5
-  read cpu a b c idle rest < /proc/stat
+  read -r cpu a b c idle rest < /proc/stat
   total=$((a+b+c+idle))
   cpu="$((100*( (total-prevtotal) - (idle-previdle) ) / (total-prevtotal) ))"
   echo -e "^fg($PURPLE) CPU $cpu%${sep1}"
@@ -45,7 +45,7 @@ cpu(){
 
 
 bat(){
-    batst="$($HOME/.scripts/bat.sh)"
+    batst="$("$HOME/.scripts/bat.sh")"
     batt='/sys/class/power_supply/BAT1/'
     state=$(<"${batt}"/status)
     if [[ $state == 'Discharging' ]] || [[ $state == 'Charging' ]]; then
@@ -81,16 +81,7 @@ hddwarn(){
     [[ $warn -gt 95 ]] && echo -e "^fg($RED) BAZINGA${sep1}"
 }
 
-#echo "date" | dzen2 -fg $FG -bg $BG -ta right -w 700 -h 14 -x 600 -y 0 -fn $FONT &
-dateTime(){
-	
-	DATE=`date +"%b %d %A,"`
-	TIME=`date +"%I:%M:%S"`
-	echo "^fg($GREEN) $DATE $TIME"
-}
-
-
 while true; do 
-echo $(hddwarn)$(mpd)$(weather)$(cputmp)$(cpu)$(bat)$(vol)$(dte)  
+echo "$(hddwarn)$(mpd)$(weather)$(cputmp)$(cpu)$(bat)$(vol)$(dte)"  
 sleep 2; 
 done | dzen2 -fg $FG -bg $BG -ta $ALIGN -w $WIDTH -h $HEIGHT -x $XPOS -y $YPOS -fn $FONT  -e 'button2=;button4=exec:ponymix -d 0 increase 5  > /dev/null 2>&1;button5=exec:ponymix -d 0 decrease 5  > /dev/null 2>&1;'

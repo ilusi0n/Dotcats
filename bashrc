@@ -48,6 +48,8 @@ HISTSIZE=3000
 export GITAWAREPROMPT=~/.scripts/git-aware-prompt
 source $GITAWAREPROMPT/main.sh
 
+export EDITOR=vim
+
 
 #export PS1="\u@\h \w \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
 PS1="\n\[\033[0;32m\]\u@\h \[\033[1;33m\]\w\n\[\033[0;34m\]>>\[\033[0m\] \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\] "

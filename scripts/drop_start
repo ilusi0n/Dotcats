@@ -1,9 +1,9 @@
 #!/bin/bash
 
 while true; do
-      ps cax | grep dropbox > /dev/null
+      pgrep dropbox > /dev/null
         if [ $? -ne 0 ]; then
-            if [ "`ping -c 1 google.com`" ]; then #if ping exits nonzero...
+            if [ "$(ping -c 1 google.com)" ]; then #if ping exits nonzero...
                     sleep 5     #give it a few seconds to complete
                     dropbox &
             fi

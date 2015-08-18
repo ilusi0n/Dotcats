@@ -64,7 +64,7 @@ cputmp(){
 }
 
 bat(){
-    batst="$($HOME/.scripts/bat.sh)"
+    batst="$("$HOME/.scripts/bat.sh")"
     batt='/sys/class/power_supply/BAT1/'
     state=$(<"${batt}"/status)
     if [[ $state == 'Discharging' ]] || [[ $state == 'Charging' ]]; then
@@ -74,10 +74,10 @@ bat(){
 
 
 cpu(){
-    read cpu a b c previdle rest < /proc/stat
+    read -r cpu a b c previdle rest < /proc/stat
     prevtotal=$((a+b+c+previdle))
     sleep 0.5
-    read cpu a b c idle rest < /proc/stat
+    read -r cpu a b c idle rest < /proc/stat
     total=$((a+b+c+idle))
     cpu="$((100*( (total-prevtotal) - (idle-previdle) ) / (total-prevtotal) ))"
     echo -e "${sep1}${colors[6]}CPU ${cpu}%"

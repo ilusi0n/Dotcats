@@ -40,3 +40,16 @@ man() {
     LESS_TERMCAP_us=$'\E[04;38;5;146m' \
     man "$@"
 }
+
+ pss() {
+    if [ -z "$1" ]; then
+        echo -e "usage: pss PATTERN" 
+    else
+        pids=$(pgrep -d, -f $1)
+        if [ ! -z $pids ]; then
+            echo -ne "\033[1;32m"
+            ps -Fp $pids
+            echo -ne "\033[1;0m"
+        fi
+    fi
+ }

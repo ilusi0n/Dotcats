@@ -6,7 +6,7 @@ current=$(<"${batt}"/charge_now)
 full=$(<"${batt}"/charge_full)
 state=$(<"${batt}"/status)
 
-charge=$(( $current * 100 / $full )) 
+charge=$(( current * 100 / $full )) 
 
 case "${state}" in
     Full) batstat="[=]" ;; # should be Full

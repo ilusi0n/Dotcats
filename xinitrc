@@ -15,18 +15,18 @@ export QT_PLUGIN_PATH=$HOME/.kde4/lib/kde4/plugins/:/usr/lib/kde4/plugins/
 export MOZ_USE_OMTC=1
 
 
-if [ -d /etc/X11/xinit/xinitrc.d ]; then
-    for f in /etc/X11/xinit/xinitrc.d/*; do
+if [ -d /etc/X11/xinit/xinitrc.d ] ; then
+    for f in /etc/X11/xinit/xinitrc.d/?* ; do
         [ -x "$f" ] && . "$f"
     done
     unset f
 fi
 
 # source Xresources
-xrdb -merge $HOME/.Xresources &> /dev/null
+xrdb -merge "$HOME/.Xresources" > /dev/null 2>&1
 
 #colors for terminal and stuff
-eval $(dircolors ~/.dircolors)
+eval "$(dircolors ~/.dircolors)"
 
 # local bin
 PATH=~/bin:$PATH
@@ -36,35 +36,29 @@ export PATH
 wmname LG3D &
 
 #persistent cache
-ln -s $HOME/.cacheme/spotify $HOME/.cache/spotify
-ln -s $HOME/.cacheme/gmpc $HOME/.cache/gmpc
-ln -s $HOME/.cacheme/wine $HOME/.cache/wine
+ln -s "$HOME/.cacheme/spotify" "$HOME/.cache/spotify" > /dev/null 2>&1
+ln -s "$HOME/.cacheme/gmpc" "$HOME/.cache/gmpc" > /dev/null 2>&1
+ln -s "$HOME/.cacheme/wine $HOME/.cache/wine" > /dev/null 2>&1
 
 #settings for gtk3
 ~/bin/gtk3settings &
-
-#xrandr --setprovideroutputsource modesetting NVIDIA-0
-#xrandr --auto
-
-#chrome fix for now
-#xrandr --dpi 96
 
 WM="dwm"
 
 case "$WM" in
     dwm)
-        $HOME/.dotcats/dwm/dwm_start.sh &
-        exec dbus-launch dwm
+        "$HOME/.dotcats/dwm/dwm_start.sh" &
+        exec dwm
         ;;
     wmfs)
-        $HOME/.config/wmfs/autostart &
+        "$HOME/.config/wmfs/autostart" &
         exec wmfs
         ;;
     awesome)
         exec awesome
         ;;
     spectrwm)
-       $HOME/.dotcats/spectrwm/autostart.sh &
+       "$HOME/.dotcats/spectrwm/autostart.sh" &
        exec spectrwm
        ;;
 esac

@@ -1,3 +1,4 @@
 #!/bin/bash
-scrot -e 'mv $f ~/Printscreens/ 2>/dev/null'
+
+scrot ~/Printscreens/%Y-%m-%d-%T-screenshot.png
 exit 0
