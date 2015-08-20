@@ -1,0 +1,62 @@
+# Slider configuration
+# By: Jesse McClure (c) 2015
+# License: CC-BY-SA
+
+###############################################################################
+#        GENERAL SETTINGS:
+###############################################################################
+# TODO comments / instructions needed
+###############################################################################
+
+Display         = VGA1 LVDS1 eDP1
+FadeSteps       = 25
+#Loop            = 0
+#Interleave      = 0
+
+
+###############################################################################
+#        LINK HANDLERS:
+###############################################################################
+# Handlers are first parsed by slider to fill the following format strings:
+#   %s        file name or uri provided in the link
+#   %x | %y   x or y coordinate of the link relative to the presentation window
+#   %X | %Y   same as above, but relative to root window coordinates
+#   %w | %W   width of the link target (case is ignored)
+#   %h | %H   height of the link target (case is ignored)
+# The parsed string is then passed to the shell for any expansion and execution
+# The content of ActionHandler is ignored, but slider tests whether it is
+#   defined before allowing any action links to run.  Action links can execute
+#   arbitrary code and can be a security risk.  Uncomment the ActionHandler
+#   defintion at your own risk (and/or only use with trusted pdfs).
+###############################################################################
+
+MovieHandler    =	mpv --no-border --no-keepaspect --ontop --x11-name Float --screen 1 --geometry=%Wx%H+%x+%y %s
+AudioHandler    = mpv %s &
+LinkHandler     = firefox %s
+#ActionHandler   = true
+
+
+###############################################################################
+#        KEY / BUTTON BINDINGS:
+###############################################################################
+# TODO comments / instructions needed
+###############################################################################
+
+# Buttons
+Button   Control    1    cursor      toggle
+Button   Control    2    quit
+Button   Control    3    follow
+Button   Shift      1    pan
+Button   Shift      2    redraw      normal
+Button   Shift      3    zoom
+Button              1    next
+Button              2    sorter      toggle
+Button              3    prev
+#Button              4    history     back
+#Button              5    history     forward
+# Keys
+Key      Control    q    quit
+Key      Control    f    fullscreen
+Key      Control    l    link
+
+
