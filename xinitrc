@@ -38,7 +38,7 @@ wmname LG3D &
 #persistent cache
 ln -s "$HOME/.cacheme/spotify" "$HOME/.cache/spotify" > /dev/null 2>&1
 ln -s "$HOME/.cacheme/gmpc" "$HOME/.cache/gmpc" > /dev/null 2>&1
-ln -s "$HOME/.cacheme/wine $HOME/.cache/wine" > /dev/null 2>&1
+ln -s "$HOME/.cacheme/wine" "$HOME/.cache/wine" > /dev/null 2>&1
 
 #settings for gtk3
 ~/bin/gtk3settings &
