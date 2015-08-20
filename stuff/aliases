@@ -4,6 +4,7 @@
 
 SCRIPTS_DIR="$HOME/.scripts"
 
+alias subl='subl > /dev/null 2<&1'
 alias pcinfo='inxi -Fxz'
 alias emptytrash='$HOME/.scripts/empty_trash'
 alias brokenLinks='find . -type l -! -exec test -e {} \; -print'
@@ -12,7 +13,7 @@ alias highErrors='journalctl -p 0..3 -xn'
 alias updateFontconfig='fc-cache -vf'
 alias rollback="git reset --hard HEAD"
 alias logX='journalctl -k -b -1'
-alias getsub='subberthehut -s -a -o -l por,pob'
+alias getsub='subberthehut -s -a -l por,pob'
 alias verynice="ionice -c3 nice -n 15"
 alias buildme="ionice -c3 nice -n 15 makepkg -si"
 alias good='schedtool -D -n 19 -e'

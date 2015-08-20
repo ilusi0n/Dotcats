@@ -1,11 +1,13 @@
 # Write your default config options here!
 #
-hwdec=vaapi-copy
+hwdec=vaapi
 #framedrop=no
 vo=opengl-hq
+hwdec-codecs=all
 ao=pulse
 msg-color=yes
 af=drc
+ad-lavc-threads=2
 
 #fonts
 sub-text-font= Open Sans
