@@ -43,22 +43,22 @@ RAM=$(free -h |awk '/Mem:/ { print $3 }')
 
 function root
 {
-	echo -e "$(df -h | awk '/sda5/ {print $3}') / $(df -h | awk '/sda5/{print $2}')"
+	echo -e "$(df -h | awk '/sda2/ {print $3}') / $(df -h | awk '/sda2/{print $2}')"
 }
 
 function data
 {
-	echo -e "$(df -h | awk '/sda8/ {print $3}') / $(df -h | awk '/sda8/{print $2}')"
+	echo -e "$(df -h | awk '/sdb2/ {print $3}') / $(df -h | awk '/sdb2/{print $2}')"
 }
 
 function home
 {
-	echo -e "$(df -h | awk '/sda7/ {print $3}') / $(df -h | awk '/sda7/{print $2}')"
+	echo -e "$(df -h | awk '/sda4/ {print $3}') / $(df -h | awk '/sda4/{print $2}')"
 }
 
 function var
 {
-	echo -e "$(df -h | awk '/sda6/ {print $3}') / $(df -h | awk '/sda6/{print $2}')"
+	echo -e "$(df -h | awk '/sdb1/ {print $3}') / $(df -h | awk '/sdb1/{print $2}')"
 }
 
 
@@ -69,7 +69,7 @@ $f7                    .c0N.   .'c.                  $H the$f4 Suzie's$f1 cat
 $f7         'Okdl:'  ;OMMMMKOKNMMW:;o0l  .'.          
 $f7         ;MMMMMMWWMMMMMMMMMMMMMMMMMXKWMMK         $f6 $USER $f7@ $f1$HOSTNAME
 $f7         'MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMK         
-$f7          NMMMMMMMMMMMMMMMMMMMMMMMMMMMMMO         $f2 Shell     »$f4 bash
+$f7          NMMMMMMMMMMMMMMMMMMMMMMMMMMMMMO         $f2 Shell     »$f4 zsh
 $f7          dMMMMMMMMMMMMMMMMMMMMMMMMMMMMM:         $f2 Editor    »$f4 $EDITOR
 $f7          'MMMMMMMMMMMMMMMMMMMMMMMMMMMMM.         $f2 Packages  »$f4 $PACKAGES $f1($FPACKAGES)$NC
 $f7          'MMMMMMMMMMMMMMMMMMMMMMMMMMMMM;         $f2 Ram       »$f4 $RAM$NC

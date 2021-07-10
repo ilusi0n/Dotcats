@@ -1,12 +1,11 @@
 #!/bin/bash
-feh --bg-scale /mnt/Data/Wallpapers/v3/fmd3Lk1.jpg &
-ibus-daemon -x -d -s &
+feh --bg-scale /mnt/Data/Wallpapers/moon.jpg &
+#ibus-daemon -x -d -s &
 #uppr right corner, desactivate, left, activate
-xautolock -time 5 -locker "$HOME/.scripts/lock" -corners 0-+0  -cornerdelay 4 -cornerredelay 4 &
-"$HOME/.scripts/touchpad_toggle" &
-thunderbird &
-/usr/lib/lxpolkit/lxpolkit &
-"$HOME/.scripts/drop_start" &
-compton &
-redshift-gtk &
-pcmanfm -d
+#xautolock -time 5 -locker "$HOME/.scripts/lock" -corners 0-+0  -cornerdelay 4 -cornerredelay 4 &
+#"$HOME/.scripts/touchpad_toggle" &
+aslstatus &
+#/usr/lib/lxpolkit/lxpolkit &
+#"$HOME/.scripts/drop_start" &
+#compton &
+#pcmanfm -d

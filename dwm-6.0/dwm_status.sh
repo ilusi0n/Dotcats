@@ -59,7 +59,7 @@ C25="\x19" # dwm selbg
 sep1="${colors[3]} > "
 
 cputmp(){
-    cpu="$(sensors | awk '/Physical/ {print substr($4,2,2);}')"
+    cpu="$(sensors | awk '/Package id/ {print substr($4,2,2);}')"
     echo -e "${colors[4]}T: ${cpu}"
 }
 
@@ -84,14 +84,8 @@ cpu(){
 }
 
 vol(){
-    level="$(ponymix -d 0 get-volume)"
+    level="$(ponymix get-volume)"
     echo -e "${sep1}${colors[7]}Vol: ${level}%"
-}
-mpd(){
-    track="$(mpc current)"
-    artist="${track%%- *}"
-    title="${track#*- }"
-    [[ -n $artist ]] && echo -e "${colors[6]} ${artist}- ${title}${colors[3]}>"
 }
 
 dte(){
@@ -101,13 +95,13 @@ dte(){
 
 weather(){
     weather="$(cat /tmp/weather)"
-    [[ -n $weather ]] && echo -e "${colors[10]}${weather}${colors[3]}>"
+    [[ -n $weather ]] && echo -e "${colors[10]}${weather}${colors[3]}${sep1}"
 }
 
 hddwarn(){
-    warn="$(df -h | awk '/sda7/ { gsub("%","",$5) ; print $5 }')"
+    warn="$(df -h | awk '/sbd1/ { gsub("%","",$5) ; print $5 }')"
     [[ $warn -gt 95 ]] && echo -e "${sep1}${colors[2]}BAZINGA"
 }
 
 # pipe it
-xsetroot -name "$(hddwarn)$(mpd)$(weather)$(cputmp)$(cpu)$(bat)$(vol)$(dte)"
+xsetroot -name "$(hddwarn)$(weather)$(cputmp)$(cpu)$(bat)$(vol)$(dte)"

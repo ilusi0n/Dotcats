@@ -104,14 +104,14 @@ static const Rule rules[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *interrobang[] = { "interrobang", NULL };
+static const char *launcher[] = { "rlaunch", NULL };
 static const char *touchpadcmd[] = { "/bin/sh", "/home/ilusi0n/.scripts/touchpad_toggle", NULL };
-static const char *termcmd[]  = { "termite", NULL };
+static const char *termcmd[]  = { "alacritty", NULL };
 static const char *chrome[]   = { "google-chrome-stable", NULL, "Google-chrome-stable" };
 static const char *chromium[]   = { "chromium", NULL, "Chromium" };
 static const char *opera[]   = { "opera", NULL, "Opera" };
 static const char *firefox[]  = { "firefox", NULL, "Firefox" };
-static const char *pcmanfm[]  = { "pcmanfm", NULL };
+static const char *thunar[]  = { "thunar", NULL };
 static const char *qbittorrent[]  = { "qbittorrent", NULL };
 static const char *gvim[]     = { "gvim", NULL };
 static const char *skype[]    = { "skype", NULL, "Skype" };
@@ -129,12 +129,12 @@ static const char *print[] = { "/bin/sh", "/home/ilusi0n/.scripts/print",NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ ALTKEY,                       XK_c,      runorraise,     {.v = chromium } },
+	{ ALTKEY,                       XK_c,      runorraise,     {.v = chrome } },
 	{ ALTKEY,                       XK_o,      runorraise,     {.v = opera } },
     { ALTKEY,                       XK_p,      runorraise,     {.v = playonlinux } },
 	{ ALTKEY,                       XK_f,      runorraise,     {.v = firefox } },
 	{ ALTKEY,                       XK_m,      runorraise,     {.v = gmpc } },
-	{ ALTKEY,                       XK_2,      spawn,          {.v = pcmanfm } },
+	{ ALTKEY,                       XK_2,      spawn,          {.v = thunar } },
 	{ ALTKEY,                       XK_q,      spawn,          {.v = qbittorrent } },
 	{ ALTKEY,                       XK_g,      spawn,          {.v = gvim } },
 	{ ALTKEY,                       XK_s,      runorraise,          {.v = skype } },
@@ -145,7 +145,7 @@ static Key keys[] = {
 	{ ControlMask,                  XK_Up,     spawn,          {.v = upvol} },
     { 0,              XF86XK_AudioLowerVolume, spawn,          {.v = downvol} },
 	{ ControlMask,                  XK_Down,   spawn,          {.v = downvol} },
-	{ MODKEY,                       XK_r,      spawn,          {.v = interrobang } },
+	{ MODKEY,                       XK_r,      spawn,          {.v = launcher } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ 0,                            XK_Print,  spawn,          {.v = print } },
     { ControlMask,           		XK_Left,   spawn,          {.v = downbri } },

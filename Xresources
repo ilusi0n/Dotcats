@@ -1,70 +1,19 @@
-! Xft settings ---------------------------------------------------------------
-
-Xft.autohint:1
-Xft.lcdfilter:lcddefault
-Xft.hintstyle:hintslight
-Xft.hinting:1
-Xft.antialias:1
-Xft.dpi:96
-Xft.rgba:rgb
-
-! Colour Scheme
-! #include "/home/ilusi0n/.color_schemes/euphrasia"
-
-!------------------------------------------------------------------------------
-! u r x v t
-
-URxvt*font:               xft: Source Code Pro Medium:size=9
-URxvt*scrollBar:          false
-URxvt*scrollBar_right:    true
-URxvt*scrollColor:        #000000
-URxvt*cursorBlink:        true
-URxvt.cursorUnderline:    true
-
-URxvt.background: #2C3E50
-URxvt.foreground: #ECF0F1
-URxvt.cursorColor: #ECF0F1
-
-Xft*dpi:                96
-Xft*antialias:          true
-Xft*hinting:            full
-
-URxvt.transparent:   true
-URxvt.tintColor:     black
-URxvt.shading:       18
-
-URxvt.perl-ext:
-URxvt.perl-ext-common:
-
-
-!black
-URxvt.color0: #222222
-URxvt.color8: #666666
-
-!red
-URxvt.color1: #E74C3C
-URxvt.color9: #E74C3C
-
-!green
-URxvt.color2: #27AE60
-URxvt.color10: #2ECC71
-
-!yellow
-URxvt.color3: #F39C12
-URxvt.color11: #F1C40F
-
-!blue
-URxvt.color4: #3498DB
-URxvt.color12: #3498DB
-
-!magenta
-URxvt.color5: #9B59B6
-URxvt.color13: #9B59B6
-
-!cyan
-URxvt.color6: #95A5A6
-URxvt.color14: #95A5A6
-
-!white
-URxvt.color7: #ECF0F1
-URxvt.color15: #ECF0F1
+! Dracula Xresources palette
+*.foreground: #F8F8F2
+*.background: #282A36
+*.color0:     #000000
+*.color8:     #4D4D4D
+*.color1:     #FF5555
+*.color9:     #FF6E67
+*.color2:     #50FA7B
+*.color10:    #5AF78E
+*.color3:     #F1FA8C
+*.color11:    #F4F99D
+*.color4:     #BD93F9
+*.color12:    #CAA9FA
+*.color5:     #FF79C6
+*.color13:    #FF92D0
+*.color6:     #8BE9FD
+*.color14:    #9AEDFE
+*.color7:     #BFBFBF
+*.color15:    #E6E6E6

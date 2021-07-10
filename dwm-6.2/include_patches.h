@@ -8,4 +8,5 @@
 #define STATUSCMD               (0)
 #define SCRATCHPADS             (0)
 #define HIDEVACANTTAGS          (1)
-#define ACTIVEBARINDICATION     (1) /* If both ACTIVEBARINDICATION and WINDOWINDICATION are set, former takes priority over latter. */
+#define STATUS2D                (1)
+#define ACTIVEBARINDICATION     (1)

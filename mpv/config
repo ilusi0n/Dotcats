@@ -1,14 +1,27 @@
 # Write your default config options here!
 #
-hwdec=vaapi
-#framedrop=no
-vo=opengl-hq
-hwdec-codecs=all
 ao=pulse
 msg-color=yes
-af=drc
-ad-lavc-threads=2
+hwdec=auto
 
-#fonts
-sub-text-font= Open Sans
-osd-font = Open Sans
+# Subtiles
+sub-auto=fuzzy
+sub-pos=95
+sub-fix-timing=yes
+sub-use-margins
+blend-subtitles=yes
+sub-font-size=48
+sub-color="#FFFFFFFF"
+sub-border-size=2
+sub-border-color="#FF262626"
+sub-shadow-color="#33262626"
+sub-shadow-offset=1.25
+sub-ass
+sub-ass-override=force
+sub-ass-force-margins=yes
+sub-ass-hinting=none
+sub-ass-force-style=Kerning=yes
+
+#cache=yes
+#demuxer-max-bytes=500M
+#demuxer-max-back-bytes=100M
