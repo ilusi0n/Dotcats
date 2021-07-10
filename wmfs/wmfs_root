@@ -1,8 +1,0 @@
-[root]
-	# Command you can execute to set the background.
-	background_command = "feh --bg-scale /mnt/Data/Wallpapers/v3/wallpaper-114539.jpg"
-
-
-	[mouse] button = "4" func = "spawn"  cmd = "ponymix -d 0 increase 5" [/mouse]
-	[mouse] button = "5" func = "spawn"  cmd = "ponymix -d 0 decrease 5" [/mouse]
-[/root]
