@@ -1,14 +1,14 @@
---- dwm.c	2021-07-11 19:06:16.865593532 +0100
-+++ dwm_new.c	2021-07-11 19:11:00.125603357 +0100
-@@ -198,6 +198,7 @@
- static void expose(XEvent *e);
+--- dwm.c	2021-07-11 22:17:10.902666299 +0100
++++ dwm_new.c	2021-07-11 22:18:21.886002158 +0100
+@@ -200,6 +200,7 @@
  static void focus(Client *c);
  static void focusin(XEvent *e);
-+static void focusurgent(const Arg *arg);
  static void focusmon(const Arg *arg);
++static void focusurgent(const Arg *arg);
  static void focusstack(const Arg *arg);
  static Atom getatomprop(Client *c, Atom prop);
-@@ -1058,6 +1059,21 @@
+ static int getrootptr(int *x, int *y);
+@@ -1104,6 +1105,21 @@
  }
  
  void
@@ -27,6 +27,6 @@
 +}
 +
 +void
- focusmon(const Arg *arg)
+ focusstack(const Arg *arg)
  {
- 	Monitor *m;
+ 	Client *c = NULL, *i;

@@ -1,6 +1,6 @@
---- dwm.c	2021-07-11 10:46:16.989528374 +0100
-+++ dwm_new.c	2021-07-11 10:48:06.192866941 +0100
-@@ -935,7 +935,7 @@
+--- dwm.c	2021-07-11 22:11:01.649319769 +0100
++++ dwm_new.c	2021-07-11 22:12:00.805988560 +0100
+@@ -967,7 +967,7 @@
  		stw = getsystraywidth();
  
  	/* draw status first so it can be overdrawn by tags later */
@@ -9,14 +9,14 @@
  		sw = m->ww - drawstatusbar(m, bh, stext);
  	}
  
-@@ -2393,9 +2393,12 @@
+@@ -2451,9 +2451,11 @@
  void
  updatestatus(void)
  {
 +	Monitor* m;
  	if (!gettextprop(root, XA_WM_NAME, stext, sizeof(stext)))
  		strcpy(stext, "dwm-"VERSION);
- 	drawbar(selmon);
+-	drawbar(selmon);
 +	for(m = mons; m; m = m->next)
 +		drawbar(m);
  	updatesystray();

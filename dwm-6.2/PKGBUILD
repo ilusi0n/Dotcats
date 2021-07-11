@@ -22,13 +22,12 @@ _patches=(
   02-bar-height-dwm-6.2.diff
   03-status2d-dwm-6.2.diff
   04-cyclelayouts-dwm-6.2.diff
-  05-fullfunctionalgaps-dwm-6.2.diff
+  05-pergtag-functionalgaps-dwm-6.2.diff
   06-statusallmon-dwm-6.2.diff
-  07-shiftviewclients-dwm-6.2.diff
+  07-shiftviewclient-dwm-6.2.diff
   08-focusurgent-dwm-6.2.diff
-  09-push-dwm-6.2.diff
-  10-placemouse-dwm-6.2.diff
-  11-cool-autostart-dwm-6.2.diff
+  09-placemouse-dwm-6.2.diff
+  10-cool-autostart-dwm-6.2.diff
 )
 source=(${_source[@]} ${_patches[@]})
 

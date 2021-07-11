@@ -2,8 +2,8 @@
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const unsigned int gappx     = 12;        /* default gap between windows in pixels */
-static const int startwithgaps	    = 1;	 /* 1 means gaps are used by default */
+static const int startwithgaps[]    = { 1 };	/* 1 means gaps are used by default, this can be customized for each tag */
+static const unsigned int gappx[]   = { 12 };   /* default gap between windows in pixels, this can be customized for each tag */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -33,7 +33,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "I", "II", "III", "IV", "V", "VI", "VII", "VII", "VIII" };
+static const char *tags[] = { "cdm", "www", "im", "mail", "dev", "media", "vm", "doc" };
 
 static const Rule rules[] = {
 	/* class               instance    title       tags mask     isfloating   monitor */
@@ -64,8 +64,8 @@ static const Layout layouts[] = {
 
 
 static const char *const autostart[] = {
-	"feh", "--bg-scale /mnt/Data/Wallpapers/moon.jpg", NULL,
-	// "slstatus", NULL,
+	"feh", "--bg-scale", "/mnt/Data/Wallpapers/moon.jpg", NULL,
+	"slstatus", NULL,
 	NULL /* terminate */
 };
 
@@ -130,8 +130,6 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	{ MODKEY,           			XK_Left,   shiftviewclients, { .i = -1 } },
     { MODKEY,           			XK_Right,  shiftviewclients, { .i = +1 } },
-	{ MODKEY|ShiftMask,             XK_Up,     pushup,         {0} },
-    { MODKEY|ShiftMask,             XK_Down,   pushdown,       {0} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
