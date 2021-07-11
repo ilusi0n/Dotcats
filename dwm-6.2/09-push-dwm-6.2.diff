@@ -1,0 +1,69 @@
+--- dwm.c	2021-07-11 19:15:04.615611906 +0100
++++ dwm_new.c	2021-07-11 19:16:38.025615178 +0100
+@@ -219,7 +219,10 @@
+ static void movemouse(const Arg *arg);
+ static Client *nexttiled(Client *c);
+ static void pop(Client *);
++static Client *prevtiled(Client *c);
+ static void propertynotify(XEvent *e);
++static void pushdown(const Arg *arg);
++static void pushup(const Arg *arg);
+ static void quit(const Arg *arg);
+ static Monitor *recttomon(int x, int y, int w, int h);
+ static void removesystrayicon(Client *i);
+@@ -1492,6 +1495,16 @@
+ 	arrange(c->mon);
+ }
+ 
++Client *
++prevtiled(Client *c) {
++	Client *p, *r;
++
++	for(p = selmon->clients, r = NULL; p && p != c; p = p->next)
++		if(!p->isfloating && ISVISIBLE(p))
++			r = p;
++	return r;
++}
++
+ void
+ propertynotify(XEvent *e)
+ {
+@@ -1539,6 +1552,38 @@
+ 	}
+ }
+ 
++
++void
++pushdown(const Arg *arg) {
++	Client *sel = selmon->sel, *c;
++
++	if(!sel || sel->isfloating || sel == nexttiled(selmon->clients))
++		return;
++	if((c = nexttiled(sel->next))) {
++		detach(sel);
++		sel->next = c->next;
++		c->next = sel;
++	}
++	focus(sel);
++	arrange(selmon);
++}
++
++void
++pushup(const Arg *arg) {
++	Client *sel = selmon->sel, *c;
++
++	if(!sel || sel->isfloating)
++		return;
++	if((c = prevtiled(sel)) && c != nexttiled(selmon->clients)) {
++		detach(sel);
++		sel->next = c;
++		for(c = selmon->clients; c->next != sel->next; c = c->next);
++		c->next = sel;
++	}
++	focus(sel);
++	arrange(selmon);
++}
++
+ void
+ quit(const Arg *arg)
+ {

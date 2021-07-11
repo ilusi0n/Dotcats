@@ -1,23 +1,23 @@
+/* See LICENSE file for copyright and license details. */
+
+/* interval between updates (in ms) */
+const unsigned int interval = 1000;
+
 /* text to show if no value can be retrieved */
 static const char unknown_str[] = "n/a";
 
 /* maximum output string length */
-#define MAXLEN 256
-/*
- * if you want to change buffer size for each segment,
- * then change `BUFF_SZ` in util.h
- */
-
+#define MAXLEN 2048
 
 /*
  * function            description                     argument (example)
  *
  * battery_perc        battery percentage              battery name (BAT0)
- *                                                     NULL on OpenBSD/FreeBSD
+ *                                                     NULL on OpenBSD
  * battery_state       battery charging state          battery name (BAT0)
- *                                                     NULL on OpenBSD/FreeBSD
+ *                                                     NULL on OpenBSD
  * battery_remaining   battery remaining HH:MM         battery name (BAT0)
- *                                                     NULL on OpenBSD/FreeBSD
+ *                                                     NULL on OpenBSD
  * cpu_perc            cpu usage in percent            NULL
  * cpu_freq            cpu frequency in MHz            NULL
  * datetime            date and time                   format string (%F %T)
@@ -34,7 +34,7 @@ static const char unknown_str[] = "n/a";
  * keyboard_indicators caps/num lock indicators        format string (c?n?)
  *                                                     see keyboard_indicators.c
  * keymap              layout (variant) of current     NULL
- *                     keymap                          (interval must be 1)
+ *                     keymap
  * load_avg            load average                    NULL
  * netspeed_rx         receive network speed           interface name (wlan0)
  * netspeed_tx         transfer network speed          interface name (wlan0)
@@ -49,57 +49,24 @@ static const char unknown_str[] = "n/a";
  * swap_perc           swap usage in percent           NULL
  * swap_total          total swap size in GB           NULL
  * swap_used           used swap in GB                 NULL
- * temp                temperature in degree celsius   NULL on OpenBSD and Linux
- *                                                     thermal zone on FreeBSD
- *                                                     (tz0, tz1, etc.)
+ * temp                temperature in degree celsius   sensor file
+ *                                                     (/sys/class/thermal/...)
+ *                                                     NULL on OpenBSD
  * uid                 UID of current user             NULL
  * uptime              system uptime                   NULL
  * username            username of current user        NULL
  * vol_perc            OSS/ALSA volume in percent      mixer file (/dev/mixer)
  * wifi_perc           WiFi signal in percent          interface name (wlan0)
  * wifi_essid          WiFi ESSID                      interface name (wlan0)
- *
- * EXTRA INFO:
- *
- * - every arg must ends with `END`
- *
- * - if you want to run function once (for example `hostname`),
- *   then set interval to `ONCE`
- *
- * EXTRA CONFIGS IN:
- *   - battery.c
- *   - volume.c
  */
-
-/* for usleep */
-#define SEC * 1000
-#define MIN * 60 SEC
-#define ONCE ((unsigned int) -1)  /* to run */
-
-/**
-WHITE \x01
-BLUE \x02
-GRAY \x03
-RED \x04
-ORANGE \x05
-LIGHT_GREEN \x06
-PURPLE \x07
-LIGHT_BLUE \x08
-AZURE \x09
-**/
-
-static const char pulse_volume[] = "ponymix get-volume";
-static const char weather[] = "cat /tmp/weather";
-
-static struct arg_t args[] = {
-
-/* function             format		                        argument	      interval (in ms) */
-/*{ wifi_essid,		    "\x04[ \x07%s\x04 ]",	            "wlo1",         60 SEC, END },*/
-{ disk_perc,		    "\x04[ \x05 Data: %s%%\x04 ]",	    "/mnt/Data",      60 SEC, END },
-{ run_command,		    "\x04[ \x08%s\x04 ]",	            weather,          60 SEC, END },
-{ battery_perc,		    "\x04[ \x06%s%%\x04 ]",	            "BAT1",           60 SEC, END },
-{ temp,		            "\x04[ \x07T: %s\x04 ]",	        NULL,		      1 SEC, END },
-{ cpu_perc,		        "\x04[ \x05 CPU: %s%%\x04 ]",	    NULL,		      1 SEC, END },
-{ run_command,		    "\x04[ \x08Vol: %s%%\x04 ]",	        pulse_volume,     1 SEC, END },
-{ datetime,		        "\x04[ \x06%s\x04 ]",	            "%a %b %d, %R",	  1 SEC, END },
+static const struct arg args[] = {
+	/* function format          argument */
+	/*{ wifi_essid,		    "\x04[ \x07%s\x04 ]",	            "wlo1",         60 SEC, END },*/
+	{ disk_perc,		    "\x04[ \x05 Data: %s%%\x04 ]",	    "/mnt/Data"},
+	{ run_command,		    "\x04[ \x08%s\x04 ]",	            weather},
+	{ battery_perc,		    "\x04[ \x06%s%%\x04 ]",	            "BAT1" },
+	{ temp,		            "\x04[ \x07T: %s\x04 ]",	        NULL },
+	{ cpu_perc,		        "\x04[ \x05 CPU: %s%%\x04 ]",	    NULL },
+	{ run_command,		    "\x04[ \x08Vol: %s%%\x04 ]",	        pulse_volume },
+	{ datetime,		        "\x04[ \x06%s\x04 ]",	            "%a %b %d, %R" },
 };

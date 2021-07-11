@@ -12,32 +12,37 @@ license=('MIT')
 options=(zipman)
 depends=('libx11' 'libxinerama' 'libxft' 'freetype2')
 install=dwm.install
-source=(http://dl.suckless.org/dwm/dwm-$pkgver.tar.gz
-	config.h
+_source=(http://dl.suckless.org/dwm/dwm-$pkgver.tar.gz
 	dwm.desktop
-  drw.h
-  include_patches.h
-  transient.c
-  util.h
-  util.c
-  dwm.c)
-sha256sums=('97902e2e007aaeaa3c6e3bed1f81785b817b7413947f1db1d3b62b8da4cd110e'
-            'ce156c4ff6be6f664f5c1eb41e8ae8228c15d0282410be3ecdd58598bb8867d2'
-            'bc36426772e1471d6dd8c8aed91f288e16949e3463a9933fee6390ee0ccd3f81')
+	config.h
+)
+
+_patches=(
+  01-systray-dwm-6.2.diff
+  02-bar-height-dwm-6.2.diff
+  03-status2d-dwm-6.2.diff
+  04-cyclelayouts-dwm-6.2.diff
+  05-fullfunctionalgaps-dwm-6.2.diff
+  06-statusallmon-dwm-6.2.diff
+  07-shiftviewclients-dwm-6.2.diff
+  08-focusurgent-dwm-6.2.diff
+  09-push-dwm-6.2.diff
+  10-placemouse-dwm-6.2.diff
+  11-cool-autostart-dwm-6.2.diff
+)
+source=(${_source[@]} ${_patches[@]})
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
   cp "$srcdir/config.h" config.h
-  cp "$srcdir/drw.h" drw.h
-  cp "$srcdir/include_patches.h" include_patches.h
-  cp "$srcdir/transient.c" transient.c
-  cp "$srcdir/util.h" util.h
-  cp "$srcdir/util.c" util.c
-  cp "$srcdir/dwm.c" dwm.c
 }
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
+  for PATCH in "${_patches[@]}"; do
+  	echo "=> $PATCH"
+    patch < ../$PATCH || return 1
+  done
   make X11INC=/usr/include/X11 X11LIB=/usr/lib/X11 FREETYPEINC=/usr/include/freetype2
 }
 

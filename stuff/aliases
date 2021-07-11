@@ -6,7 +6,6 @@ SCRIPTS_DIR="$HOME/.scripts"
 
 alias subl='subl > /dev/null 2<&1'
 alias pcinfo='inxi -Fxz'
-alias emptytrash='$HOME/.scripts/empty_trash'
 alias brokenLinks='find . -type l -! -exec test -e {} \; -print'
 alias assoc="subl ~/.local/share/applications/mimeapps.list"
 alias highErrors='journalctl -p 0..3 -xn'
@@ -17,7 +16,7 @@ alias getsub='subberthehut -s -a -l por,pob'
 alias verynice="ionice -c3 nice -n 15"
 alias buildme="ionice -c3 nice -n 15 makepkg -si"
 alias good='schedtool -D -n 19 -e'
-alias rm='trash put'
+alias rm='trash-put'
 alias grep='grep --color=auto'
 #alias ls='ls --color=auto'
 #alias ll="ls --color -lh"

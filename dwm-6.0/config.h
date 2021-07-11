@@ -20,7 +20,8 @@ static const Bool topbar = True;                /* false means bottom bar */
 static const float mfact = 0.50;                /* factor of master area size [0.05..0.95] */
 static const int nmaster = 1;                   /* number of clients in master area */
 static const Bool resizehints = False;          /* true means respect size hints in tiled resizals */
-static const char font[] = "-*-terminus-medium-r-normal-*-12-*-*-*-*-*-*-*";
+//static const char font[] = "-*-tamsynmod-medium-r-*-*-18-*-*-*-*-*-*-*";
+static const char font[]          = { "monospace:size=10" };
 
 
 #define BLUE   "#00BFFF"
@@ -75,8 +76,6 @@ static const Tag tags[] = {
 
 static const Rule rules[] = {
 	/* class               instance    title       tags mask     isfloating isCenter  	monitor */
-	{ NULL,                "Google-chrome", NULL,  1 << 1,       False,     False,     -1 },
-	{ NULL,                "Chromium", NULL,       1 << 1,       False,     False,     -1 },
 	{ "Firefox",           NULL,       NULL,       1 << 1,       False,     False,     -1 },
 	{ "Opera",             NULL,       NULL,       1 << 1,       False,     False,     -1 },
 	{ "Skype",             NULL,       NULL,       1 << 2,       False,     False,     -1 },
@@ -94,9 +93,8 @@ static const Rule rules[] = {
 	{ "plugin-container",  NULL,       NULL,       1 << 1,       True,      False,     -1 },
 	{ "Eclipse",           NULL,       NULL,       1 << 4,       False,     False,     -1 },
 	{ "Eclipse",           NULL,       NULL,       1 << 4,       False,     False,     -1 },
-    { "Spotify", 		   NULL     ,  NULL,       1 << 5,         True,      False,     -1 },
-    { "Google-chrome-stable", "crx_nckgahadagoaajjgafhacjanaoiihapd",  NULL,       1 << 2,       False,False,   -1 },
-    { "Chromium", "crx_nckgahadagoaajjgafhacjanaoiihapd",  NULL,       1 << 2,       False,False,   -1 },
+    { "Spotify", 		   NULL,  	   NULL,       1 << 5,       True,      False,     -1 },
+    { "Google-chrome", 	   NULL,  	   NULL,       1 << 2,       False,		False,   	0 },
 
 };
 
@@ -108,17 +106,10 @@ static const char *launcher[] = { "rlaunch", NULL };
 static const char *touchpadcmd[] = { "/bin/sh", "/home/ilusi0n/.scripts/touchpad_toggle", NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char *chrome[]   = { "google-chrome-stable", NULL, "Google-chrome-stable" };
-static const char *chromium[]   = { "chromium", NULL, "Chromium" };
-static const char *opera[]   = { "opera", NULL, "Opera" };
-static const char *firefox[]  = { "firefox", NULL, "Firefox" };
 static const char *thunar[]  = { "thunar", NULL };
 static const char *qbittorrent[]  = { "qbittorrent", NULL };
 static const char *gvim[]     = { "gvim", NULL };
-static const char *skype[]    = { "skype", NULL, "Skype" };
-static const char *thunderbird[]  = { "thunderbird", NULL, "Thunderbird" };
-static const char *gmpc[]  = { "gmpc", NULL, "Gmpc" };
 static const char *lock[]  = { "/bin/sh", "/home/ilusi0n/.scripts/lock", NULL };
-static const char *playonlinux[]  = { "playonlinux", NULL, "Playonlinux" };
 static const char *upvol[] = { "/bin/sh", "/home/ilusi0n/.scripts/sound", "up", NULL };
 static const char *downvol[] = { "/bin/sh", "/home/ilusi0n/.scripts/sound", "down", NULL };
 static const char *upbri[] = { "light", "-A", "10", NULL };
@@ -130,16 +121,9 @@ static const char *print[] = { "/bin/sh", "/home/ilusi0n/.scripts/print",NULL};
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ ALTKEY,                       XK_c,      runorraise,     {.v = chrome } },
-	{ ALTKEY,                       XK_o,      runorraise,     {.v = opera } },
-    { ALTKEY,                       XK_p,      runorraise,     {.v = playonlinux } },
-	{ ALTKEY,                       XK_f,      runorraise,     {.v = firefox } },
-	{ ALTKEY,                       XK_m,      runorraise,     {.v = gmpc } },
 	{ ALTKEY,                       XK_2,      spawn,          {.v = thunar } },
-	{ ALTKEY,                       XK_q,      spawn,          {.v = qbittorrent } },
 	{ ALTKEY,                       XK_g,      spawn,          {.v = gvim } },
-	{ ALTKEY,                       XK_s,      runorraise,          {.v = skype } },
     { ALTKEY,                       XK_z,      spawn,          {.v = touchpadcmd } },
-	{ ALTKEY,                       XK_t,      runorraise,          {.v = thunderbird } },
 	{ ControlMask|ALTKEY,           XK_l,      spawn,          {.v = lock } },
 	{ 0,              XF86XK_AudioRaiseVolume, spawn,          {.v = upvol} },
 	{ ControlMask,                  XK_Up,     spawn,          {.v = upvol} },
@@ -170,7 +154,6 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Right,  tagcycle,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_Up,     pushup,         {0} },
     { MODKEY|ShiftMask,             XK_Down,   pushdown,       {0} },
-/*	{ MODKEY,                       XK_f,      togglemax,      {0} },*/
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)

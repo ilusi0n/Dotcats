@@ -1,0 +1,32 @@
+--- dwm.c	2021-07-11 19:06:16.865593532 +0100
++++ dwm_new.c	2021-07-11 19:11:00.125603357 +0100
+@@ -198,6 +198,7 @@
+ static void expose(XEvent *e);
+ static void focus(Client *c);
+ static void focusin(XEvent *e);
++static void focusurgent(const Arg *arg);
+ static void focusmon(const Arg *arg);
+ static void focusstack(const Arg *arg);
+ static Atom getatomprop(Client *c, Atom prop);
+@@ -1058,6 +1059,21 @@
+ }
+ 
+ void
++focusurgent(const Arg *arg) {
++	Client *c;
++	int i;
++	for(c=selmon->clients; c && !c->isurgent; c=c->next);
++	if(c) {
++		for(i=0; i < LENGTH(tags) && !((1 << i) & c->tags); i++);
++		if(i < LENGTH(tags)) {
++			const Arg a = {.ui = 1 << i};
++			view(&a);
++			focus(c);
++		}
++	}
++}
++
++void
+ focusmon(const Arg *arg)
+ {
+ 	Monitor *m;
