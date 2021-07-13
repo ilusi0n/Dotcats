@@ -1,0 +1,7 @@
+[Unit]
+Description=Weather file on /tmp
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c '/home/ilusi0n/.scripts/weather > /tmp/weather 2>&1'

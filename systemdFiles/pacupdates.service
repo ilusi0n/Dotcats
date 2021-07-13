@@ -1,0 +1,7 @@
+[Unit]
+Description=Pacupdates file on /tmp
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c 'checkupdates | wc -l > /tmp/pacupdates 2>&1'

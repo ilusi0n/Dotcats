@@ -1,0 +1,11 @@
+--- config.mk	2021-07-13 20:34:35.316168411 +0100
++++ config_new.mk	2021-07-13 20:36:26.201167733 +0100
+@@ -12,7 +12,7 @@
+ 
+ # flags
+ CPPFLAGS = -I$(X11INC) -D_DEFAULT_SOURCE
+-CFLAGS   = -std=c99 -pedantic -Wall -Wextra -Os
++CFLAGS   = -march=native -std=c99 -pedantic -Wall -Wextra -O3
+ LDFLAGS  = -L$(X11LIB) -s
+ # OpenBSD: add -lsndio
+ # FreeBSD: add -lkvm

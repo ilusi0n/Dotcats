@@ -93,12 +93,12 @@ static const char *termcmd[]  = { "alacritty", NULL };
 static const char *chrome[]   = { "google-chrome-stable", NULL, "Google-chrome-stable" };
 static const char *thunar[]  = { "thunar", NULL };
 static const char *gvim[]     = { "gvim", NULL };
-static const char *lock[]  = { "/bin/sh", "/home/ilusi0n/.scripts/lock", NULL };
 static const char *upvol[] = { "/bin/sh", "/home/ilusi0n/.scripts/sound", "up", NULL };
 static const char *downvol[] = { "/bin/sh", "/home/ilusi0n/.scripts/sound", "down", NULL };
 static const char *upbri[] = { "light", "-A", "10", NULL };
 static const char *downbri[] = { "light", "-U", "10", NULL };
 static const char *print[] = { "/bin/sh", "/home/ilusi0n/.scripts/print",NULL};
+static const char *lock[]  = { "/bin/sh", "/home/ilusi0n/.scripts/lock", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */

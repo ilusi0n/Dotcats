@@ -1,11 +1,12 @@
 #!/bin/bash
 
+pamixer -u > /dev/null 2>&1
 case "$1" in
 	up)
-		ponymix increase 5  > /dev/null 2>&1
+		pamixer -i 5  > /dev/null 2>&1
 		;;
 	down)
-		ponymix decrease 5  > /dev/null 2>&1
+		pamixer -d 5  > /dev/null 2>&1
 		;;
 	*)
 		echo $"Usage: $0 {up|down}"
