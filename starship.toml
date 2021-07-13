@@ -1,0 +1,57 @@
+    # Don't print a new line at the start of the prompt
+add_newline = false
+
+#[line_break]
+#disabled=true
+# Replace the "❯" symbol in the prompt with "➜"
+
+[character]                            # The name of the module we are configuring is "character"
+error_symbol = "[  ✗](bold red)"
+success_symbol = "[  λ](bold fg:#F74510)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
+
+
+# Use custom format
+format = """
+[┌────────────────](bold #32ebad)
+[│](bold #32ebad)$directory$rust$package
+[└─|λ|](bold #32ebad) """
+
+
+# Disable the package module, hiding it from the prompt completely
+[package]
+disabled = false
+
+
+[cmd_duration]
+min_time = 5000
+show_milliseconds = false
+disabled = false
+format="'$duration... (italic #87A752)"
+
+
+[directory]
+truncation_length = 5
+format = "[$path]($style)[$lock_symbol]($lock_style) "
+style = "bold #32ebad"
+read_only = "🔒"
+read_only_style= "bold white"
+
+#[hostname]
+#ssh_only = false
+## suffix = ">>"
+
+#trim_at = ".companyname.com"
+#disabled = false
+#style = "bold italic #87A752"
+
+[username]
+style_user = "white bold"
+style_root = "black bold"
+format = "[$user]($style) "
+disabled = false
+show_always = true
+
+
+[git_commit]
+commit_hash_length = 8
+style = "bold white"

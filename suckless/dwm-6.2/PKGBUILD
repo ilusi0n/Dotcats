@@ -18,6 +18,7 @@ _source=(http://dl.suckless.org/dwm/dwm-$pkgver.tar.gz
 )
 
 _patches=(
+  00-buildflags-dwm-6.2.diff
   01-systray-dwm-6.2.diff
   02-bar-height-dwm-6.2.diff
   03-status2d-dwm-6.2.diff

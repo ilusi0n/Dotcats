@@ -44,6 +44,8 @@ fi
 # Startup stuff #
 #---------------#
 
+eval "$(starship init zsh)"
+
 if [ "$(pgrep X)" ]
 then
     $HOME/.scripts/thecat.sh
@@ -54,5 +56,5 @@ fi
 # Prompt #
 #--------#
 
-PROMPT='%F{green}%~%F{blue} >>%f '
+#PROMPT='%F{green}%~%F{blue} >>%f '
 #RPROMPT='%F{blue}]'

@@ -29,7 +29,7 @@ static const int showsystray        = 1;     /* 0 means no systray */
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { WHITE, BLACK, BLACK },
-	[SchemeSel]  = { AZURE, BLACK,  BLACK  },
+	[SchemeSel]  = { AZURE, BLACK,  AZURE  },
 };
 
 /* tagging */
@@ -130,6 +130,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	{ MODKEY,           			XK_Left,   shiftviewclients, { .i = -1 } },
     { MODKEY,           			XK_Right,  shiftviewclients, { .i = +1 } },
+	{ ALTKEY,             			XK_g,  	   setgaps,        {.i = GAP_TOGGLE} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)

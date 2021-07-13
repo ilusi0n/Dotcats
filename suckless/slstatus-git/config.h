@@ -59,14 +59,32 @@ static const char unknown_str[] = "n/a";
  * wifi_perc           WiFi signal in percent          interface name (wlan0)
  * wifi_essid          WiFi ESSID                      interface name (wlan0)
  */
+
+// #define BLUE   "#00BFFF"
+// #define WHITE  "#cdcdcd"
+// #define BLACK  "#000000"
+// #define ORANGE "#ff8c00"
+// #define RED    "#ff0000"
+// #define GRAY   "#666666"
+// #define PURPLE "#BF5FFF"
+// #define LIGHT_GREEN "#76EE00"
+// #define LIGHT_BLUE "#7DC1CF"
+// #define AZURE "#80d9d8"
+// #define LIGHT_ORANGE "#FFA07A"
+// #define LIGHT_GREEN2 "#78AB46"
+
+
+static const char pulse_volume[] = "ponymix get-volume";
+static const char weather[] = "cat /tmp/weather";
+
 static const struct arg args[] = {
 	/* function format          argument */
-	/*{ wifi_essid,		    "\x04[ \x07%s\x04 ]",	            "wlo1",         60 SEC, END },*/
-	{ disk_perc,		    "\x04[ \x05 Data: %s%%\x04 ]",	    "/mnt/Data"},
-	{ run_command,		    "\x04[ \x08%s\x04 ]",	            weather},
-	{ battery_perc,		    "\x04[ \x06%s%%\x04 ]",	            "BAT1" },
-	{ temp,		            "\x04[ \x07T: %s\x04 ]",	        NULL },
-	{ cpu_perc,		        "\x04[ \x05 CPU: %s%%\x04 ]",	    NULL },
-	{ run_command,		    "\x04[ \x08Vol: %s%%\x04 ]",	        pulse_volume },
-	{ datetime,		        "\x04[ \x06%s\x04 ]",	            "%a %b %d, %R" },
+	{ disk_perc,		    "^c#666666^[ ^c#BF5FFF^ %s%%^c#666666^ ] ",	    "/mnt/Data"},
+	{ run_command,		    "^c#666666^[ ^c#7DC1CF^%s^c#666666^ ] ",	        weather},
+	{ battery_perc,		    "^c#666666^[ ^c#76EE00^ %s%%^c#666666^ ] ",	    "BAT1" },
+	{ temp,		            "^c#666666^[ ^c#ff8c00^ %s^c#666666^ ] ",	        "/sys/class/thermal/thermal_zone0/temp" },
+	{ cpu_perc,		        "^c#666666^[ ^c#BF5FFF^ %s%%^c#666666^ ] ",	    NULL },
+	{ run_command,		    "^c#666666^[ ^c#7DC1CF^ %s%%^c#666666^ ] ",	    pulse_volume },
+	{ datetime,		        "^c#666666^[ ^c#76EE00^%s^c#666666^  ]",	        "%a %b %d, %R" },
+	{ kernel_release,		"^c#666666^[ ^c#00BFFF^%s^c#666666^  ]",	        NULL },
 };
