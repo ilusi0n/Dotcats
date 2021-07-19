@@ -4,18 +4,14 @@
 
 SCRIPTS_DIR="$HOME/.scripts"
 
-alias subl='subl > /dev/null 2<&1'
 alias pcinfo='inxi -Fxz'
 alias brokenLinks='find . -type l -! -exec test -e {} \; -print'
-alias assoc="subl ~/.local/share/applications/mimeapps.list"
+alias assoc="code ~/.local/share/applications/mimeapps.list"
 alias highErrors='journalctl -p 0..3 -xn'
 alias updateFontconfig='fc-cache -vf'
 alias rollback="git reset --hard HEAD"
 alias logX='journalctl -k -b -1'
 alias getsub='subberthehut -s -a -l por,pob'
-alias verynice="ionice -c3 nice -n 15"
-alias buildme="ionice -c3 nice -n 15 makepkg -si"
-alias good='schedtool -D -n 19 -e'
 alias rm='trash-put'
 alias grep='grep --color=auto'
 #alias ls='ls --color=auto'
@@ -26,25 +22,19 @@ alias cacheclean='paccache -rk2'
 alias halt='systemctl poweroff'
 alias sup='systemctl suspend'
 alias reboot='systemctl reboot'
-alias burniso='cdrecord -v dev=/dev/scd0'
-alias music='ncmpcpp'
 alias check='chkrootkit'
 alias checkme='rkhunter --update -c'
 alias fail='systemctl --failed'
 alias services='systemctl list-unit-files | grep enabled'
 alias size='du -sh $1'
-alias reflector='reflector -l 5 --sort rate -p http --save /etc/pacman.d/mirrorlist'
 alias updateXresources='xrdb ~/.Xresources'
 alias checkMemoryLeak='valgrind --tool=memcheck'
-alias checkLua='luac -p $1'
 alias redwm='/home/ilusi0n/.scripts/dwmMake.sh'
 alias zombies='ps -el | grep 'Z''
 alias top='htop'
 alias wasteSpace='ncdu'
 #alias myAge=" echo $(($(($(date +%s) - $(date -d "$(head -1 /var/log/pacman.log | cut -d ' ' -f 1,2 | tr -d '[]')" +%s))) / 86400)) days"
-alias suzie='sudo pacman -Sy; sudo pacman -S linux-ck-ivybridge-headers linux-zen-headers linux-headers linux-lts-headers --needed; sudo pacman -Su'
 alias myip="curl curlmyip.com"
-alias cower="cower -t ~/build -c"
 alias pk='killall -9 $1'
 start() { sudo systemctl start $1.service ; sudo systemctl status $1.service; }
 restart() { sudo systemctl restart $1.service ; sudo systemctl status $1.service; }
@@ -61,6 +51,5 @@ enable_user() { systemctl --user enable $1.service; }
 disable_user() { systemctl --user disable $1.service; }
 reload_user() { systemctl --user daemon-reload; }
 alias cpuspeed='watch grep \"cpu MHz\" /proc/cpuinfo'
-alias scheduler="sudo tee /sys/block/sda/queue/scheduler <<< $1"
-alias no_turbo="sudo tee /sys/devices/system/cpu/intel_pstate/no_turbo <<< $1"
 alias tmpfs="sudo mount -t tmpfs -o defaults,noatime,mode=1777 tmpfs $1"
+alias fan="sudo isw -s 0x72 80"

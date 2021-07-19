@@ -1,0 +1,49 @@
+--- dwm.c	2021-07-14 13:25:58.500243281 +0100
++++ dwm_new.c	2021-07-14 13:29:37.653241941 +0100
+@@ -84,7 +84,7 @@
+ enum { NetSupported, NetWMName, NetWMState, NetWMCheck,
+        NetSystemTray, NetSystemTrayOP, NetSystemTrayOrientation, NetSystemTrayOrientationHorz,
+        NetWMFullscreen, NetActiveWindow, NetWMWindowType,
+-       NetWMWindowTypeDialog, NetClientList, NetLast }; /* EWMH atoms */
++       NetWMWindowTypeDialog, NetClientList, NetClientListStacking, NetLast };  /* EWMH atoms */
+ enum { Manager, Xembed, XembedInfo, XLast }; /* Xembed atoms */
+ enum { WMProtocols, WMDelete, WMState, WMTakeFocus, WMLast }; /* default atoms */
+ enum { ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle,
+@@ -1408,6 +1408,8 @@
+ 	attachstack(c);
+ 	XChangeProperty(dpy, root, netatom[NetClientList], XA_WINDOW, 32, PropModeAppend,
+ 		(unsigned char *) &(c->win), 1);
++	XChangeProperty(dpy, root, netatom[NetClientListStacking], XA_WINDOW, 32, PropModePrepend,
++		(unsigned char *) &(c->win), 1);
+ 	XMoveResizeWindow(dpy, c->win, c->x + 2 * sw, c->y, c->w, c->h); /* some windows require this */
+ 	setclientstate(c, NormalState);
+ 	if (c->mon == selmon)
+@@ -2176,6 +2178,7 @@
+ 	xatom[Manager] = XInternAtom(dpy, "MANAGER", False);
+ 	xatom[Xembed] = XInternAtom(dpy, "_XEMBED", False);
+ 	xatom[XembedInfo] = XInternAtom(dpy, "_XEMBED_INFO", False);
++	netatom[NetClientListStacking] = XInternAtom(dpy, "_NET_CLIENT_LIST_STACKING", False);
+ 	/* init cursors */
+ 	cursor[CurNormal] = drw_cur_create(drw, XC_left_ptr);
+ 	cursor[CurResize] = drw_cur_create(drw, XC_sizing);
+@@ -2202,6 +2205,7 @@
+ 	XChangeProperty(dpy, root, netatom[NetSupported], XA_ATOM, 32,
+ 		PropModeReplace, (unsigned char *) netatom, NetLast);
+ 	XDeleteProperty(dpy, root, netatom[NetClientList]);
++	XDeleteProperty(dpy, root, netatom[NetClientListStacking]);
+ 	/* select events */
+ 	wa.cursor = cursor[CurNormal]->cursor;
+ 	wa.event_mask = SubstructureRedirectMask|SubstructureNotifyMask
+@@ -2585,6 +2589,12 @@
+ 			XChangeProperty(dpy, root, netatom[NetClientList],
+ 				XA_WINDOW, 32, PropModeAppend,
+ 				(unsigned char *) &(c->win), 1);
++	XDeleteProperty(dpy, root, netatom[NetClientListStacking]);
++	for (m = mons; m; m = m->next)
++		for (c = m->stack; c; c = c->snext)
++			XChangeProperty(dpy, root, netatom[NetClientListStacking],
++				XA_WINDOW, 32, PropModeAppend,
++				(unsigned char *) &(c->win), 1);
+ }
+ 
+ int

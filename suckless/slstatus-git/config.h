@@ -73,15 +73,14 @@ static const char unknown_str[] = "n/a";
 // #define LIGHT_ORANGE "#FFA07A"
 // #define LIGHT_GREEN2 "#78AB46"
 
-
 static const char pulse_volume[] = "if [[ $(pamixer --get-mute) == 'true' ]]; then echo ; else echo  $(pamixer --get-volume)%; fi";
 static const char weather[] = "cat /tmp/weather";
 static const char pacupdates[] = "cat /tmp/pacupdates";
 
 static const struct arg args[] = {
 	/* function format          argument */
-	{ run_command,		    "^c#666666^[  ^c#BF5FFF^ %s^c#666666^  ] ",pacupdates},
-	{ disk_perc,		    "^c#666666^[  ^c#00BFFF^ %s%%^c#666666^  ] ",	    "/mnt/Data"},
+	{ run_command,		    "^c#666666^[  ^c#00BFFF^ %s^c#666666^  ] ",pacupdates},
+	{ disk_perc,		    "^c#666666^[  ^c#BF5FFF^ %s%%^c#666666^  ] ",	    "/mnt/Data"},
 	{ run_command,		    "^c#666666^[  ^c#7DC1CF^%s^c#666666^  ] ",	        weather},
 	{ battery_perc,		    "^c#666666^[  ^c#76EE00^ %s%%^c#666666^  ] ",	    "BAT1" },
 	{ temp,		            "^c#666666^[  ^c#ff8c00^ %s^c#666666^  ] ",	        "/sys/class/thermal/thermal_zone0/temp" },

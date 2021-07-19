@@ -29,6 +29,10 @@ _patches=(
   08-focusurgent-dwm-6.2.diff
   09-placemouse-dwm-6.2.diff
   10-cool-autostart-dwm-6.2.diff
+  11-netclientliststacking-dwm-6.2.diff
+  12-ewmhtags-dwm-6.2.diff
+  13-decorhints-dwm-6.2.diff
+  14-togglefullscreen-dwm-6.2.diff
 )
 source=(${_source[@]} ${_patches[@]})
 

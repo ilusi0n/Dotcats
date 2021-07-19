@@ -1,57 +1,121 @@
-    # Don't print a new line at the start of the prompt
-add_newline = false
-
-#[line_break]
-#disabled=true
 # Replace the "❯" symbol in the prompt with "➜"
-
-[character]                            # The name of the module we are configuring is "character"
-error_symbol = "[  ✗](bold red)"
-success_symbol = "[  λ](bold fg:#F74510)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
-
+[character]
+success_symbol = "[➜](bold green)" 
 
 # Use custom format
 format = """
-[┌────────────────](bold #32ebad)
-[│](bold #32ebad)$directory$rust$package
-[└─|λ|](bold #32ebad) """
+[┌───────────────────](bold green)
+[│](bold green)$directory$rust$package
+[└─>](bold green) """
 
-
-# Disable the package module, hiding it from the prompt completely
-[package]
-disabled = false
-
-
-[cmd_duration]
-min_time = 5000
-show_milliseconds = false
-disabled = false
-format="'$duration... (italic #87A752)"
-
-
-[directory]
-truncation_length = 5
-format = "[$path]($style)[$lock_symbol]($lock_style) "
-style = "bold #32ebad"
-read_only = "🔒"
-read_only_style= "bold white"
-
-#[hostname]
-#ssh_only = false
-## suffix = ">>"
-
-#trim_at = ".companyname.com"
-#disabled = false
-#style = "bold italic #87A752"
 
 [username]
-style_user = "white bold"
+style_user = "green bold"
 style_root = "black bold"
-format = "[$user]($style) "
+format = " [$user]($style) ~ "
 disabled = false
 show_always = true
 
+[cmd_duration]
+min_time = 500
+format = "took [$duration](bold yellow)"
+
+[directory]
+format = "[$path]($style)[$read_only]($read_only_style) "
+style = "bold #f57800"
+read_only = "🔒"
+read_only_style = "red"
+
+[git_branch]
+format = "on [$symbol $branch ]($style)"
+symbol = " "
+style = "bold purple"
 
 [git_commit]
-commit_hash_length = 8
-style = "bold white"
+#format = "[\\($hash\\)]($style) [\\($tag\\)]($style)"
+style = "bold green"
+
+[git_status]
+format ='([\[$all_status$ahead_behind\]]($style))'
+conflicted = "="
+ahead =	"⇡${count} "
+behind = "⇣${count} "
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+untracked = "?${count} "
+stashed = "$${count} "
+modified = "!${count} "
+staged = "+${count} "
+renamed = "»${count} "
+deleted = "✘${count} "
+style =	"bold red"
+disabled = false
+
+[git_state]
+rebase = "REBASING"
+merge =	"MERGING"
+revert = "REVERTING"
+cherry_pick = "CHERRY-PICKING"
+bisect = "BISECTING"
+am = "AM"
+am_or_rebase = "AM/REBASE"
+style =	"bold yellow"
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+disabled = false
+
+[hg_branch]
+symbol = " "
+style =	"bold purple"
+format = "on [$symbol$branch]($style) "
+
+[memory_usage]
+format = "via $symbol [${ram}( | ${ram_pct})]($style)"
+symbol = " "
+style = "bold dimmed green"
+
+[nodejs]
+format = "via [$symbol$version]($style) "
+symbol = "⬢ "
+style = "bold green"
+disabled = false
+not_capable_style = "bold red"
+
+[status]
+format = "[$symbol$status]($style)"
+symbol = "✖"
+style = "bold red"
+disabled = true
+
+[battery]
+full_symbol = ""
+charging_symbol = ""
+discharging_symbol = ""
+
+[docker_context]
+symbol = " "
+
+[conda]
+symbol = " "
+
+[dart]
+symbol = " "
+
+[package]
+symbol = " "
+
+[perl]
+symbol = " "
+
+[php]
+symbol = " "
+
+[python]
+symbol = " "
+
+[ruby]
+symbol = " "
+
+[rust]
+symbol = " "
+
+[swift]
+symbol = "ﯣ "

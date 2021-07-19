@@ -1,5 +1,4 @@
 export EDITOR=vim
-#export PATH=$PATH:/home/ilusi0n/.gem/ruby/2.0.0/bin
 
 #= MODULES ====================================================================
 autoload -U compinit promptinit colors
@@ -57,4 +56,3 @@ fi
 #--------#
 
 #PROMPT='%F{green}%~%F{blue} >>%f '
-#RPROMPT='%F{blue}]'

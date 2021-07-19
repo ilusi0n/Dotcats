@@ -53,6 +53,7 @@ static const Rule rules[] = {
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static const int decorhints  = 1;    /* 1 means respect decoration hints */
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
@@ -99,6 +100,7 @@ static const char *upbri[] = { "light", "-A", "10", NULL };
 static const char *downbri[] = { "light", "-U", "10", NULL };
 static const char *print[] = { "/bin/sh", "/home/ilusi0n/.scripts/print",NULL};
 static const char *lock[]  = { "/bin/sh", "/home/ilusi0n/.scripts/lock", NULL };
+static const char *togglevol[] = { "/bin/sh", "/home/ilusi0n/.scripts/sound", "toggle", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -106,6 +108,7 @@ static Key keys[] = {
 	{ ALTKEY,                       XK_2,      spawn,          {.v = thunar } },
 	{ ALTKEY,                       XK_g,      spawn,          {.v = gvim } },
     { ALTKEY,                       XK_z,      spawn,          {.v = touchpadcmd } },
+	{ ALTKEY,                       XK_m,      spawn,          {.v = togglevol } },
 	{ ControlMask|ALTKEY,           XK_l,      spawn,          {.v = lock } },
 	{ ControlMask,                  XK_Up,     spawn,          {.v = upvol} },
 	{ ControlMask,                  XK_Down,   spawn,          {.v = downvol} },
@@ -130,7 +133,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	{ MODKEY,           			XK_Left,   shiftviewclients, { .i = -1 } },
     { MODKEY,           			XK_Right,  shiftviewclients, { .i = +1 } },
-	{ ALTKEY,             			XK_g,  	   setgaps,        {.i = GAP_TOGGLE} },
+	{ MODKEY,             			XK_g,  	   setgaps,        {.i = GAP_TOGGLE} },
+	{ MODKEY,                       XK_y,      togglefullscreen, {0} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
