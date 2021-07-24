@@ -2,8 +2,7 @@
 #
 ao=pulse
 msg-color=yes
-#hwdec=auto
-hwdec=auto-copy
+hwdec=auto
 
 # Subtiles
 sub-auto=fuzzy

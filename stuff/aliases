@@ -53,3 +53,4 @@ reload_user() { systemctl --user daemon-reload; }
 alias cpuspeed='watch grep \"cpu MHz\" /proc/cpuinfo'
 alias tmpfs="sudo mount -t tmpfs -o defaults,noatime,mode=1777 tmpfs $1"
 alias fan="sudo isw -s 0x72 80"
+alias dmesg='journalctl --dmesg -o short-monotonic --no-hostname --no-pager'

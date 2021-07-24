@@ -45,10 +45,10 @@ fi
 
 eval "$(starship init zsh)"
 
-if [ "$(pgrep X)" ]
-then
-    $HOME/.scripts/thecat.sh
-fi
+# if [ "$(pgrep X)" ]
+# then
+#     $HOME/.scripts/thecat.sh
+# fi
 
 
 #--------#

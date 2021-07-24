@@ -39,7 +39,7 @@ static const Rule rules[] = {
 	/* class               instance    title       tags mask     isfloating   monitor */
 	{ "Firefox",           NULL,       NULL,       1 << 1,       False,       -1 },
 	{ "VirtualBox",        NULL,       NULL,       1 << 6,       False,       -1 },
-	{ "Thunar",            NULL,       NULL,       1 << 5,       False,       -1 },
+	{ "Pcmanfm",           NULL,       NULL,       1 << 5,       False,       -1 },
 	{ "File-roller",       NULL,       NULL,       1 << 5,       False,       -1 },
 	{ "Evince",            NULL,       NULL,       1 << 7,       False,       -1 },
 	{ "Qpdfview",          NULL,       NULL,       1 << 7,       False,       -1 },
@@ -92,7 +92,7 @@ static const char *launcher[] = { "rlaunch", NULL };
 static const char *touchpadcmd[] = { "/bin/sh", "/home/ilusi0n/.scripts/touchpad_toggle", NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char *chrome[]   = { "google-chrome-stable", NULL, "Google-chrome-stable" };
-static const char *thunar[]  = { "thunar", NULL };
+static const char *file[]  = { "pcmanfm", NULL };
 static const char *gvim[]     = { "gvim", NULL };
 static const char *upvol[] = { "/bin/sh", "/home/ilusi0n/.scripts/sound", "up", NULL };
 static const char *downvol[] = { "/bin/sh", "/home/ilusi0n/.scripts/sound", "down", NULL };
@@ -105,7 +105,7 @@ static const char *togglevol[] = { "/bin/sh", "/home/ilusi0n/.scripts/sound", "t
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ ALTKEY,                       XK_c,      spawn,     	   {.v = chrome } },
-	{ ALTKEY,                       XK_2,      spawn,          {.v = thunar } },
+	{ ALTKEY,                       XK_2,      spawn,          {.v = file } },
 	{ ALTKEY,                       XK_g,      spawn,          {.v = gvim } },
     { ALTKEY,                       XK_z,      spawn,          {.v = touchpadcmd } },
 	{ ALTKEY,                       XK_m,      spawn,          {.v = togglevol } },
