@@ -5,7 +5,7 @@
 
 # Maintainer: Jackson McCrory <jackson@mccrory.xyz>
 pkgname=aslstatus-jadecell-git
-pkgver=0.9
+pkgver=0.9.r.
 pkgrel=1
 epoch=
 pkgdesc="JadeCell's build of aslstatus (multi-threaded slstatus)."
@@ -24,7 +24,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("git+$url" "config.h")
+source=("git+$url" "config.h" "config.mk")
 noextract=()
 md5sums=('SKIP' 'SKIP')
 validpgpkeys=()
@@ -36,6 +36,7 @@ pkgver() {
 
 prepare() {
     cp config.h aslstatus/config.h
+    cp config.mk aslstatus/config.mk
 }
 
 build() {

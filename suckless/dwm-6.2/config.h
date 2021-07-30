@@ -65,8 +65,6 @@ static const Layout layouts[] = {
 
 
 static const char *const autostart[] = {
-	"feh", "--bg-scale", "/mnt/Data/Wallpapers/moon.jpg", NULL,
-	"slstatus", NULL,
 	NULL /* terminate */
 };
 

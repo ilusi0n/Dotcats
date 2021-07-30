@@ -33,6 +33,7 @@ _patches=(
   12-ewmhtags-dwm-6.2.diff
   13-decorhints-dwm-6.2.diff
   14-togglefullscreen-dwm-6.2.diff
+  15-steam-dwm-6.2.diff
 )
 source=(${_source[@]} ${_patches[@]})
 
