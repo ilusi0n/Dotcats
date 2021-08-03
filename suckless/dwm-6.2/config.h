@@ -33,18 +33,18 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "cdm", "www", "im", "mail", "dev", "media", "vm", "doc" };
+static const char *tags[] = { "cdm", "www", "im", "dev", "media", "vbox", "doc" };
 
 static const Rule rules[] = {
 	/* class               instance    title       tags mask     isfloating   monitor */
 	{ "Firefox",           NULL,       NULL,       1 << 1,       False,       -1 },
-	{ "VirtualBox",        NULL,       NULL,       1 << 6,       False,       -1 },
-	{ "Pcmanfm",           NULL,       NULL,       1 << 5,       False,       -1 },
-	{ "File-roller",       NULL,       NULL,       1 << 5,       False,       -1 },
-	{ "Evince",            NULL,       NULL,       1 << 7,       False,       -1 },
-	{ "Qpdfview",          NULL,       NULL,       1 << 7,       False,       -1 },
+	{ "VirtualBox",        NULL,       NULL,       1 << 5,       False,       -1 },
+	{ "Pcmanfm",           NULL,       NULL,       1 << 4,       False,       -1 },
+	{ "File-roller",       NULL,       NULL,       1 << 4,       False,       -1 },
+	{ "Evince",            NULL,       NULL,       1 << 6,       False,       -1 },
+	{ "Qpdfview",          NULL,       NULL,       1 << 6,       False,       -1 },
 	{ "plugin-container",  NULL,       NULL,       1 << 1,       True,        -1 },
-    { "Spotify", 		   NULL,  	   NULL,       1 << 5,       True,        -1 },
+    { "Spotify", 		   NULL,  	   NULL,       1 << 4,       True,        -1 },
     { "Google-chrome", 	   NULL,  	   NULL,       1 << 1,       False,	 	  0 },
 
 };
@@ -65,6 +65,7 @@ static const Layout layouts[] = {
 
 
 static const char *const autostart[] = {
+	"slstatus", NULL,
 	NULL /* terminate */
 };
 

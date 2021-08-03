@@ -1,8 +1,6 @@
 #!/bin/sh
-#------EXPORTS---#
 
- XDG_CONFIG_HOME="$HOME/.config"
-export LIBVA_DRIVER_NAME=iHD
+export XDG_CONFIG_HOME="$HOME/.config"
 export EDITOR=leafpad
 export VDPAU_DRIVER=nvidia
 
@@ -22,14 +20,14 @@ PATH=~/bin:$PATH
 export PATH
 
 
-WM="dwm"
+WM="bspwm"
 
 case "$WM" in
     dwm)
         "$HOME/.scripts/autostart.sh" &
         exec dwm
         ;;
-    xmonad)
-        exec xmonad
+    bspwm)
+        exec bspwm
         ;;
 esac

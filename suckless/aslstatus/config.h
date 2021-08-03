@@ -94,13 +94,13 @@ static const char pacupdates[] = "cat /tmp/pacupdates";
 
 static struct arg_t args[] = {
 	/* function format          argument */
-	{ run_command,		    "^c#666666^[  ^c#00BFFF^ %s^c#666666^  ] ",        pacupdates,     60 SEC, END },
-	{ disk_perc,		    "^c#666666^[  ^c#BF5FFF^ %s%%^c#666666^  ] ",	    "/mnt/Data",    30 SEC, END },
-	{ run_command,		    "^c#666666^[  ^c#7DC1CF^%s^c#666666^  ] ",	        weather,        60 SEC, END },
+	{ run_command,		    "^c#666666^[  ^c#00BFFF^ %s^c#666666^  ] ",        pacupdates,     20 SEC, END },
+	{ disk_perc,		    "^c#666666^[  ^c#BF5FFF^ %s%%^c#666666^  ] ",	    "/mnt/Data",    60 SEC, END },
+	{ run_command,		    "^c#666666^[  ^c#7DC1CF^%s^c#666666^  ] ",	        weather,        20 SEC, END },
 	{ battery_perc,		    "^c#666666^[  ^c#76EE00^ %s%%^c#666666^  ] ",	    "BAT1",         30 SEC, END },
 	{ temp,		            "^c#666666^[  ^c#ff8c00^ %s^c#666666^  ] ",	    "/sys/class/thermal/thermal_zone0/temp", 2 SEC, END },
 	{ cpu_perc,		        "^c#666666^[  ^c#BF5FFF^ %s%%^c#666666^  ] ",	    NULL,          2 SEC, END},
 	{ run_command,		    "^c#666666^[  ^c#7DC1CF^ %s^c#666666^  ] ",	        pulse_volume,  2 SEC, END },
-	{ datetime,		        "^c#666666^[  ^c#76EE00^%s^c#666666^  ]",	        "%a %b %d, %R", 2 SEC, END },
+	{ datetime,		        "^c#666666^[  ^c#76EE00^%s^c#666666^  ]",	        "%a %b %d, %R", 1 SEC, END },
 	{ kernel_release,		"^c#666666^[  ^c#00BFFF^%s^c#666666^  ]",	        NULL,           ONCE, END },
 };

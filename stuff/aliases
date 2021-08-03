@@ -16,7 +16,7 @@ alias rm='trash-put'
 alias grep='grep --color=auto'
 #alias ls='ls --color=auto'
 #alias ll="ls --color -lh"
-alias ls="exa -l -a"
+alias ls="exa -l"
 alias sudo='sudo '
 alias cacheclean='paccache -rk2'
 alias halt='systemctl poweroff'
