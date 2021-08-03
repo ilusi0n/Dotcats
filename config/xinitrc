@@ -20,14 +20,11 @@ PATH=~/bin:$PATH
 export PATH
 
 
-WM="bspwm"
+WM="dwm"
 
 case "$WM" in
     dwm)
         "$HOME/.scripts/autostart.sh" &
         exec dwm
-        ;;
-    bspwm)
-        exec bspwm
         ;;
 esac
