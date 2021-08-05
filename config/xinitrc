@@ -20,7 +20,7 @@ PATH=~/bin:$PATH
 export PATH
 
 
-WM="dwm"
+WM="bspwm"
 
 case "$WM" in
     dwm)

@@ -11,12 +11,12 @@ super + Escape
 #
 
 # quit/restart bspwm
-super + alt + {q,r}
+super + shift + {q,r}
 	bspc {quit,wm -r}
 
 # close and kill
 control + space
-	bspc node -{c,k}
+	bspc node -c
 
 # alternate between the tiled and monocle layout
 super + space
@@ -28,11 +28,22 @@ super + {_,shift + }{1-9,0}
 
 # focus the next/previous desktop in the current monitor
 super + {Left,Right}
-	bspc desktop -f {prev,next}.local
+	bspc desktop -f {prev,next}.occupied.local
 
 super + {h,l}
 	bspc node -z {right -20 0, right 20 0}
 
+alt + f
+	bspc node -t \~fullscreen
+
+super + f 
+	bspc node focused -t \~floating
+
+alt + Tab
+    bspc node -f next.local
+
+control + alt + {Left,Right}
+    bspc node -f {prev,next}.local
 
 # APPLICATION KEYBINDINGS
 
@@ -51,12 +62,14 @@ alt + 2
 control + alt + l
 	$HOME/.scripts/lock
 
-control + Up
-	$HOME/.scripts/sound up
-
-control + Down
-	$HOME/.scripts/sound down
+control + {Up,Down}
+    $HOME/.scripts/sound {up,down}
 
 alt + m
 	$HOME/.scripts/sound toggle
 
+control + {Left,Right}
+    light {-U,-A} 10
+
+Print
+  $HOME/.scripts/print
