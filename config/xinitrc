@@ -27,4 +27,7 @@ case "$WM" in
         "$HOME/.scripts/autostart.sh" &
         exec dwm
         ;;
+    bspwm)
+        exec bspwm
+        ;;
 esac
