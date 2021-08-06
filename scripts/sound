@@ -1,18 +1,22 @@
 #!/bin/bash
 
 case "$1" in
-	up)
-		pamixer -u > /dev/null 2>&1
-		pamixer -i 5  > /dev/null 2>&1
-		;;
-	down)
-		pamixer -u > /dev/null 2>&1
-		pamixer -d 5  > /dev/null 2>&1
-		;;
-	toggle)
-		pamixer -t  > /dev/null 2>&1
-		;;
-	*)
-		echo $"Usage: $0 {up|down|toggle}"
-            exit 1
+up)
+	pamixer -u >/dev/null 2>&1
+	pamixer -i 5 >/dev/null 2>&1
+	;;
+down)
+	pamixer -u >/dev/null 2>&1
+	pamixer -d 5 >/dev/null 2>&1
+	;;
+toggle)
+	pamixer -t >/dev/null 2>&1
+	;;
+output)
+	if [[ $(pamixer --get-mute) == 'true' ]]; then echo 婢; else echo 墳 $(pamixer --get-volume)%; fi
+	;;
+*)
+	echo $"Usage: $0 {up|down|toggle}"
+	exit 1
+	;;
 esac

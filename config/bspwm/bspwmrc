@@ -39,9 +39,10 @@ bspc config focus_follows_pointer true
 
 # Application Rules
 bspc rule -a Google-chrome          desktop='^2' follow=off
-bspc rule -a Pcmanfm                desktop='^5' follow=off
+#bspc rule -a Pcmanfm                desktop='^5' follow=off
 bspc rule -a Evince                 desktop='^6' follow=off
 bspc rule -a "VirtualBox Manager"   desktop='^6' follow=off
+bspc rule -a "whatsapp-nativefier-d40211" desktop='^3' follow=off
 
 # Autostart Apps
 nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }" &
@@ -53,5 +54,6 @@ ssh-add ~/.ssh/id_rsa &
 light -S 60 &
 setxkbmap -layout pt &
 lxqt-policykit-agent &
-feh --bg-scale /mnt/Data/Wallpapers/moon.jpg &
+feh --bg-fill --randomize /mnt/Data/Wallpapers/* &
+pcmanfm -d &
 $HOME/.config/polybar/launch.sh

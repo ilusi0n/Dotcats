@@ -45,6 +45,9 @@ alt + Tab
 control + alt + {Left,Right}
     bspc node -f {prev,next}.local
 
+super + u
+	bspc node --focus last.urgent
+
 # APPLICATION KEYBINDINGS
 
 super + Return
