@@ -33,7 +33,7 @@ alias redwm='/home/ilusi0n/.scripts/dwmMake.sh'
 alias zombies='ps -el | grep 'Z''
 alias top='htop'
 alias wasteSpace='ncdu'
-#alias myAge=" echo $(($(($(date +%s) - $(date -d "$(head -1 /var/log/pacman.log | cut -d ' ' -f 1,2 | tr -d '[]')" +%s))) / 86400)) days"
+alias myBirth='stat / | grep Birth'
 alias myip="curl curlmyip.com"
 alias pk='killall -9 $1'
 start() { sudo systemctl start $1.service ; sudo systemctl status $1.service; }

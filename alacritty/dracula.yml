@@ -51,22 +51,3 @@ colors:
     magenta: '0xff46b0'
     cyan:    '0x59dffc'
     white:   '0xe6e6d1'
-
-font:
-  normal:
-    family: monospace
-    style: Regular
-
-  bold:
-    family: monospace
-    style: Bold
-
-  italic:
-    family: monospace
-    style: Italic
-
-  bold_italic:
-    family: monospace
-    style: Bold Italic
-
-  size: 10

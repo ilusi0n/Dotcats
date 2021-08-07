@@ -1,5 +1,4 @@
 #!/bin/bash
 
-# scrot ~/Printscreens/%Y-%m-%d-%T-screenshot.png
 shotgun -f png ~/Printscreens/"$(date '+%Y-%m-%d-%H-%M-%S')"-screenshot
 exit 0
