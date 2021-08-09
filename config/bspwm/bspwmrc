@@ -1,13 +1,8 @@
 #! /bin/bash
 
-# killall
-killall -q sxhkd
-killall -q lxqt-policykit-agent
-bspc rule -r "*"
-
-# start monitors
-xrandr --setprovideroutputsource modesetting NVIDIA-0
-xrandr --output eDP-1-1 --auto --gamma 0.8:0.8:0.8 --brightness 0.8 --output HDMI-0 --primary --auto --left-of eDP-1-1
+C() { bspc config "$@";  }
+R() { bspc rule -a "$@"; }
+S() { pkill -x "$1"; { sleep 0.1; "$@" & }; }
 
 bspc monitor eDP-1-1 -d cmd www im dev media vbox doc
 bspc monitor HDMI-0 -d cmd www im dev media vbox doc
@@ -18,43 +13,47 @@ NORMAL_BORDER_COLOR="#5b5558"
 ACTIVE_BORDER_COLOR="#262734"
 PRESEL_FEEDBACK_COLOR="#D6A36A"
 
-bspc config border_width          1
-bspc config window_gap            12
-Bspc config normal_border_color   "$NORMAL_BORDER_COLOR"
-bspc config active_border_color   "$ACTIVE_BORDER_COLOR"
-bspc config focused_border_color  "$AZURE"
-bspc config presel_feedback_color "$PRESEL_FEEDBACK_COLOR"
-bspc config focus_by_distance             true
-bspc config focus_follows_pointer         true
-bspc config single_monocle true
-bspc config ignore_ewmh_focus true
-bspc config pointer_follows_monitor true
+C border_width          1
+C window_gap            12
+C normal_border_color   "$NORMAL_BORDER_COLOR"
+C active_border_color   "$ACTIVE_BORDER_COLOR"
+C focused_border_color  "$AZURE"
+C presel_feedback_color "$PRESEL_FEEDBACK_COLOR"
+C focus_by_distance             true
+C focus_follows_pointer         true
+C single_monocle true
+C ignore_ewmh_focus true
+C pointer_follows_monitor true
 
-bspc config removal_adjustment true
-bspc config initial_polarity first_child
-bspc config automatic_scheme spiral
+C removal_adjustment true
+C initial_polarity first_child
+C automatic_scheme spiral
 
-bspc config split_ratio           0.55
-bspc config borderless_monocle    true
-bspc config gapless_monocle       true
-bspc config focus_follows_pointer true
+C split_ratio           0.55
+C borderless_monocle    true
+C gapless_monocle       true
+C focus_follows_pointer true
 
+bspc rule -r "*"
 # Application Rules
-bspc rule -a Google-chrome          desktop='^2' follow=off
-#bspc rule -a Pcmanfm                desktop='^5' follow=off
-bspc rule -a Evince                 desktop='^7' follow=off
-bspc rule -a "VirtualBox Manager"   desktop='^6' follow=off
-bspc rule -a "whatsapp-nativefier-d40211" desktop='^3' follow=off
+R Google-chrome          desktop='^2' follow=off
+R Evince                 desktop='^7' follow=off
+R "VirtualBox Manager"   desktop='^6' follow=off
+R "whatsapp-nativefier-d40211" desktop='^3' follow=off
+
+# start monitors
+xrandr --setprovideroutputsource modesetting NVIDIA-0
+xrandr --output eDP-1-1 --auto --gamma 0.8:0.8:0.8 --brightness 0.8 --output HDMI-0 --primary --auto --left-of eDP-1-1
 
 # Autostart Apps
 nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }" &
-sxhkd &
-setxkbmap -layout pt &
-xsetroot -cursor_name left_ptr &
-# ssh-agent &
-# ssh-add ~/.ssh/id_rsa &
-light -S 60 &
-setxkbmap -layout pt &
-lxqt-policykit-agent &
-feh --bg-fill --randomize /mnt/Data/Wallpapers/* &
+S sxhkd
+S setxkbmap -layout pt
+S xsetroot -cursor_name left_ptr
+S light -S 60
+S setxkbmap -layout pt
+S lxqt-policykit-agent
+S feh --bg-fill --randomize /mnt/Data/Wallpapers/*
+#bottom left lock, top right doesnt lock
+S xautolock -time 5 -locker "$HOME/.scripts/lock" -corners 0-+0  -cornerdelay 4 -cornerredelay 4
 "$HOME"/.config/polybar/launch.sh &

@@ -14,9 +14,25 @@ setopt hist_ignore_dups     # Don't save duplicate entries in history
 setopt share_history        # Share history between shells
 setopt interactivecomments  # Enable comments in interactive mode
 
+export TERM="xterm-256color"
 export HISTFILE=~/.zsh_history
 export SAVEHIST=$HISTSIZE
 
+## zsh-autosuggestions
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+
+## oh my zsh
+ZSH=/usr/share/oh-my-zsh/
+plugins=(git history colored-man-pages)
+
+
+ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
+if [[ ! -d $ZSH_CACHE_DIR ]]; then
+    mkdir $ZSH_CACHE_DIR
+fi
+
+source $ZSH/oh-my-zsh.sh
 
 #---------#
 # Aliases #
@@ -41,18 +57,12 @@ fi
 # Startup stuff #
 #---------------#
 
+#colorscript random
+
 eval "$(starship init zsh)"
 
 if [ "$(pgrep X)" ]
 then
-    ##$HOME/.scripts/thecat.sh
     export PF_INFO="ascii title os kernel wm shell uptime pkgs memory"
     pfetch
 fi
-
-
-#--------#
-# Prompt #
-#--------#
-
-#PROMPT='%F{green}%~%F{blue} >>%f '
