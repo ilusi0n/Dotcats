@@ -53,3 +53,9 @@ man() {
         fi
     fi
  }
+
+ downloadsub() {
+    for file in *.mkv; do
+        subberthehut -s -n -l por,pob $file
+    done
+ }

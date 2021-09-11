@@ -4,6 +4,10 @@ C() { bspc config "$@";  }
 R() { bspc rule -a "$@"; }
 S() { pkill -x "$1"; { sleep 0.1; "$@" & }; }
 
+# start monitors
+xrandr --setprovideroutputsource modesetting NVIDIA-0
+xrandr --output eDP-1-1 --auto --gamma 0.8:0.8:0.8 --brightness 0.8 --output HDMI-0 --primary --auto --left-of eDP-1-1
+
 bspc monitor eDP-1-1 -d cmd www im dev media vbox doc
 bspc monitor HDMI-0 -d cmd www im dev media vbox doc
 
@@ -36,14 +40,10 @@ C focus_follows_pointer true
 
 bspc rule -r "*"
 # Application Rules
-R Google-chrome          desktop='^2' follow=off
+R Chromium               desktop='^2' follow=off
 R Evince                 desktop='^7' follow=off
 R "VirtualBox Manager"   desktop='^6' follow=off
 R "whatsapp-nativefier-d40211" desktop='^3' follow=off
-
-# start monitors
-xrandr --setprovideroutputsource modesetting NVIDIA-0
-xrandr --output eDP-1-1 --auto --gamma 0.8:0.8:0.8 --brightness 0.8 --output HDMI-0 --primary --auto --left-of eDP-1-1
 
 # Autostart Apps
 nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }" &
@@ -53,7 +53,8 @@ S xsetroot -cursor_name left_ptr
 S light -S 60
 S setxkbmap -layout pt
 S lxqt-policykit-agent
+S dunst
 S feh --bg-fill --randomize /mnt/Data/Wallpapers/*
 #bottom left lock, top right doesnt lock
-S xautolock -time 5 -locker "$HOME/.scripts/lock" -corners 0-+0  -cornerdelay 4 -cornerredelay 4
+S xautolock -time 8 -locker "$HOME/.scripts/lock" -corners 0-+0  -cornerdelay 4 -cornerredelay 4
 "$HOME"/.config/polybar/launch.sh &

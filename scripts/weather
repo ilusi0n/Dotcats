@@ -7,6 +7,7 @@ weather="$(curl -s http://rss.accuweather.com/rss/liveweather_rss.asp\?metric\=$
 case "$weather" in
     *"Sunny"*) echo  "$weather" ;;
     *"Mostly Clear"*) echo  "$weather" ;;
+    *"Clear"*) echo  "$weather" ;;
     *"Mostly Cloudy"*) echo  "$weather" ;;
     *) echo "$weather" ;;
 esac

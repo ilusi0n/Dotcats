@@ -57,7 +57,7 @@ super + r
   rlaunch
 
 alt + c
-  google-chrome-stable
+  chromium
 
 alt + 2
   pcmanfm
