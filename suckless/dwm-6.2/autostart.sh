@@ -1,12 +1,12 @@
 #!/bin/bash
-ssh-agent &
-ssh-add ~/.ssh/id_rsa &
 light -S 60 &
 setxkbmap -layout pt &
-lxqt-policykit-agent &
 wmname LG3D &
-feh --bg-scale /mnt/Data/Wallpapers/moon.jpg &
-slstatus &
+feh --bg-fill --randomize /mnt/Data/Wallpapers/*
+xautolock -time 8 -locker "$HOME/.scripts/lock" -corners 0-+0  -cornerdelay 4 -cornerredelay 4 &
+#slstatus &
+#lxqt-policykit-agent &
+#dunst &
 
 
 /usr/lib/lxpolkit/lxpolkit &

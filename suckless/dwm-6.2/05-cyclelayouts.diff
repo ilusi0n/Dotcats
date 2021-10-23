@@ -1,6 +1,6 @@
---- dwm.c	2021-07-11 09:34:27.175988837 +0100
-+++ dwm_new.c	2021-07-11 09:35:56.175993105 +0100
-@@ -181,6 +181,7 @@
+--- dwm.c	2021-10-23 18:40:01.454641834 +0100
++++ dwm_new.c	2021-10-23 18:41:04.125052831 +0100
+@@ -184,6 +184,7 @@ static void configure(Client *c);
  static void configurenotify(XEvent *e);
  static void configurerequest(XEvent *e);
  static Monitor *createmon(void);
@@ -8,7 +8,7 @@
  static void destroynotify(XEvent *e);
  static void detach(Client *c);
  static void detachstack(Client *c);
-@@ -735,6 +736,23 @@
+@@ -765,6 +766,23 @@ createmon(void)
  }
  
  void

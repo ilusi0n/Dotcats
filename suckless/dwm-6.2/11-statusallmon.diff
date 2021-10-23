@@ -1,6 +1,6 @@
---- dwm.c	2021-07-11 22:11:01.649319769 +0100
-+++ dwm_new.c	2021-07-11 22:12:00.805988560 +0100
-@@ -967,7 +967,7 @@
+--- dwm.c	2021-10-23 19:45:52.609085012 +0100
++++ dwm_new.c	2021-10-23 19:46:51.540773653 +0100
+@@ -993,7 +993,7 @@ drawbar(Monitor *m)
  		stw = getsystraywidth();
  
  	/* draw status first so it can be overdrawn by tags later */
@@ -9,7 +9,7 @@
  		sw = m->ww - drawstatusbar(m, bh, stext);
  	}
  
-@@ -2451,9 +2451,11 @@
+@@ -2675,9 +2675,11 @@ updatesizehints(Client *c)
  void
  updatestatus(void)
  {

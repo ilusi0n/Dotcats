@@ -1,6 +1,6 @@
---- dwm.c	2021-07-11 22:13:57.022659415 +0100
-+++ dwm_new.c	2021-07-11 22:14:51.249328029 +0100
-@@ -241,6 +241,7 @@
+--- dwm.c	2021-10-23 18:48:45.653624940 +0100
++++ dwm_new.c	2021-10-23 18:51:26.414172208 +0100
+@@ -244,6 +244,7 @@ static void setlayout(const Arg *arg);
  static void setmfact(const Arg *arg);
  static void setup(void);
  static void seturgent(Client *c, int urg);
@@ -8,7 +8,7 @@
  static void showhide(Client *c);
  static void sigchld(int unused);
  static void spawn(const Arg *arg);
-@@ -2008,6 +2009,46 @@
+@@ -2138,6 +2139,46 @@ seturgent(Client *c, int urg)
  }
  
  void

@@ -1,6 +1,6 @@
---- dwm.c	2021-07-11 09:10:48.829254441 +0100
-+++ dwm_new.c	2021-07-11 09:12:16.309258626 +0100
-@@ -1724,7 +1724,7 @@
+--- dwm.c	2021-10-23 19:11:17.560033029 +0100
++++ dwm_new.c	2021-10-23 19:12:02.613129725 +0100
+@@ -2064,7 +2064,7 @@ setup(void)
  	if (!drw_fontset_create(drw, fonts, LENGTH(fonts)))
  		die("no fonts could be loaded.");
  	lrpad = drw->fonts->h;

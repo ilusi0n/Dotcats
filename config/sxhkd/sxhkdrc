@@ -40,7 +40,7 @@ super + f
 	bspc node focused -t \~floating
 
 alt + Tab
-    bspc node -f next.local
+	bspc node -f next.local.!hidden.window.!locked
 
 control + alt + {Left,Right}
     bspc node -f {prev,next}.local

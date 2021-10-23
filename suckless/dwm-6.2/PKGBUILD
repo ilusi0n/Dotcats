@@ -4,7 +4,7 @@
 
 pkgname=dwm
 pkgver=6.2
-pkgrel=1
+pkgrel=3
 pkgdesc="A dynamic window manager for X"
 url="http://dwm.suckless.org"
 arch=('i686' 'x86_64')
@@ -19,21 +19,17 @@ _source=(http://dl.suckless.org/dwm/dwm-$pkgver.tar.gz
 
 _patches=(
   00-buildflags-dwm-6.2.diff
-  01-systray-dwm-6.2.diff
-  02-bar-height-dwm-6.2.diff
-  03-status2d-dwm-6.2.diff
-  04-cyclelayouts-dwm-6.2.diff
-  05-pergtag-functionalgaps-dwm-6.2.diff
-  06-statusallmon-dwm-6.2.diff
-  07-shiftviewclient-dwm-6.2.diff
-  08-focusurgent-dwm-6.2.diff
-  09-placemouse-dwm-6.2.diff
-  10-cool-autostart-dwm-6.2.diff
-  11-netclientliststacking-dwm-6.2.diff
-  12-ewmhtags-dwm-6.2.diff
-  13-decorhints-dwm-6.2.diff
-  14-togglefullscreen-dwm-6.2.diff
-  15-steam-dwm-6.2.diff
+  01-systray-6.2.diff
+  02-pertag.diff
+  03-gaps.diff
+  04-status2d.diff
+  05-cyclelayouts.diff
+  06-placemouse.diff
+  07-shiftview.diff
+  08-togglefullscreen.diff
+  09-bar-height.diff
+  10-cool-autostart.diff
+  11-statusallmon.diff
 )
 source=(${_source[@]} ${_patches[@]})
 

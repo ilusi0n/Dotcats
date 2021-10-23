@@ -1,5 +1,5 @@
---- dwm.c	2021-07-11 22:21:15.612675062 +0100
-+++ dwm_new.c	2021-07-11 22:24:47.022682627 +0100
+--- dwm.c	2021-10-23 18:42:37.272657053 +0100
++++ dwm_new.c	2021-10-23 18:47:15.160724332 +0100
 @@ -49,6 +49,8 @@
  #define CLEANMASK(mask)         (mask & ~(numlockmask|LockMask) & (ShiftMask|ControlMask|Mod1Mask|Mod2Mask|Mod3Mask|Mod4Mask|Mod5Mask))
  #define INTERSECT(x,y,w,h,m)    (MAX(0, MIN((x)+(w),(m)->wx+(m)->ww) - MAX((x),(m)->wx)) \
@@ -9,7 +9,7 @@
  #define ISVISIBLE(C)            ((C->tags & C->mon->tagset[C->mon->seltags]))
  #define LENGTH(X)               (sizeof X / sizeof X[0])
  #define MOUSEMASK               (BUTTONMASK|PointerMotionMask)
-@@ -114,6 +116,7 @@
+@@ -111,6 +113,7 @@ struct Client {
  	int bw, oldbw;
  	unsigned int tags;
  	int isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen;
@@ -17,7 +17,7 @@
  	Client *next;
  	Client *snext;
  	Monitor *mon;
-@@ -218,10 +221,13 @@
+@@ -214,10 +217,13 @@ static void maprequest(XEvent *e);
  static void monocle(Monitor *m);
  static void motionnotify(XEvent *e);
  static void movemouse(const Arg *arg);
@@ -31,7 +31,7 @@
  static Monitor *recttomon(int x, int y, int w, int h);
  static void removesystrayicon(Client *i);
  static void resize(Client *c, int x, int y, int w, int h, int interact);
-@@ -1449,6 +1455,14 @@
+@@ -1412,6 +1418,15 @@ motionnotify(XEvent *e)
  }
  
  void
@@ -42,11 +42,12 @@
 +		placemouse(arg);
 +}
 +
++
 +void
  movemouse(const Arg *arg)
  {
  	int x, y, ocx, ocy, nx, ny;
-@@ -1516,6 +1530,139 @@
+@@ -1479,6 +1494,140 @@ nexttiled(Client *c)
  }
  
  void
@@ -182,11 +183,12 @@
 +	arrangemon(c->mon);
 +}
 +
++
 +void
  pop(Client *c)
  {
  	detach(c);
-@@ -1577,6 +1724,21 @@
+@@ -1540,6 +1689,21 @@ quit(const Arg *arg)
  	running = 0;
  }
  
@@ -208,12 +210,12 @@
  Monitor *
  recttomon(int x, int y, int w, int h)
  {
-@@ -1629,6 +1791,8 @@
+@@ -1592,6 +1756,8 @@ resizeclient(Client *c, int x, int y, in
  	c->oldy = c->y; c->y = wc.y = y;
  	c->oldw = c->w; c->w = wc.width = w;
  	c->oldh = c->h; c->h = wc.height = h;
 +	if (c->beingmoved)
 +		return;
  	wc.border_width = c->bw;
- 	if (!selmon->pertag->drawwithgaps[selmon->pertag->curtag] && /* this is the noborderfloatingfix patch, slightly modified so that it will work if, and only if, gaps are disabled. */
- 	    (((nexttiled(c->mon->clients) == c && !nexttiled(c->next)) /* these two first lines are the only ones changed. if you are manually patching and have noborder installed already, just change these lines; or conversely, just remove this section if the noborder patch is not desired;) */
+ 	if (((nexttiled(c->mon->clients) == c && !nexttiled(c->next))
+ 	    || &monocle == c->mon->lt[c->mon->sellt]->arrange))

@@ -2,16 +2,15 @@
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const int startwithgaps[]    = { 1 };	/* 1 means gaps are used by default, this can be customized for each tag */
-static const unsigned int gappx[]   = { 12 };   /* default gap between windows in pixels, this can be customized for each tag */
+static const int gappx     = 12;                 /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const int user_bh            = 24;       /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
-static const char *fonts[]          = { "noto sans:size=10", "Font Awesome 5 Free Solid:style=Solid:size=10" };
+static const int user_bh            = 20;       /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
+static const char *fonts[]          = { "Dejavu Sans Font:size=11", "Font Awesome 5 Free:style=Solid:pixelsize=10" };
 static const char dmenufont[]       = "monospace:size=10";
-static const unsigned int systraypinning = 1;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
-static const unsigned int systrayspacing = 4;   /* systray spacing */
+static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
+static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray        = 1;     /* 0 means no systray */
 #define BLUE   "#00BFFF"
@@ -32,7 +31,13 @@ static const char *colors[][3]      = {
 	[SchemeSel]  = { AZURE, BLACK,  AZURE  },
 };
 
-/* tagging */
+static const char *const autostart[] = {
+	"slstatus", NULL,
+	"dunst", NULL,
+	"lxqt-policykit-agent", NULL,
+	NULL /* terminate */
+};
+
 static const char *tags[] = { "cdm", "www", "im", "dev", "media", "vbox", "doc" };
 
 static const Rule rules[] = {
@@ -45,7 +50,7 @@ static const Rule rules[] = {
 	{ "Qpdfview",          NULL,       NULL,       1 << 6,       False,       -1 },
 	{ "plugin-container",  NULL,       NULL,       1 << 1,       True,        -1 },
     { "Spotify", 		   NULL,  	   NULL,       1 << 4,       True,        -1 },
-    { "Google-chrome", 	   NULL,  	   NULL,       1 << 1,       False,	 	  0 },
+    { "Chromium", 	   NULL,  	   NULL,       1 << 1,       False,	 	  0 },
 
 };
 
@@ -53,32 +58,23 @@ static const Rule rules[] = {
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
-static const int decorhints  = 1;    /* 1 means respect decoration hints */
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
 	{ "[M]",      monocle },
-	{ "><>",      NULL },    /* no layout function means floating behavior */
+	{ "><>",      NULL },
 	{ NULL,       NULL },
 };
 
-
-static const char *const autostart[] = {
-	"slstatus", NULL,
-	NULL /* terminate */
-};
-
 /* key definitions */
+#define MODKEY Mod4Mask
+#define ALTKEY Mod1Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
 	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
-
-
-#define MODKEY Mod4Mask
-#define ALTKEY Mod1Mask
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
@@ -90,7 +86,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *launcher[] = { "rlaunch", NULL };
 static const char *touchpadcmd[] = { "/bin/sh", "/home/ilusi0n/.scripts/touchpad_toggle", NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
-static const char *chrome[]   = { "google-chrome-stable", NULL, "Google-chrome-stable" };
+static const char *chrome[]   = { "chromium", NULL, "chromium" };
 static const char *file[]  = { "pcmanfm", NULL };
 static const char *gvim[]     = { "gvim", NULL };
 static const char *upvol[] = { "/bin/sh", "/home/ilusi0n/.scripts/sound", "up", NULL };
@@ -123,7 +119,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },	
 	{ ControlMask,                  XK_space,  killclient,     {0} },
-	{ MODKEY,                       XK_u,      focusurgent,    {0} },
+	// { MODKEY,                       XK_u,      focusurgent,    {0} },
 	{ MODKEY,                       XK_space,  cyclelayout,    {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
@@ -132,7 +128,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	{ MODKEY,           			XK_Left,   shiftviewclients, { .i = -1 } },
     { MODKEY,           			XK_Right,  shiftviewclients, { .i = +1 } },
-	{ MODKEY,             			XK_g,  	   setgaps,        {.i = GAP_TOGGLE} },
+	// { MODKEY,             			XK_g,  	   setgaps,        {.i = GAP_TOGGLE} },
 	{ MODKEY,                       XK_y,      togglefullscreen, {0} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
@@ -163,4 +159,3 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 	{ ClkClientWin,         MODKEY,         Button1,        moveorplace,  	{.i = 1} },
 };
-

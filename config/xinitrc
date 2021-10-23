@@ -21,11 +21,11 @@ PATH=~/bin:$PATH
 export PATH
 
 
-WM="bspwm"
+WM="dwm"
 
 case "$WM" in
     dwm)
-        "$HOME/.scripts/autostart.sh" &
+        "$HOME/Dotcats/suckless/dwm-6.2/autostart.sh" &
         exec dwm
         ;;
     bspwm)

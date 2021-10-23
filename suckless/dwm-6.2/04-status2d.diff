@@ -1,6 +1,6 @@
---- dwm.c	2021-07-11 09:16:40.069271172 +0100
-+++ dwm_new.c	2021-07-11 09:19:46.455946787 +0100
-@@ -187,6 +187,7 @@
+--- dwm.c	2021-10-23 18:25:06.413593116 +0100
++++ dwm_new.c	2021-10-23 18:31:51.460179530 +0100
+@@ -190,6 +190,7 @@ static void detachstack(Client *c);
  static Monitor *dirtomon(int dir);
  static void drawbar(Monitor *m);
  static void drawbars(void);
@@ -8,7 +8,7 @@
  static void enternotify(XEvent *e);
  static void expose(XEvent *e);
  static void focus(Client *c);
-@@ -271,7 +272,7 @@
+@@ -275,7 +276,7 @@ static void zoom(const Arg *arg);
  /* variables */
  static Systray *systray =  NULL;
  static const char broken[] = "broken";
@@ -17,7 +17,7 @@
  static int screen;
  static int sw, sh;           /* X display screen geometry width, height */
  static int bh, blw = 0;      /* bar geometry */
-@@ -525,7 +526,7 @@
+@@ -539,7 +540,7 @@ cleanup(void)
  	}
  	for (i = 0; i < CurLast; i++)
  		drw_cur_free(drw, cursor[i]);
@@ -26,7 +26,7 @@
  		free(scheme[i]);
  	XDestroyWindow(dpy, wmcheckwin);
  	drw_free(drw);
-@@ -786,6 +787,115 @@
+@@ -816,6 +817,114 @@ dirtomon(int dir)
  	return m;
  }
  
@@ -138,11 +138,10 @@
 +	return ret;
 +}
 +
-+
  void
  drawbar(Monitor *m)
  {
-@@ -800,9 +910,7 @@
+@@ -830,9 +939,7 @@ drawbar(Monitor *m)
  
  	/* draw status first so it can be overdrawn by tags later */
  	if (m == selmon) { /* status is only drawn on selected monitor */
@@ -153,7 +152,7 @@
  	}
  
  	resizebarwin(m);
-@@ -1753,7 +1861,8 @@
+@@ -1800,7 +1907,8 @@ setup(void)
  	cursor[CurResize] = drw_cur_create(drw, XC_sizing);
  	cursor[CurMove] = drw_cur_create(drw, XC_fleur);
  	/* init appearance */
