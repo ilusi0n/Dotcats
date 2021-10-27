@@ -86,6 +86,6 @@ static const struct arg args[] = {
 	{ temp,		            "^c#666666^[  ^c#ff8c00^ %s^c#666666^  ] ",	        "/sys/class/thermal/thermal_zone0/temp" },
 	{ cpu_perc,		        "^c#666666^[  ^c#BF5FFF^ %s%%^c#666666^  ] ",	    NULL },
 	{ run_command,		    "^c#666666^[  ^c#7DC1CF^ %s^c#666666^  ] ",	    pulse_volume },
-	{ datetime,		        "^c#666666^[  ^c#76EE00^%s^c#666666^  ]",	        "%a %b %d, %R" },
+	{ datetime,		        "^c#666666^[  ^c#76EE00^ %s^c#666666^  ]",	        "%a %b %d, %R" },
 	{ kernel_release,		"^c#666666^[  ^c#00BFFF^%s^c#666666^  ]",	        NULL },
 };

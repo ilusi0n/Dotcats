@@ -93,7 +93,7 @@ static const char *upvol[] = { "/bin/sh", "/home/ilusi0n/.scripts/sound", "up", 
 static const char *downvol[] = { "/bin/sh", "/home/ilusi0n/.scripts/sound", "down", NULL };
 static const char *upbri[] = { "light", "-A", "10", NULL };
 static const char *downbri[] = { "light", "-U", "10", NULL };
-static const char *print[] = { "/bin/sh", "/home/ilusi0n/.scripts/print",NULL};
+static const char *print[] = { "flameshot",NULL};
 static const char *lock[]  = { "/bin/sh", "/home/ilusi0n/.scripts/lock", NULL };
 static const char *togglevol[] = { "/bin/sh", "/home/ilusi0n/.scripts/sound", "toggle", NULL };
 
@@ -145,8 +145,8 @@ static Key keys[] = {
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static Button buttons[] = {
 	/* click                event mask      button          function        argument */
-	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
-	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[0]} },
+	{ ClkLtSymbol,          0,              Button3,        focusstack,     {.i = -1} },
+	{ ClkLtSymbol,          0,              Button1,        cyclelayout,    {.i = +1} },
 	{ ClkStatusText,        0,              Button4,        spawn,          {.v = upvol } },
 	{ ClkStatusText,        0,              Button1,        focusstack,     {.i = -1} },
 	{ ClkStatusText,        0,              Button3,        cyclelayout,    {.i = +1 } },

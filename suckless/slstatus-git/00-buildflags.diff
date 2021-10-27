@@ -5,7 +5,7 @@
  # flags
  CPPFLAGS = -I$(X11INC) -D_DEFAULT_SOURCE
 -CFLAGS   = -std=c99 -pedantic -Wall -Wextra -Os
-+CFLAGS   = -march=native -std=c99 -pedantic -Wall -Wextra -O3
++CFLAGS   = -march=native -mtune=native -std=c99 -pedantic -Wall -Wno-unused-function -Wno-deprecated-declarations -flto -O3 ${INCS} ${CPPFLAGS}
  LDFLAGS  = -L$(X11LIB) -s
  # OpenBSD: add -lsndio
  # FreeBSD: add -lkvm
