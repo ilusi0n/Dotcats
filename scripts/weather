@@ -8,5 +8,6 @@ case "$weather" in
     *"Sunny"*) echo  "$weather" ;;
     *"Clear"*) echo  "$weather" ;;
     *"Cloudy"*) echo  "$weather" ;;
+    *"Showers"*) echo  "$weather" ;;
     *) echo "$weather" ;;
 esac

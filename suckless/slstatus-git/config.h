@@ -74,8 +74,8 @@ static const char unknown_str[] = "n/a";
 // #define LIGHT_GREEN2 "#78AB46"
 
 static const char pulse_volume[] = "if [[ $(pamixer --get-mute) == 'true' ]]; then echo ; else echo  $(pamixer --get-volume)%; fi";
-static const char weather[] = "cat /tmp/weather";
-static const char pacupdates[] = "cat /tmp/pacupdates";
+static const char weather[] = "awk '/$/' /tmp/weather";
+static const char pacupdates[] = "awk '/$/' /tmp/pacupdates";
 
 static const struct arg args[] = {
 	/* function format          argument */

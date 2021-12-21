@@ -26,32 +26,34 @@ alias check='chkrootkit'
 alias checkme='rkhunter --update -c'
 alias fail='systemctl --failed'
 alias services='systemctl list-unit-files | grep enabled'
-alias size='du -sh $1'
+size() { du -sh "$1"; }
 alias updateXresources='xrdb ~/.Xresources'
 alias checkMemoryLeak='valgrind --tool=memcheck'
 alias redwm='/home/ilusi0n/.scripts/dwmMake.sh'
-alias zombies='ps -el | grep 'Z''
+alias zombies='ps -el | grep "Z"'
 alias top='htop'
 alias wasteSpace='ncdu'
 alias myBirth='stat / | grep Birth'
 alias myip="curl curlmyip.com"
-alias pk='killall -9 $1'
-start() { sudo systemctl start $1.service ; sudo systemctl status $1.service; }
-restart() { sudo systemctl restart $1.service ; sudo systemctl status $1.service; }
-stop() { sudo systemctl stop $1.service ; sudo systemctl status $1.service; }
-status() { sudo systemctl status $1.service; }
-enable() { sudo systemctl enable $1.service ; }
-disable() { sudo systemctl disable $1.service ; }
+pk() { killall -9 "$1"; }
+start() { sudo systemctl start "$1".service ; sudo systemctl status "$1".service; }
+restart() { sudo systemctl restart "$1".service ; sudo systemctl status "$1".service; }
+stop() { sudo systemctl stop "$1".service ; sudo systemctl status "$1".service; }
+status() { sudo systemctl status "$1".service; }
+enable() { sudo systemctl enable "$1".service ; }
+disable() { sudo systemctl disable "$1".service ; }
 listd() { ls -l /etc/systemd/system/multi-user.target.wants; }
-start_user() { systemctl --user start $1.service; systemctl --user status $1.service;  }
-restart_user() { systemctl --user restart $1.service; systemctl --user status $1.service;  }
-stop_user() { systemctl --user stop $1.service; systemctl --user status $1.service;  }
-status_user() { systemctl --user status $1.service; }
-enable_user() { systemctl --user enable $1.service; }
-disable_user() { systemctl --user disable $1.service; }
+start_user() { systemctl --user start "$1".service; systemctl --user status "$1".service;  }
+restart_user() { systemctl --user restart "$1".service; systemctl --user status "$1".service;  }
+stop_user() { systemctl --user stop "$1".service; systemctl --user status "$1".service;  }
+status_user() { systemctl --user status "$1".service; }
+enable_user() { systemctl --user enable "$1".service; }
+disable_user() { systemctl --user disable "$1".service; }
 reload_user() { systemctl --user daemon-reload; }
 alias cpuspeed='watch grep \"cpu MHz\" /proc/cpuinfo'
-alias tmpfs="sudo mount -t tmpfs -o defaults,noatime,mode=1777 tmpfs $1"
+tmpfs() { sudo mount -t tmpfs -o defaults,noatime,mode=1777 tmpfs "$1"; }
 alias fan="sudo isw -s 0x72 80"
 alias dmesg='journalctl --dmesg -o short-monotonic --no-hostname --no-pager'
 alias vim='nvim'
+alias auracle='auracle -C /tmp'
+alias cat='bat'
