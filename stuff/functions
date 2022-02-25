@@ -59,3 +59,25 @@ man() {
         subberthehut -s -n -l por,pob "$file"
     done
  }
+
+ updatedocker() {
+    docker compose pull
+    docker compose up -d
+    yes | docker image prune -a
+ }
+
+ redwm() {
+   DIRECTORY=/tmp/dwm-6.2
+    if [ -d "$DIRECTORY" ]; then
+        rm -rf $DIRECTORY
+    fi
+    cp -r "$HOME/Dotcats/suckless/dwm-6.2" /tmp/
+ }
+
+ reslstatus() {
+   DIRECTORY=/tmp/slstatus-git
+    if [ -d "$DIRECTORY" ]; then
+        rm -rf $DIRECTORY
+    fi
+    cp -r "$HOME/Dotcats/suckless/slstatus-git" /tmp/
+ }

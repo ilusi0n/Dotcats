@@ -50,7 +50,7 @@ nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCom
 S sxhkd
 S setxkbmap -layout pt
 S xsetroot -cursor_name left_ptr
-S light -S 60
+S light -S 40
 S setxkbmap -layout pt
 S lxqt-policykit-agent
 S dunst
@@ -58,3 +58,4 @@ S feh --bg-fill --randomize /mnt/Data/Wallpapers/*
 #bottom left lock, top right doesnt lock
 S xautolock -time 8 -locker "$HOME/.scripts/lock" -corners 0-+0  -cornerdelay 4 -cornerredelay 4
 "$HOME"/.config/polybar/launch.sh &
+S sct 4500

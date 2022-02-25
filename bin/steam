@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-#FLATPAK_GL_DRIVERS=mesa-git flatpak run com.valvesoftware.Steam
-flatpak run com.valvesoftware.Steam

@@ -13,7 +13,7 @@ case "$1" in
         pamixer -t >/dev/null 2>&1
     ;;
     output)
-        if [[ $(pamixer --get-mute) == 'true' ]]; then echo 婢; else echo 墳 $(pamixer --get-volume)%; fi
+        if [[ $(pamixer --get-mute) == 'true' ]]; then echo ; else echo  $(pamixer --get-volume)%; fi
     ;;
     *)
         echo $"Usage: $0 {up|down|toggle|output}"

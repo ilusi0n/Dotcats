@@ -7,7 +7,7 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int user_bh            = 20;       /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
-static const char *fonts[]          = { "Dejavu Sans Font:size=11", "Font Awesome 5 Free:style=Solid:pixelsize=10" };
+static const char *fonts[]          = { "Dejavu Sans Font:size=11", "Font Awesome 6 Free:style=Solid:pixelsize=10" };
 static const char dmenufont[]       = "monospace:size=10";
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
@@ -147,10 +147,10 @@ static Button buttons[] = {
 	/* click                event mask      button          function        argument */
 	{ ClkLtSymbol,          0,              Button1,        focusstack,     {.i = -1} },
 	{ ClkLtSymbol,          0,              Button3,        cyclelayout,    {.i = +1} },
-	{ ClkStatusText,        0,              Button4,        spawn,          {.v = upvol } },
+	{ ClkLtSymbol,          0,              Button4,        spawn,          {.v = upvol } },
 	{ ClkStatusText,        0,              Button1,        focusstack,     {.i = -1} },
 	{ ClkStatusText,        0,              Button3,        cyclelayout,    {.i = +1 } },
-	{ ClkStatusText,        0,              Button5,        spawn,          {.v = downvol } },	
+	{ ClkLtSymbol,          0,              Button5,        spawn,          {.v = downvol } },	
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
 	{ ClkTagBar,            0,              Button1,        view,           {0} },

@@ -29,7 +29,6 @@ alias services='systemctl list-unit-files | grep enabled'
 size() { du -sh "$1"; }
 alias updateXresources='xrdb ~/.Xresources'
 alias checkMemoryLeak='valgrind --tool=memcheck'
-alias redwm='/home/ilusi0n/.scripts/dwmMake.sh'
 alias zombies='ps -el | grep "Z"'
 alias top='htop'
 alias wasteSpace='ncdu'
@@ -55,5 +54,5 @@ tmpfs() { sudo mount -t tmpfs -o defaults,noatime,mode=1777 tmpfs "$1"; }
 alias fan="sudo isw -s 0x72 80"
 alias dmesg='journalctl --dmesg -o short-monotonic --no-hostname --no-pager'
 alias vim='nvim'
-alias auracle='auracle -C /tmp'
 alias cat='bat'
+alias auracle='mkdir -p /tmp/build && auracle -C /tmp/build'
