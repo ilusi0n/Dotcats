@@ -5,11 +5,13 @@ R() { bspc rule -a "$@"; }
 S() { pkill -x "$1"; { sleep 0.1; "$@" & }; }
 
 # start monitors
-xrandr --setprovideroutputsource modesetting NVIDIA-0
-xrandr --output eDP-1-1 --auto --gamma 0.8:0.8:0.8 --brightness 0.8 --output HDMI-0 --primary --auto --left-of eDP-1-1
+# sleep 2;
+# xrandr --setprovideroutputsource modesetting NVIDIA-0;
+# xrandr --output eDP-1-1 --auto --gamma 0.8:0.8:0.8 --brightness 0.8;
+# xrandr --output HDMI-0 --primary --auto --left-of eDP-1-1;
 
-bspc monitor eDP-1-1 -d cmd www im dev media vbox doc
-bspc monitor HDMI-0 -d cmd www im dev media vbox doc
+#bspc monitor eDP-1-1 -d cmd www im dev media vbox doc
+#bspc monitor HDMI-0 -d cmd www im dev media vbox doc
 
 # Colors
 AZURE="#80d9d8"
@@ -41,12 +43,14 @@ C focus_follows_pointer true
 bspc rule -r "*"
 # Application Rules
 R Chromium               desktop='^2' follow=off
+R Brave-browser          desktop='^2' follow=off
+R Google-chrome-stable   desktop='^2' follow=off
 R Evince                 desktop='^7' follow=off
 R "VirtualBox Manager"   desktop='^6' follow=off
 R "whatsapp-nativefier-d40211" desktop='^3' follow=off
 
 # Autostart Apps
-nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }" &
+# nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }" &
 S sxhkd
 S setxkbmap -layout pt
 S xsetroot -cursor_name left_ptr
@@ -57,5 +61,16 @@ S dunst
 S feh --bg-fill --randomize /mnt/Data/Wallpapers/*
 #bottom left lock, top right doesnt lock
 S xautolock -time 8 -locker "$HOME/.scripts/lock" -corners 0-+0  -cornerdelay 4 -cornerredelay 4
-"$HOME"/.config/polybar/launch.sh &
+#"$HOME"/.config/polybar/launch.sh
 S sct 4500
+
+## fix because of monitor colors
+sleep 2;
+xrandr --setprovideroutputsource modesetting NVIDIA-0;
+xrandr --output eDP-1-1 --auto --gamma 0.8:0.8:0.8 --brightness 0.8;
+xrandr --output HDMI-0 --primary --auto --left-of eDP-1-1;
+nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }"
+
+bspc monitor eDP-1-1 -d cmd www im dev media vbox doc
+bspc monitor HDMI-0 -d cmd www im dev media vbox doc
+"$HOME"/.config/polybar/launch.sh

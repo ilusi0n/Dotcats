@@ -11,20 +11,19 @@ $python\
 $character"""
 
 [directory]
-style = "blue"
+style = "bold #50fa7b"
 
 [character]
-success_symbol = "[❯](purple)"
-error_symbol = "[❯](red)"
-vicmd_symbol = "[❮](green)"
+error_symbol = "[λ](bold #ff5555)"
+success_symbol = "[λ](bold #50fa7b)"
 
 [git_branch]
 format = "[$branch]($style)"
-style = "bright-black"
+style = "bold #ff79c6"
 
 [git_status]
 format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
-style = "cyan"
+style = "bold #ff5555"
 conflicted = "​"
 untracked = "​"
 modified = "​"
@@ -39,8 +38,18 @@ style = "bright-black"
 
 [cmd_duration]
 format = "[$duration]($style) "
-style = "yellow"
+style = "bold #f1fa8c"
 
 [python]
 format = "[$virtualenv]($style) "
 style = "bright-black"
+
+[aws]
+style = "bold #ffb86c"
+
+[hostname]
+style = "bold #bd93f9"
+
+[username]
+format = "[$user]($style) on "
+style_user = "bold #8be9fd"

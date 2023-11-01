@@ -7,7 +7,7 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int user_bh            = 20;       /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
-static const char *fonts[]          = { "Dejavu Sans Font:size=11", "Font Awesome 6 Free:style=Solid:pixelsize=10" };
+static const char *fonts[]          = { "Dejavu Sans Font:size=11.5", "Font Awesome 6 Free:style=Solid:pixelsize=10.5" };
 static const char dmenufont[]       = "monospace:size=10";
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
@@ -49,8 +49,9 @@ static const Rule rules[] = {
 	{ "Evince",            NULL,       NULL,       1 << 6,       False,       -1 },
 	{ "Qpdfview",          NULL,       NULL,       1 << 6,       False,       -1 },
 	{ "plugin-container",  NULL,       NULL,       1 << 1,       True,        -1 },
-    { "Spotify", 		   NULL,  	   NULL,       1 << 4,       True,        -1 },
+    { "Spotify", 		   NULL,  	   NULL,       1 << 4,       False,        -1 },
     { "Chromium", 	   NULL,  	   NULL,       1 << 1,       False,	 	  0 },
+	{ "Google-chrome", 	   NULL,  	   NULL,       1 << 1,       False,	 	  0 },
 
 };
 
@@ -86,7 +87,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *launcher[] = { "rlaunch", NULL };
 static const char *touchpadcmd[] = { "/bin/sh", "/home/ilusi0n/.scripts/touchpad_toggle", NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
-static const char *chrome[]   = { "chromium", NULL, "chromium" };
+static const char *chrome[]   = { "google-chrome-stable", NULL, "Google-chrome-stable" };
 static const char *file[]  = { "pcmanfm", NULL };
 static const char *gvim[]     = { "gvim", NULL };
 static const char *upvol[] = { "/bin/sh", "/home/ilusi0n/.scripts/sound", "up", NULL };

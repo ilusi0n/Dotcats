@@ -1,12 +1,13 @@
---- config.mk	2021-07-13 20:34:35.316168411 +0100
-+++ config_new.mk	2021-07-13 20:36:26.201167733 +0100
-@@ -12,7 +12,7 @@
+--- config.mk	2023-01-26 18:36:25.907298457 +0000
++++ config_new.mk	2023-01-26 18:37:23.639926643 +0000
+@@ -12,8 +12,8 @@ X11LIB = /usr/X11R6/lib
  
  # flags
  CPPFLAGS = -I$(X11INC) -D_DEFAULT_SOURCE
--CFLAGS   = -std=c99 -pedantic -Wall -Wextra -Os
-+CFLAGS   = -march=native -flto -O3 -fno-plt -ffunction-sections -fdata-sections ${INCS} ${CPPFLAGS}
+-CFLAGS   = -std=c99 -pedantic -Wall -Wextra -Wno-unused-parameter -Os
 -LDFLAGS  = -L$(X11LIB) -s
++CFLAGS   = -march=native -flto -O3 -fno-plt -ffunction-sections -fdata-sections ${INCS} ${CPPFLAGS}
 +LDFLAGS  = -L$(X11LIB) -s -Wl,--gc-sections -flto
  # OpenBSD: add -lsndio
- # FreeBSD: add -lkvm
+ # FreeBSD: add -lkvm -lsndio
+ LDLIBS   = -lX11

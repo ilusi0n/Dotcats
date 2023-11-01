@@ -31,7 +31,7 @@ alias updateXresources='xrdb ~/.Xresources'
 alias checkMemoryLeak='valgrind --tool=memcheck'
 alias zombies='ps -el | grep "Z"'
 alias top='htop'
-alias wasteSpace='ncdu'
+alias wasteSpace='ncdu -x --color off --exclude-kernfs -r'
 alias myBirth='stat / | grep Birth'
 alias myip="curl curlmyip.com"
 pk() { killall -9 "$1"; }
@@ -56,3 +56,7 @@ alias dmesg='journalctl --dmesg -o short-monotonic --no-hostname --no-pager'
 alias vim='nvim'
 alias cat='bat'
 alias auracle='mkdir -p /tmp/build && auracle -C /tmp/build'
+alias ccm="sudo ccm"
+alias removeUnusedVolumes="docker volume prune --filter all=1"
+alias dup="docker-compose up -d --remove-orphans"
+alias wl-poweroff='sudo /usr/bin/iw dev wlo1 set power_save off'

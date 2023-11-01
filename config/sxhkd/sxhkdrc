@@ -57,22 +57,22 @@ super + r
   rlaunch
 
 alt + c
-  chromium
+  google-chrome-stable
 
 alt + 2
   pcmanfm
 
 control + alt + l
-	$HOME/.scripts/lock
+	"$HOME"/.scripts/lock
 
 control + {Up,Down}
-    $HOME/.scripts/sound {up,down}
+    "$HOME"/.scripts/sound {up,down}
 
 alt + m
-	$HOME/.scripts/sound toggle
+	"$HOME"/.scripts/sound toggle
 
 control + {Left,Right}
     light {-U,-A} 10
 
 Print
-  $HOME/.scripts/print
+  "$HOME"/.scripts/print
