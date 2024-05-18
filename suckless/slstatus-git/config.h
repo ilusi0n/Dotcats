@@ -80,7 +80,7 @@ static const char pacupdates[] = "awk '/$/' /tmp/pacupdates";
 static const struct arg args[] = {
 	/* function format          argument */
 	{ run_command,		    "^c#666666^[  ^c#00BFFF^ %s^c#666666^  ] ",pacupdates},
-	{ disk_perc,		    "^c#666666^[  ^c#BF5FFF^ %s%%^c#666666^  ] ",	    "/mnt/Data"},
+	{ disk_perc,		    "^c#666666^[  ^c#BF5FFF^ %s%%^c#666666^  ] ",	    "/home/lanikai/Data"},
 	{ run_command,		    "^c#666666^[  ^c#7DC1CF^%s^c#666666^  ] ",	        weather},
 	{ battery_perc,		    "^c#666666^[  ^c#76EE00^ %s%%^c#666666^  ] ",	    "BAT1" },
 	{ temp,		            "^c#666666^[  ^c#ff8c00^ %s^c#666666^  ] ",	        "/sys/class/thermal/thermal_zone0/temp" },

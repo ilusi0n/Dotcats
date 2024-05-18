@@ -1,0 +1,10 @@
+[Unit]
+Description=Enable/disable powersaving for wireless
+
+[Service]
+Type=simple
+Environment=DISPLAY=:0
+ExecStart=/usr/bin/iw dev wlo1 set power_save off
+
+[Install]
+WantedBy=default.target

@@ -1,9 +1,9 @@
---- config.mk	2023-01-26 18:36:25.907298457 +0000
-+++ config_new.mk	2023-01-26 18:37:23.639926643 +0000
+--- config.mk	2023-11-12 12:13:38.827565454 +0000
++++ config2.mk	2023-11-12 12:14:57.474568619 +0000
 @@ -12,8 +12,8 @@ X11LIB = /usr/X11R6/lib
  
  # flags
- CPPFLAGS = -I$(X11INC) -D_DEFAULT_SOURCE
+ CPPFLAGS = -I$(X11INC) -D_DEFAULT_SOURCE -DVERSION=\"${VERSION}\"
 -CFLAGS   = -std=c99 -pedantic -Wall -Wextra -Wno-unused-parameter -Os
 -LDFLAGS  = -L$(X11LIB) -s
 +CFLAGS   = -march=native -flto -O3 -fno-plt -ffunction-sections -fdata-sections ${INCS} ${CPPFLAGS}

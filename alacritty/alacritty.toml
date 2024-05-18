@@ -1,0 +1,11 @@
+
+[font]
+size = 12.0
+
+[font.normal]
+family = "DeJavu Sans Mono"
+
+[cursor]
+style = "Beam"
+
+#import = ["/home/lanikai/.config/alacritty/dracula.toml"]

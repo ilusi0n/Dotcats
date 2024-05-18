@@ -49,28 +49,28 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 ## oh my zsh
-ZSH=/usr/share/oh-my-zsh/
-plugins=(git history colored-man-pages)
+#ZSH=/usr/share/oh-my-zsh/
+#plugins=(git history colored-man-pages)
 
 
-ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
-if [[ ! -d $ZSH_CACHE_DIR ]]; then
-    mkdir $ZSH_CACHE_DIR
-fi
+#ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
+#if [[ ! -d $ZSH_CACHE_DIR ]]; then
+#    mkdir $ZSH_CACHE_DIR
+#fi
 
-source $ZSH/oh-my-zsh.sh
+#source $ZSH/oh-my-zsh.sh
 
 #---------#
 # Aliases #
 #---------#
 
-source "$HOME/.zsh_stuff/aliases"
+source "$HOME/.stuff/aliases"
 
 #-----------#
 # Functions #
 #-----------#
 
-source "$HOME/.zsh_stuff/functions"
+source "$HOME/.stuff/functions"
 
 
 # colors for ls

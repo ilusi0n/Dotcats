@@ -1,0 +1,23 @@
+#!/bin/bash
+
+value="$(brillo)"
+
+case "$1" in
+    up)
+        bri=$(echo 'x = '$value' + 10; scale = 0; x / 1' | bc -l)
+        ddcutil setvcp 10 $bri
+        brillo -S $bri
+    ;;
+    down)
+        bri=$(echo 'x = '$value' - 10; scale = 0; x / 1' | bc -l)
+        ddcutil setvcp 10 $bri
+        brillo -S $bri
+    ;;
+    output)
+        echo $value
+    ;;
+    *)
+        echo $"Usage: $0 {up|down|output}"
+        exit 1
+    ;;
+esac

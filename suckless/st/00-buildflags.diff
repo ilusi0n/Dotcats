@@ -1,0 +1,11 @@
+--- config.mk	2022-10-04 18:41:26.000000000 +0100
++++ config_new.mk	2023-12-29 11:06:27.905316499 +0000
+@@ -21,6 +21,8 @@ LIBS = -L$(X11LIB) -lm -lrt -lX11 -lutil
+        `$(PKG_CONFIG) --libs freetype2`
+ 
+ # flags
++CFLAGS   = -march=native -flto -O3 -fno-plt -ffunction-sections -fdata-sections ${INCS} ${CPPFLAGS}
++LDFLAGS  = -Wl,--gc-sections -flto ${LIBS}
+ STCPPFLAGS = -DVERSION=\"$(VERSION)\" -D_XOPEN_SOURCE=600
+ STCFLAGS = $(INCS) $(STCPPFLAGS) $(CPPFLAGS) $(CFLAGS)
+ STLDFLAGS = $(LIBS) $(LDFLAGS)

@@ -52,16 +52,15 @@ R "whatsapp-nativefier-d40211" desktop='^3' follow=off
 # Autostart Apps
 # nvidia-settings --assign CurrentMetaMode="nvidia-auto-select +0+0 { ForceFullCompositionPipeline = On }" &
 S sxhkd
-S setxkbmap -layout pt
+#S setxkbmap -layout pt
 S xsetroot -cursor_name left_ptr
 S light -S 40
 S setxkbmap -layout pt
 S lxqt-policykit-agent
 S dunst
-S feh --bg-fill --randomize /mnt/Data/Wallpapers/*
+S feh --bg-fill --randomize $HOME/Data/Wallpapers/*
 #bottom left lock, top right doesnt lock
 S xautolock -time 8 -locker "$HOME/.scripts/lock" -corners 0-+0  -cornerdelay 4 -cornerredelay 4
-#"$HOME"/.config/polybar/launch.sh
 S sct 4500
 
 ## fix because of monitor colors

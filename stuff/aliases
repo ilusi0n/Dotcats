@@ -60,3 +60,6 @@ alias ccm="sudo ccm"
 alias removeUnusedVolumes="docker volume prune --filter all=1"
 alias dup="docker-compose up -d --remove-orphans"
 alias wl-poweroff='sudo /usr/bin/iw dev wlo1 set power_save off'
+alias startx='startx -- -keeptty >/tmp/xorg.log 2>&1'
+alias mount_windows_data='sudo mount /dev/sdb2 /home/lanikai/Data_Windows'
+alias cp='rsync -HAXhaxvPS --numeric-ids --stats'

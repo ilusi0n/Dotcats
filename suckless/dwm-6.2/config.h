@@ -35,6 +35,11 @@ static const char *const autostart[] = {
 	"slstatus", NULL,
 	"dunst", NULL,
 	"lxqt-policykit-agent", NULL,
+	"brillo", "-S", "60", NULL,
+	"ddcutil", "setvcp", "10", "60", NULL,
+	"sct", "4500", NULL,
+	"feh", "--bg-fill","--randomize", "/home/lanikai/Data/Wallpapers", NULL,
+	"wmname", "LG3D", NULL,
 	NULL /* terminate */
 };
 
@@ -85,18 +90,18 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", WHITE, "-nf", WHITE, "-sb", WHITE, "-sf", WHITE, NULL };
 
 static const char *launcher[] = { "rlaunch", NULL };
-static const char *touchpadcmd[] = { "/bin/sh", "/home/ilusi0n/.scripts/touchpad_toggle", NULL };
+static const char *touchpadcmd[] = { "/bin/sh", "/home/lanikai/.scripts/touchpad_toggle", NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char *chrome[]   = { "google-chrome-stable", NULL, "Google-chrome-stable" };
 static const char *file[]  = { "pcmanfm", NULL };
 static const char *gvim[]     = { "gvim", NULL };
-static const char *upvol[] = { "/bin/sh", "/home/ilusi0n/.scripts/sound", "up", NULL };
-static const char *downvol[] = { "/bin/sh", "/home/ilusi0n/.scripts/sound", "down", NULL };
-static const char *upbri[] = { "light", "-A", "10", NULL };
-static const char *downbri[] = { "light", "-U", "10", NULL };
+static const char *upvol[] = { "/bin/sh", "/home/lanikai/.scripts/sound", "up", NULL };
+static const char *downvol[] = { "/bin/sh", "/home/lanikai/.scripts/sound", "down", NULL };
+static const char *upbri[] = { "/bin/sh", "/home/lanikai/.scripts/light", "up", NULL };
+static const char *downbri[] = { "/bin/sh", "/home/lanikai/.scripts/light", "down", NULL };
 static const char *print[] = { "flameshot",NULL};
-static const char *lock[]  = { "/bin/sh", "/home/ilusi0n/.scripts/lock", NULL };
-static const char *togglevol[] = { "/bin/sh", "/home/ilusi0n/.scripts/sound", "toggle", NULL };
+static const char *lock[]  = { "/bin/sh", "/home/lanikai/.scripts/lock", NULL };
+static const char *togglevol[] = { "/bin/sh", "/home/lanikai/.scripts/sound", "toggle", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
