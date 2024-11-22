@@ -18,7 +18,7 @@ _source=(http://dl.suckless.org/dwm/dwm-$pkgver.tar.gz
 )
 
 _patches=(
-  00-clang.diff
+  00-buildflags-dwm-6.2.diff
   01-systray-6.2.diff
   02-pertag.diff
   03-gaps.diff

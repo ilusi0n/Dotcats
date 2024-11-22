@@ -1,0 +1,28 @@
+#/etc/containers/systemd/scrutiny.container
+
+[Unit]
+Description=WebUI for smartd S.M.A.R.T monitoring
+Wants=network-online.target
+After=network-online.target
+After=local-fs.target
+
+[Container]
+ContainerName=scrutiny
+AddDevice=/dev/sdb
+AddDevice=/dev/sda
+Volume=/run/udev:/run/udev:ro
+
+AutoUpdate=registry
+
+AddCapability=SYS_RAWIO
+
+Image=ghcr.io/analogj/scrutiny:master-omnibus
+
+PublishPort=8385:8080
+
+[Service]
+Restart=on-failure
+TimeoutStartSec=900
+
+[Install]
+WantedBy=multi-user.target default.target

@@ -1,0 +1,24 @@
+include "/usr/share/nano/*.nanorc"
+include "/usr/share/nano-syntax-highlighting/*.nanorc"
+ 
+set autoindent
+set constantshow
+set minibar
+set multibuffer
+set positionlog
+set smarthome
+set softwrap
+set stateflags
+set tabsize 4
+set tabstospaces
+
+set errorcolor black,red
+set functioncolor yellow
+set keycolor black,yellow
+set numbercolor yellow
+set promptcolor black,yellow
+set scrollercolor yellow
+set selectedcolor black,red
+set statuscolor black,yellow
+set stripecolor yellow
+set titlecolor black,yellow

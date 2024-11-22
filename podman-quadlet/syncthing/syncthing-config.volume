@@ -1,0 +1,5 @@
+[Unit]
+Description=Syncthing config Volume
+
+[Volume]
+Label=syncthing-config

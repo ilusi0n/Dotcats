@@ -1,0 +1,14 @@
+pkgname=profile-sync-daemon-thorium
+pkgver=2024.11.03
+pkgrel=1
+pkgdesc="Thorium browser support for profile-sync-daemon"
+arch=('any')
+license=('none')
+depends=('profile-sync-daemon')
+source=("thorium")
+md5sums=('SKIP')
+
+package() {
+	install -Dm644 thorium "${pkgdir}/usr/share/psd/browsers/thorium"
+}
+

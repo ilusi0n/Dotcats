@@ -1,0 +1,40 @@
+[Unit]
+Description=File synchronization tool
+After=network-online.target local-fs.target
+
+[Container]
+ContainerName=syncthing
+Image=lscr.io/linuxserver/syncthing:latest
+
+AutoUpdate=registry
+
+Volume=syncthing-config.volume:/config
+Volume=/home/lanikai/Data/Cloud/Games/:/games
+Volume=/home/lanikai/Data/Cloud/Software/:/software
+Volume=/home/lanikai/Data/Cloud/Share/:/share
+Volume=/home/lanikai/Data/Cloud/Music/:/music
+
+HostName=syncthing
+PublishPort=127.0.0.1:8384:8384/tcp
+PublishPort=22000:22000/tcp
+
+Environment=PUID=1000
+Environment=PGID=984
+Environment=TZ=Europe/Lisbon
+
+# UID mapping is needed to run linuxserver.io container as rootless podman.
+# This will map UID=1000 inside the container to intermediate UID=0.
+# For rootless podman intermediate UID=0 will be mapped to the UID of current user.
+UIDMap=1000:0:1
+UIDMap=0:1:1000
+UIDMap=1001:1001:64536
+
+[Service]
+Restart=on-failure
+
+# Extend Timeout to allow time to pull the image
+TimeoutStartSec=300
+
+# The [Install] section allows enabling the generated service.
+[Install]
+WantedBy=default.target

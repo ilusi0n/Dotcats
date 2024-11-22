@@ -57,6 +57,7 @@ static const Rule rules[] = {
     { "Spotify", 		   NULL,  	   NULL,       1 << 4,       False,        -1 },
     { "Chromium", 	   NULL,  	   NULL,       1 << 1,       False,	 	  0 },
 	{ "Google-chrome", 	   NULL,  	   NULL,       1 << 1,       False,	 	  0 },
+	{ "Brave-browser", 	   NULL,  	   NULL,       1 << 1,       False,	 	  0 },
 
 };
 
@@ -92,7 +93,8 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *launcher[] = { "rlaunch", NULL };
 static const char *touchpadcmd[] = { "/bin/sh", "/home/lanikai/.scripts/touchpad_toggle", NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
-static const char *chrome[]   = { "google-chrome-stable", NULL, "Google-chrome-stable" };
+static const char *firefox[]   = { "firefox", NULL, "firefox" };
+static const char *brave[]   = { "brave", NULL, "brave" };
 static const char *file[]  = { "pcmanfm", NULL };
 static const char *gvim[]     = { "gvim", NULL };
 static const char *upvol[] = { "/bin/sh", "/home/lanikai/.scripts/sound", "up", NULL };
@@ -105,7 +107,7 @@ static const char *togglevol[] = { "/bin/sh", "/home/lanikai/.scripts/sound", "t
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ ALTKEY,                       XK_c,      spawn,     	   {.v = chrome } },
+	{ ALTKEY,                       XK_c,      spawn,     	   {.v = firefox } },
 	{ ALTKEY,                       XK_2,      spawn,          {.v = file } },
 	{ ALTKEY,                       XK_g,      spawn,          {.v = gvim } },
     { ALTKEY,                       XK_z,      spawn,          {.v = touchpadcmd } },

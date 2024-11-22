@@ -72,7 +72,7 @@ man() {
     if [ -d "$DIRECTORY" ]; then
         rm -rf $DIRECTORY
     fi
-    cp -r "$HOME/Dotcats/suckless/dwm-6.2" /tmp/
+    cp -r "$HOME/Dotcats/suckless/dwm-6.2" /scratch/build
  }
 
  rebuild_slstatus() {
@@ -80,7 +80,7 @@ man() {
     if [ -d "$DIRECTORY" ]; then
         rm -rf $DIRECTORY
     fi
-    cp -r "$HOME/Dotcats/suckless/slstatus-git" /tmp/
+    cp -r "$HOME/Dotcats/suckless/slstatus-git" /scratch/build
  }
 
   rebuild_st() {
@@ -88,5 +88,5 @@ man() {
     if [ -d "$DIRECTORY" ]; then
         rm -rf $DIRECTORY
     fi
-    cp -r "$HOME/Dotcats/suckless/st" /tmp/
+    cp -r "$HOME/Dotcats/suckless/st" /scratch/build
  }
