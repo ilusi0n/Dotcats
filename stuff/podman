@@ -1,0 +1,11 @@
+alias podman-build='podman build --tag $1 -f ./Dockerfile'
+alias podman-clean='podman system prune -a -f'
+podman_logs(){
+    journalctl --user -u $1.service --no-pager -n 50
+}
+
+symbolic_quadlets(){
+    mkdir -p $HOME/.config/containers/systemd
+    ln -sf $HOME/Dotcats/podman-quadlet/qbittorrent/qbittorrent.container $HOME/.config/containers/systemd/qbittorrent.container
+    ln -sf $HOME/Dotcats/podman-quadlet/qbittorrent/qbittorrent-config.volume $HOME/.config/containers/systemd/qbittorrent-config.volume
+}

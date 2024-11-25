@@ -1,54 +1,24 @@
 #- aslstatus version -#
-VERSION = 0.1
+VERSION := 0.1.3
 
-#- customize below to fit your system -#
+CC ?= cc
 
 #- paths -#
-PREFIX = /usr
-MANPREFIX = ${PREFIX}/share/man
-
-X11INC = /usr/X11R6/include
-X11LIB = /usr/X11R6/lib
+PREFIX    := /usr
+MANPREFIX := ${PREFIX}/share/man
 
 #- flags -#
-CPPFLAGS = -I${X11INC} -D_DEFAULT_SOURCE
-WNO      = -Wno-unused-parameter
-LTO      = -flto
-OPT      = -march=native -fPIE -funroll-loops
-CFLAGS   = -std=c99 -O3 -fPIC -pedantic -Wall -Wextra ${WNO} ${OPT} ${LTO}
+CPPFLAGS += -D_DEFAULT_SOURCE -DVERSION='"${VERSION}"'
+CFLAGS   += -march=native -flto -O3 -fno-plt -ffunction-sections -fdata-sections
+WARNINGS += -pedantic -Wall -Wextra \
+	    -Wshadow -Wfloat-equal -Wconversion -Wuninitialized
 
-LDFLAGS  = -L${X11LIB} -s ${LTO}
-LDLIBS   = -lX11 -lpthread #-Wl,-O3 -Wl,--as-needed
+#- linker -#
+pkgconf   = $(shell pkg-config --libs $1)
 
-LDALSA   = -lasound
-LDPULSE  = -lpulse
+LDLIBS  := -lpthread -pthread
+LDALSA   = $(call pkgconf,alsa)  # -lasound
+LDPULSE  = $(call pkgconf,libpulse) -L/usr/lib/pulseaudio
 
-
-
-#- compiler and linker -#
-# CC = clang
-CC = gcc
-
-#- strip -#
-STRIPFLAGS = -s
-# STRIPFLAGS = --strip-unneeded -R .comment  # less agresive strip
-
-# NOSTRIP = 1  # uncomment to leave binary unstriped
-# FSTRIP  = 1  # uncomment to force strip even though compiler unknown
-
-
-ifeq ($(CC), clang)
-STRIP = llvm-strip
-STRIPFLAGS += --strip-all-gnu
-
-else ifeq ($(CC), gcc)
-STRIP = strip
-STRIPFLAGS += -R .GCC.command.line -R .note.gnu.gold-version
-
-else ifeq (${FSTRIP}, 1)
-STRIP = strip
-
-else
-NOSTRIP = 1
-
-endif
+LDXCB     = $(call pkgconf,xcb)  # -lxcb
+LDXCB_XKB = $(call pkgconf,xcb-xkb)  # -lxcb-xkb

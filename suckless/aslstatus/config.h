@@ -72,35 +72,38 @@ static const char unknown_str[] = "n/a";
  */
 
 /* for usleep */
-#define SEC * 1000
-#define MIN * 60 SEC
+#define _SEC *1000
+#define _MIN *(60 _SEC)
+#define _HR  *(60 _MIN)
+
 #define ONCE ((unsigned int) -1)  /* to run */
 
-/**
-WHITE \x01
-BLUE \x02
-GRAY \x03
-RED \x04
-ORANGE \x05
-LIGHT_GREEN \x06
-PURPLE \x07
-LIGHT_BLUE \x08
-AZURE \x09
-**/
+// #define BLUE   "#00BFFF"
+// #define WHITE  "#cdcdcd"
+// #define BLACK  "#000000"
+// #define ORANGE "#ff8c00"
+// #define RED    "#ff0000"
+// #define GRAY   "#666666"
+// #define PURPLE "#BF5FFF"
+// #define LIGHT_GREEN "#76EE00"
+// #define LIGHT_BLUE "#7DC1CF"
+// #define AZURE "#80d9d8"
+// #define LIGHT_ORANGE "#FFA07A"
+// #define LIGHT_GREEN2 "#78AB46"
 
 static const char pulse_volume[] = "if [[ $(pamixer --get-mute) == 'true' ]]; then echo ; else echo  $(pamixer --get-volume)%; fi";
-static const char weather[] = "cat /tmp/weather";
-static const char pacupdates[] = "cat /tmp/pacupdates";
+static const char weather[] = "awk '/$/' /tmp/weather";
+static const char pacupdates[] = "awk '/$/' /tmp/pacupdates";
 
 static struct arg_t args[] = {
 	/* function format          argument */
-	{ run_command,		    "^c#666666^[  ^c#00BFFF^ %s^c#666666^  ] ",        pacupdates,     20 SEC, END },
-	{ disk_perc,		    "^c#666666^[  ^c#BF5FFF^ %s%%^c#666666^  ] ",	    "/mnt/Data",    60 SEC, END },
-	{ run_command,		    "^c#666666^[  ^c#7DC1CF^%s^c#666666^  ] ",	        weather,        20 SEC, END },
-	{ battery_perc,		    "^c#666666^[  ^c#76EE00^ %s%%^c#666666^  ] ",	    "BAT1",         30 SEC, END },
-	{ temp,		            "^c#666666^[  ^c#ff8c00^ %s^c#666666^  ] ",	    "/sys/class/thermal/thermal_zone0/temp", 2 SEC, END },
-	{ cpu_perc,		        "^c#666666^[  ^c#BF5FFF^ %s%%^c#666666^  ] ",	    NULL,          2 SEC, END},
-	{ run_command,		    "^c#666666^[  ^c#7DC1CF^ %s^c#666666^  ] ",	        pulse_volume,  2 SEC, END },
-	{ datetime,		        "^c#666666^[  ^c#76EE00^%s^c#666666^  ]",	        "%a %b %d, %R", 1 SEC, END },
+	{ run_command,		    "^c#666666^[  ^c#00BFFF^ %s^c#666666^  ] ",        pacupdates,     		 20 _SEC, END },
+	{ disk_perc,		    "^c#666666^[  ^c#BF5FFF^ %s%%^c#666666^  ] ",	    "/home/lanikai/Data",    60 _SEC, END },
+	{ run_command,		    "^c#666666^[  ^c#7DC1CF^%s^c#666666^  ] ",	        weather,        		 20 _SEC, END },
+	{ battery_perc,		    "^c#666666^[  ^c#76EE00^ %s%%^c#666666^  ] ",	    "BAT1",         		 30 _SEC, END },
+	{ temp,		            "^c#666666^[  ^c#ff8c00^ %s^c#666666^  ] ",	    "/sys/class/thermal/thermal_zone0/temp", 2 _SEC, END },
+	{ cpu_perc,		        "^c#666666^[  ^c#BF5FFF^ %s%%^c#666666^  ] ",	    NULL,          2 _SEC, END},
+	{ run_command,		    "^c#666666^[  ^c#7DC1CF^ %s^c#666666^  ] ",	        pulse_volume,  2 _SEC, END },
+	{ datetime,		        "^c#666666^[  ^c#76EE00^ %s^c#666666^  ]",	        "%a %b %d, %R", 1 _SEC, END },
 	{ kernel_release,		"^c#666666^[  ^c#00BFFF^%s^c#666666^  ]",	        NULL,           ONCE, END },
 };

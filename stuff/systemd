@@ -1,0 +1,38 @@
+start() {
+    sudo systemctl start "$1".service
+    sudo systemctl status "$1".service
+}
+restart() {
+    sudo systemctl restart "$1".service
+    sudo systemctl status "$1".service
+}
+stop() {
+    sudo systemctl stop "$1".service
+    sudo systemctl status "$1".service
+}
+status() { sudo systemctl status "$1".service; }
+enable() { sudo systemctl enable "$1".service; }
+disable() { sudo systemctl disable "$1".service; }
+listd() { ls -l /etc/systemd/system/multi-user.target.wants; }
+start_user() {
+    systemctl --user daemon-reload
+    systemctl --user start "$1".service
+    systemctl --user status "$1".service
+}
+restart_user() {
+    systemctl --user daemon-reload
+    systemctl --user restart "$1".service
+    systemctl --user status "$1".service
+}
+stop_user() {
+    systemctl --user daemon-reload
+    systemctl --user stop "$1".service
+    systemctl --user status "$1".service
+}
+status_user() { systemctl --user status "$1".service; }
+enable_user() { systemctl --user enable "$1".service; }
+disable_user() { systemctl --user disable "$1".service; }
+reload_user() { systemctl --user daemon-reload; }
+alias fail='systemctl --failed'
+alias services='systemctl list-unit-files | grep enabled'
+alias high_errors='journalctl -p 0..3 -xn'

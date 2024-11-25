@@ -76,11 +76,11 @@ man() {
  }
 
  rebuild_slstatus() {
-   DIRECTORY=/tmp/slstatus-git
+   DIRECTORY=/tmp/slstatus
     if [ -d "$DIRECTORY" ]; then
         rm -rf $DIRECTORY
     fi
-    cp -r "$HOME/Dotcats/suckless/slstatus-git" /scratch/build
+    cp -r "$HOME/Dotcats/suckless/slstatus" /scratch/build
  }
 
   rebuild_st() {

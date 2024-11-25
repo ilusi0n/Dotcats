@@ -71,6 +71,8 @@ source "$HOME/.stuff/aliases"
 #-----------#
 
 source "$HOME/.stuff/functions"
+source "$HOME/.stuff/podman"
+source "$HOME/.stuff/systemd"
 
 
 # colors for ls

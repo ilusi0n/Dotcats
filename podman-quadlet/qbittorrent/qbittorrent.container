@@ -1,0 +1,26 @@
+[Unit]
+Description=Qbittorrent torrent client
+After=podman-user-wait-network-online.service local-fs.target
+
+[Container]
+ContainerName=qbittorrent
+Image=hotio/qbittorrent:legacy-4.3.9
+
+Environment=PUID=1000
+Environment=PGID=1000
+Environment=UMASK=002
+Environment=TZ=Europe/Lisbon
+
+Volume=%h/Data/media/torrents:/data/torrents
+Volume=qbittorrent-config.volume:/config
+
+UIDMap=1000:0:1
+UIDMap=0:1:1000
+UIDMap=1001:1001:64536
+
+PublishPort=9092:8080
+PublishPort=64220:64220
+PublishPort=64220:64220/udp
+
+[Service]
+Restart=on-failure
