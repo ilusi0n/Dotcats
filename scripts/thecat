@@ -43,23 +43,23 @@ RAM=$(free -h |awk '/Mem:/ { print $3 }')
 
 function root
 {
-	echo -e "$(df -h | awk '/sda2/ {print $3}') / $(df -h | awk '/sda2/{print $2}')"
+	echo -e "$(df -h | awk '/sda1/ {print $3}') / $(df -h | awk '/sda1/{print $2}')"
 }
 
 function data
 {
-	echo -e "$(df -h | awk '/sdb2/ {print $3}') / $(df -h | awk '/sdb2/{print $2}')"
-}
-
-function home
-{
-	echo -e "$(df -h | awk '/sda4/ {print $3}') / $(df -h | awk '/sda4/{print $2}')"
-}
-
-function var
-{
 	echo -e "$(df -h | awk '/sdb1/ {print $3}') / $(df -h | awk '/sdb1/{print $2}')"
 }
+
+# function home
+# {
+# 	echo -e "$(df -h | awk '/sda4/ {print $3}') / $(df -h | awk '/sda4/{print $2}')"
+# }
+
+# function var
+# {
+# 	echo -e "$(df -h | awk '/sdb1/ {print $3}') / $(df -h | awk '/sdb1/{print $2}')"
+# }
 
 
 cat << EOF   
@@ -74,9 +74,9 @@ $f7          dMMMMMMMMMMMMMMMMMMMMMMMMMMMMM:         $f2 Editor    »$f4 $EDITOR
 $f7          'MMMMMMMMMMMMMMMMMMMMMMMMMMMMM.         $f2 Packages  »$f4 $PACKAGES $f1($FPACKAGES)$NC
 $f7          'MMMMMMMMMMMMMMMMMMMMMMMMMMMMM;         $f2 Ram       »$f4 $RAM$NC
 $f7          lMMMMM  MMMMMMMMMM  MMMMMMMMMM,         $f2 Root      »$f4 $(root)
-$f7          KMMMMM  MMMMMMMMMM  MMMMMMMMMM.         $f2 Home      »$f4 $(home)
-$f7         ;WMMMMMkNMMMMMMMMMMONMMMMMMMMMW:         $f2 Data      »$f4 $(data)
-$f7       oNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMO        $f2 Var       »$f4 $(var)
+$f7          KMMMMM  MMMMMMMMMM  MMMMMMMMMM.         $f2 Data      »$f4 $(data)
+$f7         ;WMMMMMkNMMMMMMMMMMONMMMMMMMMMW:         
+$f7       oNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMO        
 $f7      .,cxKWMMMMMMMMMMMMMMMMMMMMMMMMMMMXdxo        
 $f7         ;kWMMMMMMMMMMMMMMMMMMMMMMMMMMMM:          
 $f7        .::,  .;ok0NMMMMWNK0kdoc;'  'cxK0         $f1 Kernel »$f4 $KERNEL$NC

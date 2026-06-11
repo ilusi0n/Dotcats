@@ -135,7 +135,7 @@ function auracle
 end
 
 function ccm
-    sudo ccm
+    sudo ccm $argv
 end
 
 function removeUnusedVolumes
@@ -158,9 +158,9 @@ function mount_windows_data
     sudo mount /dev/sdb2 /home/lanikai/Data_Windows
 end
 
-function cp
-    rsync -HAXhaxvPS --numeric-ids --stats $argv
-end
+#function cp
+#    rsync -HAXhaxvPS --numeric-ids --stats $argv
+#end
 
 function audio-config
     pavucontrol

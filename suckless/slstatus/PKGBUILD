@@ -9,7 +9,7 @@ conflicts=('slstatus-git')
 license=('custom:ISC')
 source=('https://dl.suckless.org/tools/slstatus-1.0.tar.gz'
         "config.h"
-        "00-buildflags.diff")
+        "00-clang.diff")
 md5sums=('SKIP'
          'ee7827d55ed1db925e722962a016be33')
 

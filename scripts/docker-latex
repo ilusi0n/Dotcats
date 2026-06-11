@@ -1,0 +1,17 @@
+#!/bin/bash
+# /usr/local/bin/docker-latex
+
+FILE="$1"
+BASENAME=$(basename "$FILE")
+DIR=$(dirname "$FILE")
+
+# Define your local base folder that maps to /data
+# Change this to match your setup if needed
+PROJECT_BASE="$HOME/latex"  
+
+# Get the relative path from the project base to the file directory
+REL_DIR=$(realpath --relative-to="$PROJECT_BASE" "$DIR")
+
+#docker exec texlive sh -c "cd /data/$REL_DIR && pdflatex -interaction=nonstopmode $BASENAME"
+#docker exec texlive sh -c "cd /data/$REL_DIR && pdflatex -interaction=nonstopmode $BASENAME"
+docker exec texlive sh -c "cd /data/$REL_DIR && lualatex -interaction=nonstopmode $BASENAME"

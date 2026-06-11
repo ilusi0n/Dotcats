@@ -84,6 +84,7 @@ man() {
  }
 
   rebuild_st() {
+    # fc-list
    DIRECTORY=/tmp/st
     if [ -d "$DIRECTORY" ]; then
         rm -rf $DIRECTORY

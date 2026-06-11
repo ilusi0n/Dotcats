@@ -1,0 +1,16 @@
+--- config.mk	2025-07-27 10:57:06.698085736 +0100
++++ config2.mk	2025-07-27 10:59:22.477243099 +0100
+@@ -12,11 +12,11 @@ X11LIB = /usr/X11R6/lib
+ 
+ # flags
+ CPPFLAGS = -I$(X11INC) -D_DEFAULT_SOURCE -DVERSION=\"${VERSION}\"
+-CFLAGS   = -march=native -flto -O3 -fno-plt -ffunction-sections -fdata-sections ${INCS} ${CPPFLAGS}
++CFLAGS   = -march=native -mtune=native -O3 -pipe -flto -O3 -fno-plt -ffunction-sections -fdata-sections ${INCS} ${CPPFLAGS}
+ LDFLAGS  = -L$(X11LIB) -s -Wl,--gc-sections -flto
+ # OpenBSD: add -lsndio
+ # FreeBSD: add -lkvm -lsndio
+ LDLIBS   = -lX11
+ 
+ # compiler and linker
+-CC = cc
++CC = clang
